@@ -46,9 +46,20 @@ namespace ZooApp
             catch (NpgsqlException) { MessageBox.Show("Account doesn't exist!"); flag = true; }
             if (!flag)
             {
-                MainManager tform = new MainManager();
-                tform.Show();
-                this.Hide();
+                switch (Databases.username)
+                {
+                    case "postgres":
+                        MainManager tform = new MainManager();
+                        tform.Show();
+                        this.Close();
+                        break;
+                    default:
+                        MainSeller sform = new MainSeller();
+                        sform.Show();
+                        this.Close();
+                        break;
+                }
+                
             }
 
         }

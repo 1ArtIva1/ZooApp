@@ -23,5 +23,10 @@ namespace ZooApp
         {
             InitializeComponent();
         }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
