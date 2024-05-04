@@ -3,9 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-        xmlns:local="clr-namespace:ZooApp"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ZooApp.MainManager"
+        x:Class="ZooApp.MainManager"
         mc:Ignorable="d"
         Title="MainManager" Height="475" Width="960">
     <Grid Background="#171717">
@@ -18,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="114.76"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!-- Main Form -->
@@ -28,14 +26,19 @@
             
             <!-- Отчётность -->
             <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"/>
-            <TextBlock TextWrapping="Wrap" Text="Отчётность" Foreground="White" Margin="10, 0, 0, 0" FontSize="15" FontWeight="SemiBold"/>
+            <TextBlock TextWrapping="Wrap" Text="Отчётность" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
             <TextBlock TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
-            <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
+            <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/>
             
             <!-- Заказы -->
             <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
-            <TextBlock TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 0, 0, 0" FontSize="15" FontWeight="SemiBold"/>
-            <TextBlock TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
+            <TextBlock TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
+            <TextBlock TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/>
+            
+            <!-- Пользователи -->
+            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="Пользователи" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
+            <TextBlock TextWrapping="Wrap" Text="Добавить" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/>
 
         </StackPanel>
 
