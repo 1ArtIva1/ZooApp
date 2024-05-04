@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="ZooApp.MainManager"
         xmlns:local="clr-namespace:ZooApp"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ZooApp.MainManager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
         Title="MainManager" Height="475" Width="960">
     <Grid Background="#171717">

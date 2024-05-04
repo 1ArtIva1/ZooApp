@@ -127,6 +127,12 @@
       <DependentUpon>ArrangeSellForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Databases.cs" />
+    <Compile Include="FirstRegForm.xaml.cs">
+      <DependentUpon>FirstRegForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LastRegForm.xaml.cs">
+      <DependentUpon>LastRegForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainManager.xaml.cs">
       <DependentUpon>MainManager.xaml</DependentUpon>
     </Compile>
@@ -166,6 +172,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ArrangeSellForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FirstRegForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LastRegForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
