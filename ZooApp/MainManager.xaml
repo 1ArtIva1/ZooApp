@@ -65,8 +65,10 @@
 
                 <Line Grid.Row="0" Grid.Column="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
                 <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/>
-                
+                <TextBlock Grid.Row="2" Hyperlink.Click="Order_Click"  Margin="25, 5, 0, 10" FontSize="15" >
+                    <Hyperlink Foreground="White" TextDecorations="None">Просмотреть</Hyperlink>
+                </TextBlock>
+
             </Grid>
             
 
@@ -84,11 +86,14 @@
 
                 <Line Grid.Row="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
                 <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Пользователи" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
-                <!--
-                <TextBlock Grid.Row="2" Text="Добавить" Hyperlink.Click="Insert_Click" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/> !-->
-                <TextBlock Grid.Row="2" Hyperlink.Click="Insert_Click"  Margin="25, 5, 0, 10" FontSize="15" >
-                    <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
-                </TextBlock>
+                
+                <WrapPanel Grid.Row="2"  Margin="25, 5, 0, 10">
+                    <Image Source="/emblems/4elove4eK.jpeg" Height="20" Width="20" Margin="0,0,-26,0"></Image>
+                    <TextBlock Grid.Row="2" Hyperlink.Click="Insert_Click"  Margin="25, 5, 0, 10" FontSize="15" >
+                        <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
+                    </TextBlock>
+                </WrapPanel>
+                
 
 
             </Grid>

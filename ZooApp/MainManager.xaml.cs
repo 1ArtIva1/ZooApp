@@ -38,5 +38,12 @@ namespace ZooApp
             this.Close();
 
         }
+
+        private void Order_Click(object sender, RoutedEventArgs e)
+        {
+            OrderFormForManager orderform = new OrderFormForManager();
+            orderform.Show();
+            this.Close();
+        }
     }
 }

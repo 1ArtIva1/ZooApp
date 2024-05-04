@@ -144,6 +144,9 @@
     <Compile Include="MainSeller.xaml.cs">
       <DependentUpon>MainSeller.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderFormForManager.xaml.cs">
+      <DependentUpon>OrderFormForManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderFormForManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
