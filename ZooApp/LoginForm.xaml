@@ -1,0 +1,46 @@
+﻿<Window x:Class="ZooApp.LoginForm"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZooApp"
+        mc:Ignorable="d"
+        Title="LoginForm" Height="475" Width="960">
+    <Grid x:Name="LoginGrid" Background="#171717" Height="460" Width="960">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="2" HorizontalAlignment="Center" Height="320" Width="270" VerticalAlignment="Top" Background="#252525" Margin="0,70,0,0" Grid.RowSpan="5"/>
+        <StackPanel Grid.Column="2" Grid.Row="1" Width="250" Margin="71,0,71,70" Grid.RowSpan="4" HorizontalAlignment="Center">
+            <TextBlock  FontSize="20" Height="30" Width="176" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" HorizontalAlignment="Center" ><Run Text="Войти в систему"/></TextBlock>
+
+            <TextBox x:Name ="loginTextBox" materialDesign:HintAssist.Hint="Введите Логин" Foreground="White" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="43" Padding="20,0,0,0"/>
+
+            <PasswordBox x:Name="passwordTextBox" materialDesign:HintAssist.Hint="Введите Пароль"  Foreground="White" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Height="47" Margin="0,0,0,20" Padding="20,0,0,0"></PasswordBox>
+            <Grid Height="100" Width="200" Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Width="200" HorizontalAlignment="Center" Background="#3B3B42" Margin="0,2,0,32" Grid.RowSpan="2" BorderBrush="{x:Null}" Click="Button_Click_Login" >Войти</Button>
+                <Button Grid.Row="2" Height="30" Width="200" Background="#6B3535" Click="Button_Exit">Выйти из программы</Button>
+            </Grid>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
