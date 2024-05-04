@@ -26,6 +26,16 @@ namespace ZooApp
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
+            LoginForm loginForm = new LoginForm(); 
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void Insert_Click(object sender, RoutedEventArgs e)
+        {
+            FirstRegForm regform1 = new FirstRegForm();
+            regform1.Show();
+            this.Close();
 
         }
     }

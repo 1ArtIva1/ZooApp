@@ -44,8 +44,8 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 
-                <Button Grid.Row="0" Width="200" HorizontalAlignment="Center" Background="#3B3B42" Margin="0,2,0,32" Grid.RowSpan="2" BorderBrush="{x:Null}" Click="Button_Click_Login" >Далее</Button>
-                <Button Grid.Row="2" Height="30" Width="200" Background="#6B3535" Click="Button_Exit" BorderThickness="1,0,0,0">Назад</Button>
+                <Button Grid.Row="0" Width="200" HorizontalAlignment="Center" Background="#3B3B42" Margin="0,2,0,32" Grid.RowSpan="2" BorderBrush="{x:Null}"  >Далее</Button>
+                <Button Grid.Row="2" Height="30" Width="200" Background="#6B3535"  BorderThickness="1,0,0,0" Click="Button_Click">Назад</Button>
                 
             </Grid>
         </StackPanel>

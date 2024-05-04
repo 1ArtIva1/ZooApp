@@ -23,5 +23,12 @@ namespace ZooApp
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainManager mainManager = new MainManager();
+            mainManager.Show();
+            this.Close();
+        }
     }
 }
