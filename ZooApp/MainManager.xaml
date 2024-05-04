@@ -21,12 +21,21 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <!-- Main Form -->
         <StackPanel Width="230" Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
+            
             <TextBlock Text="Иванов Иван" FontSize="20" Foreground="White" TextAlignment="Left" Margin="25,13,0,0" />
+            
+            <!-- Отчётность -->
             <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"/>
             <TextBlock TextWrapping="Wrap" Text="Отчётность" Foreground="White" Margin="10, 0, 0, 0" FontSize="15" FontWeight="SemiBold"/>
             <TextBlock TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
             <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
+            
+            <!-- Заказы -->
+            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 0, 0, 0" FontSize="15" FontWeight="SemiBold"/>
+            <TextBlock TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
 
         </StackPanel>
 
