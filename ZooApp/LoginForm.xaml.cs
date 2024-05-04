@@ -46,7 +46,7 @@ namespace ZooApp
             catch (NpgsqlException) { MessageBox.Show("Account doesn't exist!"); flag = true; }
             if (!flag)
             {
-                MainSeller tform = new MainSeller();
+                MainManager tform = new MainManager();
                 tform.Show();
                 this.Hide();
             }
