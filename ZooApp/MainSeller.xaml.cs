@@ -23,5 +23,10 @@ namespace ZooApp
         {
             InitializeComponent();
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("хуй тебе");
+        }
     }
 }
