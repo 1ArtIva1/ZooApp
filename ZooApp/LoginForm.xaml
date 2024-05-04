@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="92" />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -21,7 +21,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="2" HorizontalAlignment="Center" Height="320" Width="270" VerticalAlignment="Top" Background="#252525" Margin="0,70,0,0" Grid.RowSpan="5"/>
+        <Border Grid.Column="2" CornerRadius="8" HorizontalAlignment="Center" Height="320" Width="270" VerticalAlignment="Top" Background="#252525" Margin="0,70,0,0" Grid.RowSpan="5"/>
         <StackPanel Grid.Column="2" Grid.Row="1" Width="250" Margin="71,0,71,70" Grid.RowSpan="4" HorizontalAlignment="Center">
             <TextBlock  FontSize="20" Height="30" Width="176" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" HorizontalAlignment="Center" ><Run Text="Войти в систему"/></TextBlock>
 
@@ -37,7 +37,14 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Width="200" HorizontalAlignment="Center" Background="#3B3B42" Margin="0,2,0,32" Grid.RowSpan="2" BorderBrush="{x:Null}" Click="Button_Click_Login" >Войти</Button>
-                <Button Grid.Row="2" Height="30" Width="200" Background="#6B3535" Click="Button_Exit">Выйти из программы</Button>
+                <Button Grid.Row="2" Height="30" Width="200" Background="#6B3535" Click="Button_Exit" BorderThickness="1,0,0,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                            Выйти из программы
+                </Button>
             </Grid>
         </StackPanel>
 
