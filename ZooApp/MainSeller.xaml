@@ -14,26 +14,51 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <StackPanel Width="230" Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
-
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Иванов Иван" FontSize="20"  Foreground="White" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,13,0,0"></TextBlock>
-            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"></Line>
-            <TextBlock Text="Продажи" FontSize="18" Foreground="White" Margin="0,21,0,0"></TextBlock>
-                <WrapPanel Margin="28,0,0,0" >
-                <Image Width="17" Height="17" Source="/emblems/qwe.jpg" Margin="0,15,0,0"/>
-                <Label Height="25" x:Name="label1" Margin="0,16,0,0">
-
-                    <Hyperlink Click="Hyperlink_Click" Foreground="White" TextDecorations="None" >
-                        <Run Text="Оформить"/>
-                    </Hyperlink>
-                </Label>
+        <StackPanel Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
+            <!-- Имя -->
+            <WrapPanel>
+                <Image Width="17" Height="20" Source="/emblems/4elove4eK.jpeg" Margin="0,13,0,0" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Иванов Иван" FontSize="20"  Foreground="White" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,13,0,0"></TextBlock>
             </WrapPanel>
-            
+            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"></Line>
+
+            <!-- Продажи -->
+
+            <TextBlock Text="Продажи" FontSize="18" Foreground="White" Margin="11,23,0,0"></TextBlock>
+            <WrapPanel Margin="28,23,0,-17" Height="49" >
+                <Image Width="17" Height="17" Source="/emblems/qwe.jpg" Margin="0,5,0,0"/>
+                <TextBlock Hyperlink.Click="Hyperlink_Click" TextWrapping="Wrap" Text="Оформить" Foreground="White" Margin="0, 5, 0, 0" FontSize="15"/>
+
+            </WrapPanel>
+            <WrapPanel Margin="29,0,0,0" >
+                <Image Width="20" Height="20" Source="/emblems/prosmotret.jpeg" Margin="0,10,-3,5" />
+                <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="0, 5, 0, 0" FontSize="15" VerticalAlignment="Center"/>
+            </WrapPanel>
+            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,30,0,0"></Line>
+
+            <!-- Заказы -->
+
+            <TextBlock Text="Заказы" FontSize="18" Foreground="White" Margin="11,23,0,0"></TextBlock>
+            <WrapPanel Margin="28,23,0,-17" Height="49" >
+                <Image Width="17" Height="17" Source="/emblems/qwe.jpg" Margin="0,5,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="Оформить" Foreground="White" Margin="0, 5, 0, 0" FontSize="15"/>
+
+            </WrapPanel>
+            <WrapPanel Margin="29,0,0,0" >
+                <Image Width="20" Height="20" Source="/emblems/prosmotret.jpeg" Margin="0,10,-3,5" />
+                <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="0, 5, 0, 0" FontSize="15" VerticalAlignment="Center"/>
+            </WrapPanel>
+            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,30,0,0"></Line>
+
+
+
+
+
 
         </StackPanel>
 

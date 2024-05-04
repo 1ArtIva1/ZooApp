@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace ZooApp
 {
     /// <summary>
-    /// Логика взаимодействия для MainSeller.xaml
+    /// Логика взаимодействия для ArrangeSellForm.xaml
     /// </summary>
-    public partial class MainSeller : Window
+    public partial class ArrangeSellForm : Window
     {
-        public MainSeller()
+        public ArrangeSellForm()
         {
             InitializeComponent();
         }
-
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-       
     }
 }
