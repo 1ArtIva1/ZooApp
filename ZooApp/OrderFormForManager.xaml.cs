@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,41 @@ namespace ZooApp
     /// </summary>
     public partial class OrderFormForManager : Window
     {
+        NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id= " + Databases.username + "; Password=" + Databases.password + "; Database = postgres");
+
         public OrderFormForManager()
         {
             InitializeComponent();
+
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = "select * from items";
+            NpgsqlDataReader dr = comm.ExecuteReader();
+            if (dr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+                DataGrid1.ItemsSource = dt.DefaultView;
+                comm.Dispose();
+                conn.Close();
+
+
+            }
+
+        }
+
+    
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

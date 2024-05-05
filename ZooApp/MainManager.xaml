@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ZooApp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
-        Title="MainManager" Height="475" Width="960">
+        Title="MainManager" Height="515" Width="960">
     <Grid Background="#171717">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -24,7 +24,10 @@
         <!-- Main Form -->
         <StackPanel Width="230" Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
 
-            <TextBlock Text="Иванов Иван" FontSize="20" Foreground="White" TextAlignment="Left" Margin="25,13,0,0" />
+            <WrapPanel>
+                <Image Height="20" Width="20" Source="/emblems/4elove4eK.jpeg" Margin="11,15,0,0"></Image>
+                <TextBlock Text="Иванов Иван" FontSize="20" Foreground="White" TextAlignment="Left" Margin="2,13,0,0" />
+            </WrapPanel>
 
             <!-- Отчётность -->
             <Grid>

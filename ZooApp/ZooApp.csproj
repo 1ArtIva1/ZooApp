@@ -223,11 +223,11 @@
   <ItemGroup>
     <Resource Include="emblems\prosmotret.jpeg" />
     <Resource Include="emblems\4elove4eK.jpeg" />
-    <Resource Include="emblems\photo1714828558.jpeg" />
-    <Resource Include="emblems\photo1714828585.jpeg" />
+    <Resource Include="emblems\plusik.jpeg" />
+    <Resource Include="emblems\krestik.jpeg" />
     <Resource Include="emblems\photo1714828599.jpeg" />
     <Resource Include="emblems\photo1714828610.jpeg" />
-    <Resource Include="emblems\photo1714828630.jpeg" />
+    <Resource Include="emblems\karandas.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="emblems\4elove4eK - Копировать.jpeg" />
