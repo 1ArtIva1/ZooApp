@@ -43,7 +43,14 @@
 
                 <Line Grid.Row="0" Grid.Column="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"/>
                 <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Отчётность" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="Сформировать" Foreground="White" Margin="25, 5, 0, 0" FontSize="15"/>
+                
+                <WrapPanel Grid.Row="2"  Margin="25, 0, 0,0">
+                    <Image Source="/emblems/qwe.jpg" Height="20" Width="20" Margin="0,0,-26,0"></Image>
+                    <TextBlock Grid.Row="2" Hyperlink.Click="Reporting_Click"  Margin="25, 5, 0, 0" FontSize="15" >
+                        <Hyperlink Foreground="White" TextDecorations="None">Сформировать</Hyperlink>
+                    </TextBlock>
+                </WrapPanel>
+                
                 <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/>
                 
             </Grid>
@@ -65,9 +72,12 @@
 
                 <Line Grid.Row="0" Grid.Column="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
                 <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
-                <TextBlock Grid.Row="2" Hyperlink.Click="Order_Click"  Margin="25, 5, 0, 10" FontSize="15" >
-                    <Hyperlink Foreground="White" TextDecorations="None">Просмотреть</Hyperlink>
-                </TextBlock>
+                <WrapPanel Grid.Row="2"  Margin="25, 0, 0,0">
+                    <Image Source="/emblems/prosmotret.jpeg" Height="20" Width="20" Margin="0,0,-26,0"></Image>
+                    <TextBlock Grid.Row="2" Hyperlink.Click="OrderForManager_Click"  Margin="25, 5, 0, 0" FontSize="15" >
+        <Hyperlink Foreground="White" TextDecorations="None">Просмотреть</Hyperlink>
+                    </TextBlock>
+                </WrapPanel>
 
             </Grid>
             

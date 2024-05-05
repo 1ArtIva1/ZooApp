@@ -29,6 +29,34 @@ namespace ZooApp
            
         }
 
-       
+        private void ArrangeSellForm_Click(object sender, RoutedEventArgs e)
+        {
+            ArrangeSellForm arrangeSellForm = new ArrangeSellForm();
+            arrangeSellForm.Show();
+            this.Close();
+        }
+
+        private void OrderForm_Click(object sender, RoutedEventArgs e)
+        {
+            OrderForm orderForm = new OrderForm();
+            orderForm.Show();
+            this.Close();
+        }
+
+        
+
+        private void OrderForManager_Click_1(object sender, RoutedEventArgs e)
+        {
+            OrderFormForManager orderFormForManager = new OrderFormForManager();
+            orderFormForManager.Show();
+            this.Close();
+        }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
+        }
     }
 }

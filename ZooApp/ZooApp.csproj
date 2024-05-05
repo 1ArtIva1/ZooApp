@@ -136,6 +136,12 @@
     <Compile Include="MainManager.xaml.cs">
       <DependentUpon>MainManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderForm.xaml.cs">
+      <DependentUpon>OrderForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReportingForm.xaml.cs">
+      <DependentUpon>ReportingForm.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginForm.xaml.cs">
@@ -198,7 +204,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OrderForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OrderFormForManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportingForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

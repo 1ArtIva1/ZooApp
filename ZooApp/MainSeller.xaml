@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ZooApp"
         mc:Ignorable="d"
         Title="MainSeller" Height="496" Width="960" Background="#171717">
-    <Grid>
+    <Grid Background="#171717">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -14,69 +14,108 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="53*"/>
-            <RowDefinition Height="67*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="114.76"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
-            <!-- Имя -->
-            <WrapPanel>
-                <Image Width="17" Height="20" Source="/emblems/4elove4eK.jpeg" Margin="0,13,0,0" />
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Иванов Иван" FontSize="20"  Foreground="White" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,13,0,0"></TextBlock>
-            </WrapPanel>
-            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"></Line>
+        <!-- Main Form -->
+        <StackPanel Width="230" Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
 
-            <!-- Продажи -->
+            <TextBlock Text="Иванов Иван" FontSize="20" Foreground="White" TextAlignment="Left" Margin="25,13,0,0" />
 
-            <TextBlock Text="Продажи" FontSize="18" Foreground="White" Margin="11,23,0,0"></TextBlock>
-            <WrapPanel Margin="28,23,0,-17" Height="49" >
-                <Image Width="17" Height="17" Source="/emblems/qwe.jpg" Margin="0,5,0,0"/>
-                <TextBlock Hyperlink.Click="Hyperlink_Click" TextWrapping="Wrap" Text="Оформить" Foreground="White" Margin="0, 5, 0, 0" FontSize="15"/>
+            <!-- Отчётность -->
+            <Grid>
 
-            </WrapPanel>
-            <WrapPanel Margin="29,0,0,0" >
-                <Image Width="20" Height="20" Source="/emblems/prosmotret.jpeg" Margin="0,10,-3,5" />
-                <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="0, 5, 0, 0" FontSize="15" VerticalAlignment="Center"/>
-            </WrapPanel>
-            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,30,0,0"></Line>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Line Grid.Row="0" Grid.Column="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,19,0,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Продажи" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
+
+                <WrapPanel Grid.Row="2"  Margin="25, 0, 0,0">
+                    <Image Source="/emblems/qwe.jpg" Height="20" Width="20" Margin="0,0,-26,0"></Image>
+                    <TextBlock Grid.Row="2" Hyperlink.Click="ArrangeSellForm_Click"  Margin="25, 5, 0, 0" FontSize="15" >
+                     <Hyperlink Foreground="White" TextDecorations="None">Оформить</Hyperlink>
+                    </TextBlock>
+                </WrapPanel>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="25, 5, 0, 10" FontSize="15"/>
+
+            </Grid>
 
             <!-- Заказы -->
+            <Grid>
 
-            <TextBlock Text="Заказы" FontSize="18" Foreground="White" Margin="11,23,0,0"></TextBlock>
-            <WrapPanel Margin="28,23,0,-17" Height="49" >
-                <Image Width="17" Height="17" Source="/emblems/qwe.jpg" Margin="0,5,0,0"/>
-                <TextBlock TextWrapping="Wrap" Text="Оформить" Foreground="White" Margin="0, 5, 0, 0" FontSize="15"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            </WrapPanel>
-            <WrapPanel Margin="29,0,0,0" >
-                <Image Width="20" Height="20" Source="/emblems/prosmotret.jpeg" Margin="0,10,-3,5" />
-                <TextBlock TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="0, 5, 0, 0" FontSize="15" VerticalAlignment="Center"/>
-            </WrapPanel>
-            <Line X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,30,0,0"></Line>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Line Grid.Row="0" Grid.Column="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,5,0,0"/>
+                <StackPanel>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 10, 0, 0" FontSize="15" FontWeight="SemiBold"/>
+                    <WrapPanel Grid.Row="2"  Margin="25, 0, 0,0">
+                        <Image Source="/emblems/qwe.jpg" Height="20" Width="20" Margin="0,0,-26,0"></Image>
+                        <TextBlock Grid.Row="2" Hyperlink.Click="OrderForm_Click"  Margin="25, 5, 0, 0" FontSize="15" >
+                            <Hyperlink Foreground="White" TextDecorations="None">Оформить</Hyperlink>
+                        </TextBlock>
+                    </WrapPanel>
+                
+                    <WrapPanel Grid.Row="2"  Margin="25, 0, 0,0">
+                        <Image Source="/emblems/prosmotret.jpeg" Height="20" Width="20" Margin="0,0,-26,0"></Image>
+                        <TextBlock Grid.Row="2" Hyperlink.Click="OrderForManager_Click_1"  Margin="25, 5, 0, 0" FontSize="15" >
+                            <Hyperlink Foreground="White" TextDecorations="None">Просмотреть</Hyperlink>
+                        </TextBlock>
+                    </WrapPanel>
+                </StackPanel>
+            
+            </Grid>
+
+
+               
+
+               
+
+         <Line Grid.Row="0" X1="5" X2="225" Stroke="#565656" StrokeThickness="1" Margin="0,15,0,70" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
 
 
 
 
 
+
+            <!-- Кнопки -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 80, 0, 0" Content="Сменить пользователя" Width="220" BorderThickness="15,15,15,15" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="exitBtn_Click" FontWeight="SemiBold" Height="32"/>
+            <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 10, 0, 0" Content="Выйти из программы" Width="220" BorderThickness="15,15,15,15" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="32"/>
 
         </StackPanel>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </Grid>
 </Window>

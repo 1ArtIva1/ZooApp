@@ -39,10 +39,18 @@ namespace ZooApp
 
         }
 
-        private void Order_Click(object sender, RoutedEventArgs e)
+
+        private void Reporting_Click(object sender, RoutedEventArgs e)
         {
-            OrderFormForManager orderform = new OrderFormForManager();
-            orderform.Show();
+            ReportingForm reportingForm = new ReportingForm();
+            reportingForm.Show();
+            this.Close();
+        }
+
+        private void OrderForManager_Click(object sender, RoutedEventArgs e)
+        {
+            OrderFormForManager orderFormForManager = new OrderFormForManager();
+            orderFormForManager.Show();
             this.Close();
         }
     }
