@@ -23,5 +23,20 @@ namespace ZooApp
         {
             InitializeComponent();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            FirstRegForm firstRegForm = (FirstRegForm)sender;
+            firstRegForm.Show();
+            this.Close();
+
+        }
+
+        private void RegUser_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainManager mainManager = new MainManager();
+            mainManager.Show();
+            this.Close();
+        }
     }
 }
