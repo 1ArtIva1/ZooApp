@@ -15,26 +15,19 @@ using System.Windows.Shapes;
 namespace ZooApp
 {
     /// <summary>
-    /// Логика взаимодействия для ReportingForm.xaml
+    /// Логика взаимодействия для GraphicsForm.xaml
     /// </summary>
-    public partial class ReportingForm : Window
+    public partial class GraphicsForm : Window
     {
-        public ReportingForm()
+        public GraphicsForm()
         {
             InitializeComponent();
         }
 
-        private void Graphics_Click(object sender, RoutedEventArgs e)
-        {
-            GraphicsForm graphicsForm = new GraphicsForm();
-            graphicsForm.Show();
-            this.Close();
-        }
-
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainManager mainManager = new MainManager();
-            mainManager.Show();
+            ReportingForm reportingForm = new ReportingForm();
+            reportingForm.Show();
             this.Close();
         }
     }
