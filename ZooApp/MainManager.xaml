@@ -10,7 +10,7 @@
         Title="MainManager" Height="1080" Width="1920"
         WindowState="Maximized"
         WindowStyle="None">
-    
+
     <Grid Background="#171717">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,17 +19,19 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="322*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="292*"/>
             <RowDefinition Height="114.76"/>
-            <RowDefinition/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="285*"/>
         </Grid.RowDefinitions>
-        
+
         <!-- Боковая панель -->
-        <StackPanel Width="460" Grid.RowSpan="4" Background="#252525" Margin="0,0,10,0">
-        
+        <StackPanel Width="460" Grid.RowSpan="6" Background="#252525" Margin="5,0,15,0">
+
             <!--Имя пользователя-->
-            
+
             <WrapPanel>
                 <Image Height="40" Width="40" Source="/emblems/4elove4eK.jpeg" Margin="11,15,0,0"></Image>
                 <TextBlock Text="Иванов Иван" FontSize="40" Foreground="White" TextAlignment="Left" Margin="2,13,0,0" />
@@ -37,7 +39,7 @@
 
             <!-- Отчётность -->
             <Grid>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -50,26 +52,26 @@
                 </Grid.RowDefinitions>
 
                 <Line Grid.Row="0" Grid.Column="0" X1="5" X2="455" Stroke="#565656" StrokeThickness="2" Margin="0,19,0,0"/>
-                
+
                 <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Отчётность" Foreground="White" Margin="10, 10, 0, 0" FontSize="36" FontWeight="SemiBold"/>
-                
+
                 <!--Сформировать + Иконка-->
-                
+
                 <WrapPanel Grid.Row="2"  Margin="25, 0, 0,0">
                     <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
                     <TextBlock Grid.Row="2" Hyperlink.Click="Reporting_Click"  Margin="25, 5, 0, 0" FontSize="30" >
                         <Hyperlink Foreground="White" TextDecorations="None">Сформировать</Hyperlink>
                     </TextBlock>
                 </WrapPanel>
-                
+
                 <!--Просмотерть ???????-->
-                
+
                 <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Просмотреть" Foreground="White" Margin="25, 5, 0, 10" FontSize="30"/>
-                
+
             </Grid>
-            
+
             <!-- Заказы -->
-            
+
             <Grid>
 
                 <Grid.ColumnDefinitions>
@@ -85,7 +87,7 @@
                 </Grid.RowDefinitions>
 
                 <Line Grid.Row="0" Grid.Column="0" X1="5" X2="455" Stroke="#565656" StrokeThickness="2" Margin="0,5,0,0"/>
-                
+
                 <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 10, 0, 0" FontSize="36" FontWeight="SemiBold"/>
 
                 <!--Просмотреть + Иконка-->
@@ -98,7 +100,7 @@
                 </WrapPanel>
 
             </Grid>
-            
+
 
             <!-- Пользователи -->
             <Grid>
@@ -124,10 +126,10 @@
                 </WrapPanel>
 
             </Grid>
-            
+
             <!-- Кнопки -->
-           
-            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 400, 0, 0" Content="Сменить пользователя" Width="440" BorderThickness="15,15,15,15" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
+
+            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 400, 0, 0" Content="Сменить пользователя" Width="440" BorderThickness="15,15,15,15" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="ChangeUser_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
             <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="15,15,15,15" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>

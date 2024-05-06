@@ -6,8 +6,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZooApp"
         mc:Ignorable="d"
-        Title="FirstRegForm" Height="460" Width="960">
-    <Grid x:Name="RegGrid" Background="#171717" Height="460" Width="960">
+        Title="FirstRegForm" Height="1080" Width="1920"
+        WindowState="Maximized"
+        WindowStyle="None">
+    
+    <Grid x:Name="RegGrid" Background="#171717" Height="1080" Width="1920">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -21,21 +24,22 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="2" CornerRadius="8" HorizontalAlignment="Center" Height="320" Width="270" VerticalAlignment="Top" Background="#252525" Margin="0,70,0,0" Grid.RowSpan="5"/>
-        <StackPanel Grid.Column="2" Grid.Row="1" Width="250" Margin="71,0,71,70" Grid.RowSpan="4" HorizontalAlignment="Center">
+        
+        <Border Grid.Column="2" CornerRadius="8" HorizontalAlignment="Center" Height="640" Width="540" VerticalAlignment="Top" Background="#252525" Margin="0,215,0,0" Grid.RowSpan="5"/>
+        <StackPanel Grid.Column="2" Grid.Row="1" Width="500" Margin="142,0,142,142" Grid.RowSpan="4" HorizontalAlignment="Center">
 
             <StackPanel>
-                <TextBlock  FontSize="20" Height="30" Width="176" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" Margin="42,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Регистрация"/></TextBlock>
-                <TextBlock  FontSize="20" Height="30" Width="176" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" HorizontalAlignment="Center" Margin="33,0,0,0" ><Run Text="пользователя"/></TextBlock>
+                <TextBlock  FontSize="40" Height="60" Width="352" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" Margin="84,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Регистрация"/></TextBlock>
+                <TextBlock  FontSize="40" Height="60" Width="352" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" HorizontalAlignment="Center" Margin="66,0,0,0" ><Run Text="пользователя"/></TextBlock>
             </StackPanel>
             
 
-            <TextBox x:Name ="RegloginTextBox" materialDesign:HintAssist.Hint="Введите Логин" Foreground="White" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="43" Padding="20,0,0,0"/>
+            <TextBox x:Name ="RegloginTextBox" materialDesign:HintAssist.Hint="Введите Логин" FontSize="24" Foreground="White" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="86" Padding="40,0,0,0"/>
 
-            <PasswordBox x:Name="regpasswordTextBox" materialDesign:HintAssist.Hint="Введите Пароль"  Foreground="White" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Height="47" Margin="0,0,0,0" Padding="20,0,0,0"></PasswordBox>
+            <PasswordBox x:Name="regpasswordTextBox" materialDesign:HintAssist.Hint="Введите Пароль" FontSize="24" Foreground="White" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Height="86" Margin="0,0,0,0" Padding="40,0,0,0"></PasswordBox>
 
-            <PasswordBox x:Name="regpasswordTextBox2" materialDesign:HintAssist.Hint="Повторите пароль"  Foreground="White" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Height="47" Margin="0,0,0,-15" Padding="20,0,0,0"></PasswordBox>
-            <Grid Height="100" Width="200" Margin="20">
+            <PasswordBox x:Name="regpasswordTextBox2" materialDesign:HintAssist.Hint="Повторите пароль" FontSize="24" Foreground="White" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Height="86" Margin="0,0,0,-15" Padding="40,0,0,0"></PasswordBox>
+            <Grid Height="200" Width="400" Margin="40">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -43,9 +47,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                
-                <Button Grid.Row="0" Width="200" HorizontalAlignment="Center" Background="#3B3B42" Margin="0,2,0,32" Grid.RowSpan="2" BorderBrush="{x:Null}"  >Далее</Button>
-                <Button Grid.Row="2" Height="30" Width="200" Background="#6B3535"  BorderThickness="1,0,0,0" Click="Button_Click">Назад</Button>
+
+                <Button Grid.Row="0" Width="400" Height="60"  HorizontalAlignment="Center" Background="#3B3B42" Margin="0,4,0,64" Grid.RowSpan="2" BorderBrush="{x:Null}" FontSize="28" Click="Button_Click_1"  >Далее</Button>
+                <Button Grid.Row="2" Height="60" Width="400" Background="#6B3535"  BorderThickness="1,0,0,0" Click="Button_Click" FontSize="28">Назад</Button>
                 
             </Grid>
         </StackPanel>

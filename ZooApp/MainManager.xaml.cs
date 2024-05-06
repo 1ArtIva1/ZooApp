@@ -26,8 +26,6 @@ namespace ZooApp
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm(); 
-            loginForm.Show();
             this.Close();
         }
 
@@ -39,6 +37,12 @@ namespace ZooApp
 
         }
 
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
+        }
 
         private void Reporting_Click(object sender, RoutedEventArgs e)
         {
