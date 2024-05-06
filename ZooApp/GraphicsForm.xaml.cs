@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Definitions.Charts;
+using LiveCharts.Wpf;
 
 namespace ZooApp
 {
@@ -22,13 +26,56 @@ namespace ZooApp
         public GraphicsForm()
         {
             InitializeComponent();
+
+            SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "t1",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(10) },
+                    DataLabels = true
+                },
+                 new PieSeries
+                {
+                    Title = "t2",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(20) },
+                    DataLabels = true
+                },
+                  new PieSeries
+                {
+                    Title = "t3",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(33) },
+                    DataLabels = true
+                },
+                   new PieSeries
+                {
+                    Title = "t4 ",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(24) },
+                    DataLabels = true
+                },
+            };
+            DataContext = this;
+
         }
+
+        public SeriesCollection SeriesCollection { get; set; }
+
+        
+
+
+
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            ReportingForm reportingForm = new ReportingForm();
-            reportingForm.Show();
-            this.Close();
+                ReportingForm reportingForm = new ReportingForm();
+                reportingForm.Show();
+                this.Close();
+        }
+
+        private void myPieChart_DataClick(object sender, ChartPoint chartPoint)
+        {
+            MessageBox.Show("Текущее значение: " + chartPoint.Y + "(" + (chartPoint.Participation * 100).ToString() + "%");
         }
     }
+    
 }

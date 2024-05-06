@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:ZooApp"
         mc:Ignorable="d"
         Title="GraphicsForm" Height="1080" Width="1920"
@@ -23,6 +24,19 @@
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1" Grid.Column="2">
+            <lvc:PieChart LegendLocation="Bottom" Grid.Row="1" Series="{Binding SeriesCollection}" DataClick="myPieChart_DataClick" Hoverable="True" InnerRadius="20" Grid.Column="2" Margin="1" Name="myPieChart" >
+
+                <lvc:PieChart.ChartLegend>
+                    <lvc:DefaultLegend BulletSize="15" TextBlock.FontSize="8"/>
+                </lvc:PieChart.ChartLegend>
+
+                <lvc:PieChart.DataTooltip>
+                    <lvc:DefaultTooltip BulletSize="20"/>
+                </lvc:PieChart.DataTooltip>
+
+            </lvc:PieChart>
+        </Grid>
 
         <StackPanel Width="460" Grid.RowSpan="5" Background="#252525" Margin="0,0,20,0">
 
@@ -79,6 +93,7 @@
         </StackPanel>
 
         
+
 
     </Grid>
 </Window>

@@ -85,7 +85,7 @@
         </StackPanel>
 
         <!--Окно вывода (DataGrid)-->
-        <DataGrid x:Name="DataGrid1" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58">
+        <DataGrid x:Name="DataGrid1" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58" SelectionChanged="DataGrid1_SelectionChanged">
             <DataGrid.Resources>
                 
                 <Style TargetType="DataGridColumnHeader">

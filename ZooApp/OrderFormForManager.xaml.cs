@@ -41,7 +41,6 @@ namespace ZooApp
                 comm.Dispose();
                 conn.Close();
 
-
             }
 
         }
@@ -59,6 +58,11 @@ namespace ZooApp
             MainManager mainManager = new MainManager();
             mainManager.Show();
             this.Close();
+        }
+
+        private void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
