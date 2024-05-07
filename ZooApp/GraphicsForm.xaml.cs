@@ -37,7 +37,7 @@ namespace ZooApp
             {
                 new PieSeries
                 {
-                    Title = "t1",
+                    Title = "Purina Proplan",
                     Values = new ChartValues<ObservableValue> {new ObservableValue(10) },
                     DataLabels = true
                 },
@@ -81,6 +81,16 @@ namespace ZooApp
         private void myPieChart_DataClick(object sender, ChartPoint chartPoint)
         {
             MessageBox.Show("Текущее значение: " + chartPoint.Y + "(" + (chartPoint.Participation * 100).ToString() + "%");
+        }
+
+        private void PieViz_Click(object sender, RoutedEventArgs e)
+        {
+            myPieChart.Visibility = Visibility.Visible;
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     

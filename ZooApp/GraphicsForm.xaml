@@ -25,14 +25,15 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Grid.Column="2">
-            <lvc:PieChart LegendLocation="Bottom" Grid.Row="1" Series="{Binding SeriesCollection}" DataClick="myPieChart_DataClick" Hoverable="True" InnerRadius="20" Grid.Column="2" Margin="1" Name="myPieChart" >
+           
+            <lvc:PieChart  Visibility="Hidden" LegendLocation="Bottom" Series="{Binding SeriesCollection}" DataClick="myPieChart_DataClick" Hoverable="True" InnerRadius="40" Margin="-394,-111,-377,-407" Name="myPieChart" >
 
-                <lvc:PieChart.ChartLegend>
-                    <lvc:DefaultLegend BulletSize="15" TextBlock.FontSize="8"/>
+                <lvc:PieChart.ChartLegend >
+                    <lvc:DefaultLegend Foreground="White" BulletSize="45" TextBlock.FontSize="30"  Width="819"/>
                 </lvc:PieChart.ChartLegend>
 
                 <lvc:PieChart.DataTooltip>
-                    <lvc:DefaultTooltip BulletSize="20"/>
+                    <lvc:DefaultTooltip BulletSize="45"/>
                 </lvc:PieChart.DataTooltip>
 
             </lvc:PieChart>
@@ -54,24 +55,24 @@
 
                 <StackPanel Margin="0,44,0,0">
 
-                    
+
 
                     <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Графики" Foreground="White" Margin="20, 20, 0, 0" FontSize="30" FontWeight="SemiBold"/>
 
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-                         <Hyperlink Foreground="White" TextDecorations="None">Покупательское поведение</Hyperlink>
+                         <Hyperlink Foreground="White" Hyperlink.Click="PieViz_Click" TextDecorations="None">Покупательское поведение</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
-                    
+
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
      <Hyperlink Foreground="White" TextDecorations="None">Сравнение маржи с продажей</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
-                    
+
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >

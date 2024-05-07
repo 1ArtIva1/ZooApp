@@ -38,7 +38,7 @@ namespace ZooApp
             NpgsqlCommand comm = new NpgsqlCommand();
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
-            comm.CommandText = "select * from items";
+            comm.CommandText = "select * from order";
             NpgsqlDataReader dr = comm.ExecuteReader();
             if (dr.HasRows)
             {

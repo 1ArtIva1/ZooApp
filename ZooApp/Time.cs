@@ -42,7 +42,7 @@ namespace ZooApp
             var timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.IsEnabled = true;
-            timer.Tick += (o, t) => { label_data.Content = DateTime.Now.ToString("dd/mm/yyyy"); };
+            timer.Tick += (o, t) => { label_data.Content = DateTime.Now.ToString("dd/MM/yyyy"); };
             timer.Start();
             }
         }
