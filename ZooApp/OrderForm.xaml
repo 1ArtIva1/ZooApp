@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZooApp"
         mc:Ignorable="d"
-        Title="OrderForm" Height="1080" Width="1920">
+        Title="OrderForm" Height="1080" Width="1920"
+        WindowState="Maximized"
+        WindowStyle="None">
+    
     <Grid Background="#171717" Height="1080" Width="1920">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -45,7 +48,7 @@
                     <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
                        
                             <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
-                            <TextBlock Grid.Row="2" Hyperlink.Click=""  Margin="25, 5, 0, 0" FontSize="30" >
+                            <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
                                 <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
                             </TextBlock>
                         
@@ -56,7 +59,7 @@
                     <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
 
                         <Image Source="/emblems/karandas.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
-                        <TextBlock Grid.Row="2" Hyperlink.Click=""  Margin="25, 5, 0, 0" FontSize="30" >
+                        <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
                             <Hyperlink Foreground="White" TextDecorations="None">Изменить</Hyperlink>
                         </TextBlock>
 
@@ -67,7 +70,7 @@
                     <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
 
                         <Image Source="/emblems/krestik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
-                        <TextBlock Grid.Row="2" Hyperlink.Click=""  Margin="25, 5, 0, 0" FontSize="30" >
+                        <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
                             <Hyperlink Foreground="White" TextDecorations="None">Удалить</Hyperlink>
                         </TextBlock>
 
@@ -87,7 +90,7 @@
         </StackPanel>
 
         <!--Окно вывода (DataGrid)-->
-        <DataGrid x:Name="DataGrid1" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58" SelectionChanged="DataGrid1_SelectionChanged">
+        <DataGrid x:Name="DataGrid3" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58" >
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Foreground" Value="White"/>
@@ -103,6 +106,6 @@
 
         <Line Grid.Column="1" X1="10" X2="1390"  Stroke="#565656" StrokeThickness="1" Margin="20,324,-10,97" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
-        
+       
     </Grid>
 </Window>

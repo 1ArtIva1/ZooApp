@@ -23,5 +23,17 @@ namespace ZooApp
         {
             InitializeComponent();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainSeller mainSeller = new MainSeller();
+            mainSeller.Show();
+            this.Close();
+        }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -88,7 +88,7 @@
 
                 <Line Grid.Row="0" Grid.Column="0" X1="5" X2="455" Stroke="#565656" StrokeThickness="2" Margin="0,5,0,0"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="10, 10, 0, 0" FontSize="36" FontWeight="SemiBold"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="25, 5, 0, 0" FontSize="36" FontWeight="SemiBold"/>
 
                 <!--Просмотреть + Иконка-->
 
