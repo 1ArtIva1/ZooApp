@@ -22,6 +22,11 @@ namespace ZooApp
         public MainManager()
         {
             InitializeComponent();
+
+            Time time = new Time();
+            time.Timer_Day(label1);
+            time.Timer_Clock(label2);
+            time.Timer_Data(label3);
         }
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)

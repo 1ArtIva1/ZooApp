@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +23,11 @@ namespace ZooApp
         public ReportingForm()
         {
             InitializeComponent();
+
+            Time time = new Time();
+            time.Timer_Day(label1);
+            time.Timer_Clock(label2);
+            time.Timer_Data(label3);
         }
 
         private void Graphics_Click(object sender, RoutedEventArgs e)

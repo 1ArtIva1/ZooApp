@@ -25,6 +25,13 @@ namespace ZooApp
 
         public OrderFormForManager()
         {
+
+            Time time = new Time();
+            time.Timer_Day(label1);
+            time.Timer_Clock(label2);
+            time.Timer_Data(label3);
+
+
             InitializeComponent();
 
             conn.Open();

@@ -51,7 +51,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Line Grid.Row="0" Grid.Column="0" X1="5" X2="455" Stroke="#565656" StrokeThickness="2" Margin="0,19,0,0"/>
+                <Line Grid.Row="0" Grid.Column="0" X1="5" X2="455" Stroke="#565656" StrokeThickness="2" Margin="0,54,0,0"/>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Отчётность" Foreground="White" Margin="10, 10, 0, 0" FontSize="36" FontWeight="SemiBold"/>
 
@@ -133,6 +133,11 @@
             <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="15,15,15,15" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>
+
+        <Label Grid.Column ="1" x:Name="label1" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Label Grid.Column ="2" x:Name="label2" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Label Grid.Column ="3" x:Name="label3" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Line Grid.Column="1" X1="10" X2="1400"  Stroke="#565656" StrokeThickness="1" Margin="0,120,0,0" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
     </Grid>
 </Window>

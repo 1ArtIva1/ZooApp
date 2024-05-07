@@ -154,6 +154,7 @@
     <Compile Include="ReportingForm.xaml.cs">
       <DependentUpon>ReportingForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Time.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginForm.xaml.cs">

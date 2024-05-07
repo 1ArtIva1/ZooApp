@@ -90,7 +90,7 @@
         </StackPanel>
 
         <!--Окно вывода (DataGrid)-->
-        <DataGrid x:Name="DataGrid3" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58" >
+        <DataGrid x:Name="DataGrid3" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-100,30,58" >
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Foreground" Value="White"/>
@@ -104,8 +104,12 @@
 
         <!--Линия DataGrid-->
 
-        <Line Grid.Column="1" X1="10" X2="1390"  Stroke="#565656" StrokeThickness="1" Margin="20,324,-10,97" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
+        <Line Grid.Column="1" X1="10" X2="1390"  Stroke="#565656" StrokeThickness="1" Margin="20,264,-10,97" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
-       
+        <Label Grid.Column ="1" x:Name="label1" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Label Grid.Column ="2" x:Name="label2" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Label Grid.Column ="3" x:Name="label3" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Line Grid.Column="1" X1="10" X2="1400"  Stroke="#565656" StrokeThickness="1" Margin="0,120,0,0" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
+
     </Grid>
 </Window>
