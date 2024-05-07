@@ -46,31 +46,16 @@
 
                     <!--Добавить + Иконка-->
                     
-                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
-                        <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
-                        <TextBlock Grid.Row="2"   Margin="50, 10, 0, 0" FontSize="24" >
-                            <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
-                        </TextBlock>
-                    </WrapPanel>
-                    
+                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0"/>
+
                     <!--Изменить + Инконка-->
                     
-                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
-                        <Image Source="/emblems/karandas.jpeg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
-                        <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-                        <Hyperlink Foreground="White" TextDecorations="None">Изменить</Hyperlink>
-                        </TextBlock>
-                    </WrapPanel>
+                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0"/>
 
                     <!--Удалить + Инконка-->
                     
-                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
-                        <Image Source="/emblems/krestik.jpeg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
-                        <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-                            <Hyperlink Foreground="White" TextDecorations="None">Удалить</Hyperlink>
-                        </TextBlock>
-                    </WrapPanel>
-                    
+                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0"/>
+
                 </StackPanel>
                 
             </Grid>
@@ -79,7 +64,7 @@
 
             <!-- Кнопки -->
             
-            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 310, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
+            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 425, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
             <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="30,30,30,30" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>
@@ -87,7 +72,6 @@
         <!--Окно вывода (DataGrid)-->
         <DataGrid x:Name="DataGrid1" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58" SelectionChanged="DataGrid1_SelectionChanged">
             <DataGrid.Resources>
-                
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="Background" Value="#3C3C3C"/>

@@ -5,8 +5,104 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZooApp"
         mc:Ignorable="d"
-        Title="OrderForm" Height="450" Width="800">
-    <Grid>
-        <TextBlock>Заказы</TextBlock>
+        Title="OrderForm" Height="1080" Width="1920">
+    <Grid Background="#171717" Height="1080" Width="1920">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="114.76"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Width="460" Grid.RowSpan="5" Background="#252525" Margin="0,0,20,0">
+
+            <!--Имя пользователя-->
+            <WrapPanel>
+                <Image Height="40" Width="40" Source="/emblems/4elove4eK.jpeg" Margin="22,30,0,0"></Image>
+                <TextBlock Text="Иванов Иван" FontSize="40" Foreground="White" TextAlignment="Left" Margin="4,26,0,0" />
+            </WrapPanel>
+
+
+            <!-- Заказы -->
+            <Grid>
+
+                <Line Grid.Row="0" Grid.Column="0" X1="5" X2="495" Stroke="#565656" StrokeThickness="1" Margin="0,40,0,0"/>
+
+                <StackPanel Margin="0,44,0,0">
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Заказы" Foreground="White" Margin="20, 20, 0, 0" FontSize="30" FontWeight="SemiBold"/>
+
+                    <!--Добавить + Иконка-->
+
+                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
+                       
+                            <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
+                            <TextBlock Grid.Row="2" Hyperlink.Click=""  Margin="25, 5, 0, 0" FontSize="30" >
+                                <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
+                            </TextBlock>
+                        
+                    </WrapPanel>
+
+                    <!--Изменить + Инконка-->
+
+                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
+
+                        <Image Source="/emblems/karandas.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
+                        <TextBlock Grid.Row="2" Hyperlink.Click=""  Margin="25, 5, 0, 0" FontSize="30" >
+                            <Hyperlink Foreground="White" TextDecorations="None">Изменить</Hyperlink>
+                        </TextBlock>
+
+                    </WrapPanel>
+
+                    <!--Удалить + Инконка-->
+
+                    <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
+
+                        <Image Source="/emblems/krestik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
+                        <TextBlock Grid.Row="2" Hyperlink.Click=""  Margin="25, 5, 0, 0" FontSize="30" >
+                            <Hyperlink Foreground="White" TextDecorations="None">Удалить</Hyperlink>
+                        </TextBlock>
+
+                    </WrapPanel>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Line Grid.Row="0" X1="5" X2="495" Stroke="#565656" StrokeThickness="1" Margin="0,30,0,260" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+
+            <!-- Кнопки -->
+
+            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 275, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
+            <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="30,30,30,30" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
+
+        </StackPanel>
+
+        <!--Окно вывода (DataGrid)-->
+        <DataGrid x:Name="DataGrid1" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-40,30,58" SelectionChanged="DataGrid1_SelectionChanged">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#3C3C3C"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="20,0,0,0"/>
+                    <Setter Property="FontSize" Value="24"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+
+        <!--Линия DataGrid-->
+
+        <Line Grid.Column="1" X1="10" X2="1390"  Stroke="#565656" StrokeThickness="1" Margin="20,324,-10,97" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
+
+        
     </Grid>
 </Window>

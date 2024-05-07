@@ -24,10 +24,6 @@ namespace ZooApp
             InitializeComponent();
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
 
         private void ArrangeSellForm_Click(object sender, RoutedEventArgs e)
         {
@@ -54,9 +50,16 @@ namespace ZooApp
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+
+        private void swithBtn_Click(object sender, RoutedEventArgs e)
+        {
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             this.Close();
+
         }
     }
 }

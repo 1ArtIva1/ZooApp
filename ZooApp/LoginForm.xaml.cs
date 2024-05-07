@@ -31,6 +31,7 @@ namespace ZooApp
         private void Button_Exit(object sender, RoutedEventArgs e)
         {
             this.Close();
+
         }
 
         private void Button_Click_Login(object sender, RoutedEventArgs e)
