@@ -26,6 +26,7 @@
 
         <Grid Grid.Row="1" Grid.Column="2">
            
+            <!--График покупательского движения-->
             <lvc:PieChart  Visibility="Hidden" LegendLocation="Bottom" Series="{Binding SeriesCollection}" DataClick="myPieChart_DataClick" Hoverable="True" InnerRadius="40" Margin="-394,-111,-377,-407" Name="myPieChart" >
 
                 <lvc:PieChart.ChartLegend >
@@ -37,6 +38,31 @@
                 </lvc:PieChart.DataTooltip>
 
             </lvc:PieChart>
+            
+            <!--График Маржи-->
+            <lvc:CartesianChart x:Name="Graphic1" Visibility="Hidden" Series="{Binding SeriesCollection2}"  Foreground="White" FontSize="40" Margin="-394,-111,-377,-407" LegendLocation="Left">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="X" Labels="{Binding BarLabels}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Y" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+
+            <!--График Продажи-->
+            <lvc:CartesianChart x:Name="Graphic2" Visibility="Hidden" Series="{Binding SeriesCollection3}" Foreground="White" FontSize="40" Margin="-394,-111,-377,-407" LegendLocation="Left">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="X" Labels="{Binding BarLabels}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Y" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+
+
+
         </Grid>
 
         <StackPanel Width="460" Grid.RowSpan="5" Background="#252525" Margin="0,0,20,0">
@@ -69,14 +95,14 @@
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-     <Hyperlink Foreground="White" TextDecorations="None">Сравнение маржи с продажей</Hyperlink>
+                            <Hyperlink Foreground="White" Hyperlink.Click="Graphic_1" TextDecorations="None">Сравнение маржи с продажей</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
 
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-     <Hyperlink Foreground="White" TextDecorations="None">Сравнение продажи с расходом</Hyperlink>
+                            <Hyperlink Foreground="White" Hyperlink.Click="Graphic_2" TextDecorations="None">Сравнение продажи с расходом</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
 
@@ -89,10 +115,11 @@
             <!-- Кнопки -->
 
             <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 230, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
-            <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="30,30,30,30" Background="#FF6B3535" BorderBrush="#FF6B3535"  FontWeight="SemiBold" Height="64" FontSize="28"/>
+            <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="30,30,30,30" Background="#FF6B3535" BorderBrush="#FF6B3535"  FontWeight="SemiBold" Height="64" FontSize="28" Click="exitBtn_Click"/>
 
         </StackPanel>
-
+        
+        <!--Время и дата-->
         <Label Grid.Column ="1" x:Name="label1" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="2" x:Name="label2" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="3" x:Name="label3" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>

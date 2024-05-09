@@ -32,7 +32,7 @@ namespace ZooApp
             time.Timer_Day(label1);
             time.Timer_Clock(label2);
             time.Timer_Data(label3);
-
+            
             SeriesCollection = new SeriesCollection
             {
                 new PieSeries
@@ -60,14 +60,57 @@ namespace ZooApp
                     DataLabels = true
                 },
             };
+            
+            
+            SeriesCollection2 = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "vail1",
+                    Values = new ChartValues<double> { 5, 10, 20, 30 }
+                },
+                new ColumnSeries
+                {
+                    Title = "vail2",
+                    Values = new ChartValues<double> { 10, 15, 20, 25 }
+                }
+            };
+
+
+            SeriesCollection3 = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "vail1",
+                    Values = new ChartValues<double> { 15, 25, 20, 45 }
+                },
+                new ColumnSeries
+                {
+                    Title = "vail2",
+                    Values = new ChartValues<double> { 10, 15, 20, 25 }
+                }
+            };
+
+
+
             DataContext = this;
+
+            BarLabels = new[] { "values 1", "values 2", "values 3", "values 4" };
+            Formatter = value => value.ToString("N");
+
 
         }
 
         public SeriesCollection SeriesCollection { get; set; }
 
-        
+        public SeriesCollection SeriesCollection2 { get; set; }
 
+        public SeriesCollection SeriesCollection3 { get; set; }
+
+
+        public string[] BarLabels { get; set; }
+
+        public Func<double,string> Formatter { get; set; }
 
 
 
@@ -86,11 +129,27 @@ namespace ZooApp
         private void PieViz_Click(object sender, RoutedEventArgs e)
         {
             myPieChart.Visibility = Visibility.Visible;
+            Graphic1.Visibility = Visibility.Hidden;
+            Graphic2.Visibility = Visibility.Hidden;
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        private void Graphic_2(object sender, RoutedEventArgs e)
         {
+            Graphic2.Visibility = Visibility.Visible;
+            myPieChart.Visibility= Visibility.Hidden;
+            Graphic1.Visibility = Visibility.Hidden;
+        }
 
+        private void Graphic_1(object sender, RoutedEventArgs e)
+        {
+            Graphic1.Visibility= Visibility.Visible;
+            myPieChart.Visibility = Visibility.Hidden;
+            Graphic2.Visibility = Visibility.Hidden;
+        }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
     
