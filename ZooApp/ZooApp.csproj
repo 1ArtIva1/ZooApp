@@ -139,6 +139,7 @@
     <Compile Include="FirstRegForm.xaml.cs">
       <DependentUpon>FirstRegForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fruit.cs" />
     <Compile Include="GraphicsForm.xaml.cs">
       <DependentUpon>GraphicsForm.xaml</DependentUpon>
     </Compile>

@@ -87,7 +87,7 @@
         <Line Grid.Column="1" X1="10" X2="1390"  Stroke="#565656" StrokeThickness="1" Margin="20,324,-10,97" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
 
-        <Label Grid.Column ="1" x:Name="label1" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
+        <Label Grid.Column ="1" x:Name="label11" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="2" x:Name="label2" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="3" x:Name="label3" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Line Grid.Column="1" X1="10" X2="1400"  Stroke="#565656" StrokeThickness="1" Margin="0,120,0,0" Grid.ColumnSpan="3" Grid.RowSpan="4"/>

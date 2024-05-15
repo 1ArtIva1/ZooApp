@@ -8,7 +8,7 @@
         Title="OrderForm" Height="1080" Width="1920"
         WindowState="Maximized"
         WindowStyle="None">
-    
+
     <Grid Background="#171717" Height="1080" Width="1920">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -23,6 +23,10 @@
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Column="2" >
+            <TextBox x:Name="SearchTextBox" Background="White" Height="30" VerticalAlignment="Top" Margin="0,186,0,0" TextChanged="SearchTextBox_TextChanged"/>
+        </Grid>
 
 
         <StackPanel Width="460" Grid.RowSpan="5" Background="#252525" Margin="0,0,20,0">
@@ -46,12 +50,12 @@
                     <!--Добавить + Иконка-->
 
                     <WrapPanel Grid.Row="2"  Margin="50, 0, 0,0">
-                       
-                            <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
-                            <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
+
+                        <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
+                        <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
                                 <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
-                            </TextBlock>
-                        
+                        </TextBlock>
+
                     </WrapPanel>
 
                     <!--Изменить + Инконка-->

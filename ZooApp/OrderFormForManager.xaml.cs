@@ -26,29 +26,15 @@ namespace ZooApp
         public OrderFormForManager()
         {
 
-            Time time = new Time();
-            time.Timer_Day(label1);
-            time.Timer_Clock(label2);
-            time.Timer_Data(label3);
+           
 
 
             InitializeComponent();
 
-            conn.Open();
-            NpgsqlCommand comm = new NpgsqlCommand();
-            comm.Connection = conn;
-            comm.CommandType = CommandType.Text;
-            comm.CommandText = "select * from order";
-            NpgsqlDataReader dr = comm.ExecuteReader();
-            if (dr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-                DataGrid1.ItemsSource = dt.DefaultView;
-                comm.Dispose();
-                conn.Close();
-
-            }
+            Time time = new Time();
+            time.Timer_Day(label11);
+            time.Timer_Clock(label2);
+            time.Timer_Data(label3);
 
         }
 
