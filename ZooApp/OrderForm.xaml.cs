@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -35,47 +36,64 @@ namespace ZooApp
             time.Timer_Day(label1);
             time.Timer_Clock(label2);
             time.Timer_Data(label3);
-            Items = new ObservableCollection<Fruit>
-            {
-                new Fruit { Name = "Apple", Color = "Red" },
-                new Fruit { Name = "Banana", Color = "Yellow" },
-                new Fruit { Name = "Cherry", Color = "Red" },
-                new Fruit { Name = "Date", Color = "Brown" },
-                new Fruit { Name = "Elderberry", Color = "Black" },
-                new Fruit { Name = "Fig", Color = "Purple" },
-                new Fruit { Name = "Grape", Color = "Green" },
-                new Fruit { Name = "Honeydew", Color = "Green" }
-            };
+
+            Items = new ObservableCollection<Fruit>();
+            LoadDataFromDatabase();
 
             ItemsView = CollectionViewSource.GetDefaultView(Items);
             DataGrid3.ItemsSource = ItemsView;
         }
-      
-        private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            var searchText = SearchTextBox.Text.ToLower();
-            ItemsView.Filter = item =>
+            private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+            
             {
-                if (string.IsNullOrEmpty(searchText))
+                var searchText = SearchTextBox.Text.ToLower();
+                ItemsView.Filter = item =>
                 {
-                    return true;
+                    if (string.IsNullOrEmpty(searchText))
+                    {
+                        return true;
+                    }
+                    var fruit = item as Fruit;
+                    return fruit.Name.ToLower().Contains(searchText) || fruit.Color.ToLower().Contains(searchText);
+                };
+                ItemsView.Refresh();
+            }
+        
+
+            private void LoadDataFromDatabase()
+            {
+                NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+
+
+                conn.Open();
+                string query = "SELECT name, color FROM fruits"; // Замените на вашу таблицу и колонки
+                using (var command = new NpgsqlCommand(query, conn))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var fruit = new Fruit
+                        {
+                            Name = reader.GetString(0),
+                            Color = reader.GetString(1)
+                        };
+                        Items.Add(fruit);
+                    }
                 }
-                var fruit = item as Fruit;
-                return fruit.Name.ToLower().Contains(searchText) || fruit.Color.ToLower().Contains(searchText);
-            };
-            ItemsView.Refresh();
-        }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            MainSeller mainSeller = new MainSeller();
-            mainSeller.Show();
-            this.Close();
-        }
+            }
 
-        private void exitBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+            private void Back_Click(object sender, RoutedEventArgs e)
+            {
+                MainSeller mainSeller = new MainSeller();
+                mainSeller.Show();
+                this.Close();
+            }
+
+            private void exitBtn_Click(object sender, RoutedEventArgs e)
+            {
+                this.Close();
+            }
+        
     }
 }
