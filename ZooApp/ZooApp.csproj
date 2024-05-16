@@ -155,6 +155,9 @@
     <Compile Include="ReportingForm.xaml.cs">
       <DependentUpon>ReportingForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Storage.xaml.cs">
+      <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Time.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReportingForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Storage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

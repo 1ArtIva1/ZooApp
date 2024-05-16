@@ -24,9 +24,7 @@
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="2" >
-            <TextBox x:Name="SearchTextBox" Background="White" Height="30" VerticalAlignment="Top" Margin="0,186,0,0" TextChanged="SearchTextBox_TextChanged"/>
-        </Grid>
+        <Grid Grid.Column="2" />
 
 
         <StackPanel Width="460" Grid.RowSpan="5" Background="#252525" Margin="0,0,20,0">
@@ -37,7 +35,7 @@
                 <TextBlock Text="Иванов Иван" FontSize="40" Foreground="White" TextAlignment="Left" Margin="4,26,0,0" />
             </WrapPanel>
 
-
+            
             <!-- Заказы -->
             <Grid>
 
@@ -53,7 +51,7 @@
 
                         <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
-                                <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
+                                <Hyperlink Foreground="White" Hyperlink.Click="Insert_Click" TextDecorations="None">Добавить</Hyperlink>
                         </TextBlock>
 
                     </WrapPanel>
@@ -92,7 +90,7 @@
             <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="30,30,30,30" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>
-
+       
         <!--Окно вывода (DataGrid)-->
         <DataGrid x:Name="DataGrid3" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-100,30,58" >
             <DataGrid.Resources>
@@ -105,6 +103,7 @@
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
+
 
         <!--Линия DataGrid-->
 

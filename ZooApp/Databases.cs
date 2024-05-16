@@ -9,7 +9,10 @@ namespace ZooApp
 {
     internal class Databases
     {
-         public static string username;
-         public static string password;
+        public static string username;
+        public static string password;
+
+        public static string fruit;
+        public static string color;
     }
 }
