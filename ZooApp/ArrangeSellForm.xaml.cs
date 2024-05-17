@@ -28,9 +28,13 @@ namespace ZooApp
     /// </summary>
     public partial class ArrangeSellForm : Window
     {
-
         public ObservableCollection<Fruit> Items { get; set; }
         public ICollectionView ItemsView { get; set; }
+
+
+
+        public ObservableCollection<Fruit> Items2 { get; set; }
+        public ICollectionView ItemsView2 { get; set; }
         public ArrangeSellForm()
         {
             InitializeComponent();
@@ -39,13 +43,94 @@ namespace ZooApp
             time.Timer_Clock(label2);
             time.Timer_Data(label3);
 
-
             Items = new ObservableCollection<Fruit>();
 
+            Items2 = new ObservableCollection<Fruit>();
 
             ItemsView = CollectionViewSource.GetDefaultView(Items);
 
+            ItemsView2 = CollectionViewSource.GetDefaultView(Items2);
 
+
+
+            LoadDataFromDatabase();
+
+            DataGrid0.ItemsSource = ItemsView;
+
+
+        }
+        private void LoadDataFromDatabase()
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+
+
+            conn.Open();
+            string query = "SELECT name, color FROM fruits";
+            using (var command = new NpgsqlCommand(query, conn))
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var fruit = new Fruit
+                    {
+                        Name = reader.GetString(0),
+                        Color = reader.GetString(1)
+                    };
+                    Items.Add(fruit);
+                }
+            }
+
+        }
+
+        private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+
+        {
+            var searchText = SearchTextBox.Text.ToLower();
+            ItemsView.Filter = item =>
+            {
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    return true;
+                }
+                var fruit = item as Fruit;
+                return fruit.Name.ToLower().Contains(searchText) || fruit.Color.ToLower().Contains(searchText);
+            };
+            ItemsView.Refresh();
+        }
+
+        private void DataGrid0_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (DataGrid0.SelectedItem != null)
+            {
+                var selectedItem = DataGrid0.SelectedItem as Fruit; // Замените YourDataType на тип данных вашей модели
+                if (selectedItem != null)
+                {
+                    InsertDataToDatabase(selectedItem);
+                    Update();
+
+                }
+                
+            }
+        }
+        private void InsertDataToDatabase(Fruit selectedItem)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+
+
+            conn.Open();
+
+            string query = "INSERT INTO fruits2 (Name, Color) VALUES (@value1, @value2)";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@value1", selectedItem.Name); // Замените Property1 на соответствующее свойство вашей модели
+                command.Parameters.AddWithValue("@value2", selectedItem.Color); // Замените Property2 на соответствующее свойство вашей модели
+
+                command.ExecuteNonQuery();
+            }
+        }
+        private void DataGrid0_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
 
@@ -66,7 +151,7 @@ namespace ZooApp
                         Name = reader.GetString(0),
                         Color = reader.GetString(1)
                     };
-                    Items.Add(fruit);
+                    Items2.Add(fruit);
                 }
             }
 
@@ -98,12 +183,11 @@ namespace ZooApp
 
         public void Update()
         {
-            Items.Clear();
+            Items2.Clear();
 
             LoadDataFromDatabase2();
 
-
-            DataGrid3.ItemsSource = ItemsView;
+            DataGrid3.ItemsSource = ItemsView2;
         }
         
     }
