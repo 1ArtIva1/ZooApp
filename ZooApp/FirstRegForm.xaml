@@ -31,7 +31,9 @@
             <StackPanel>
                 <TextBlock  FontSize="40" Height="60" Width="352" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" Margin="84,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="Регистрация"/></TextBlock>
                 <TextBlock  FontSize="40" Height="60" Width="352" Foreground="White" FontStyle="Normal" FontFamily="Cascadia Mono ExtraLight" HorizontalAlignment="Center" Margin="66,0,0,0" ><Run Text="пользователя"/></TextBlock>
+                
             </StackPanel>
+            
             
 
             <TextBox x:Name ="RegloginTextBox" materialDesign:HintAssist.Hint="Введите Логин" FontSize="24" Foreground="White" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="86" Padding="40,0,0,0"/>

@@ -48,12 +48,12 @@
 
                         <Image Source="/emblems/plusik.jpeg" Height="40" Width="40" Margin="0,0,-26,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="25, 5, 0, 0" FontSize="30" >
-                            <Hyperlink Foreground="White" TextDecorations="None">Добавить</Hyperlink>
+                            <Hyperlink Foreground="White" Hyperlink.Click="Insert_Click" TextDecorations="None">Добавить</Hyperlink>
                         </TextBlock>
 
                     </WrapPanel>
 
-                    
+
 
                     <!--Удалить + Инконка-->
 
@@ -74,11 +74,11 @@
 
             <!-- Кнопки -->
 
-            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 350, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
-            <Button x:Name="exitBtn" Grid.Row="1" Margin="0, 20, 0, 0" Content="Выйти из программы" Width="440" BorderThickness="30,30,30,30" Background="#FF6B3535" BorderBrush="#FF6B3535" Click="exitBtn_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
+            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 400, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>
 
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Margin="30,190,450,100" Click="Button_Click"></Button>
         <!--Окно вывода (DataGrid)-->
         <DataGrid x:Name="DataGrid3" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-100,30,58" >
             <DataGrid.Resources>
@@ -99,7 +99,7 @@
         <Label Grid.Column ="1" x:Name="label1" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="2" x:Name="label2" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="3" x:Name="label3" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
-        
+
         <Line Grid.Column="1" X1="10" X2="1400"  Stroke="#565656" StrokeThickness="1" Margin="0,120,0,0" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
     </Grid>
 </Window>

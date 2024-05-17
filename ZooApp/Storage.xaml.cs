@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace ZooApp
 {
     /// <summary>
@@ -43,7 +44,7 @@ namespace ZooApp
 
 
             conn.Open();
-            string query = "SELECT name, color FROM fruits"; // Замените на вашу таблицу и колонки
+            string query = "SELECT name, color FROM fruits"; 
             using (var command = new NpgsqlCommand(query, conn))
             using (var reader = command.ExecuteReader())
             {
@@ -88,7 +89,40 @@ namespace ZooApp
             this.Close();
         }
 
-       
+        private void DataGrid0_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (DataGrid0.SelectedItem != null)
+            {
+                var selectedItem = DataGrid0.SelectedItem as Fruit; // Замените YourDataType на тип данных вашей модели
+                if (selectedItem != null)
+                {
+                    InsertDataToDatabase(selectedItem);
+
+                    ArrangeSellForm arrangeSellForm = new ArrangeSellForm();
+
+                    arrangeSellForm.Update();
+                  
+                }
+            }
+        }
+
+        private void InsertDataToDatabase(Fruit selectedItem)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+
+
+                conn.Open();
+
+                string query = "INSERT INTO fruits2 (Name, Color) VALUES (@value1, @value2)";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@value1", selectedItem.Name); // Замените Property1 на соответствующее свойство вашей модели
+                    command.Parameters.AddWithValue("@value2", selectedItem.Color); // Замените Property2 на соответствующее свойство вашей модели
+
+                    command.ExecuteNonQuery();
+                }
+        }
     }
     
 }

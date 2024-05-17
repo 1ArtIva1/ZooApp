@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace ZooApp
 {
-    /// <summary>
-    /// Логика взаимодействия для OrderFormForManager.xaml
-    /// </summary>
+    
     public partial class OrderFormForManager : Window
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id= " + Databases.username + "; Password=" + Databases.password + "; Database = postgres");
@@ -40,17 +38,22 @@ namespace ZooApp
 
     
 
-        private void exitBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
+        
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainManager mainManager = new MainManager();
-            mainManager.Show();
-            this.Close();
+            if (Databases.username == "postgres")
+            {
+                MainManager mainManager = new MainManager();
+                mainManager.Show();
+                this.Close();
+            }
+            else
+            {
+                MainSeller mainSeller = new MainSeller();
+                mainSeller.Show();
+                this.Close();
+            }
         }
 
         private void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
