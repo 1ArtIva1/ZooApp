@@ -29,33 +29,42 @@ namespace ZooApp
     public partial class ArrangeSellForm : Window
     {
        
+        // Коллекции
         public ObservableCollection<Fruit> Items2 { get; set; }
         public ICollectionView ItemsView2 { get; set; }
+
         public ArrangeSellForm()
         {
-            Storagee storageе = new Storagee();
+            
             InitializeComponent();
+            //Подключаем объекты классов
+            Storagee storageе = new Storagee();
             Time time = new Time();
+
+            //Время и дата на форме
             time.Timer_Day(label1);
             time.Timer_Clock(label2);
             time.Timer_Data(label3);
 
+            //Создаём коллекции
             storageе.Items = new ObservableCollection<Fruit>();
             Items2 = new ObservableCollection<Fruit>();
 
             storageе.ItemsView = CollectionViewSource.GetDefaultView(storageе.Items);
             ItemsView2 = CollectionViewSource.GetDefaultView(Items2);
 
+            //Подгружаем БД и заполняем grid (склад)
             storageе.LoadDataFromDatabase();
 
             DataGrid0.ItemsSource = storageе.ItemsView;
 
         }
 
+        //Метод для поисковой строки
         private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
 
         {
-            Storage storage = new Storage();
+            Storagee storage = new Storagee();
             var searchText = SearchTextBox.Text.ToLower();
             storage.ItemsView.Filter = item =>
             {
@@ -64,25 +73,29 @@ namespace ZooApp
                     return true;
                 }
                 var fruit = item as Fruit;
-                return fruit.Name.ToLower().Contains(searchText) || fruit.Color.ToLower().Contains(searchText);
+                return fruit.Name.ToLower().Contains(searchText) || fruit.Price.ToLower().Contains(searchText);
             };
             storage.ItemsView.Refresh();
         }
 
+        //Метод двойного нажатия по складу
         private void DataGrid0_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            Refresh refresh = new Refresh();
             if (DataGrid0.SelectedItem != null)
             {
                 var selectedItem = DataGrid0.SelectedItem as Fruit; 
                 if (selectedItem != null)
                 {
                     InsertDataToDatabase(selectedItem);
-                    Update();
+                    refresh.UpdateArrangeSellForm();
 
                 }
                 
             }
         }
+
+        //Добавляем данные в промежуточную таблицу (тест)
         private void InsertDataToDatabase(Fruit selectedItem)
         {
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
@@ -94,17 +107,19 @@ namespace ZooApp
 
             using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
             {
-                command.Parameters.AddWithValue("@value1", selectedItem.Name); // Замените Property1 на соответствующее свойство вашей модели
-                command.Parameters.AddWithValue("@value2", selectedItem.Color); // Замените Property2 на соответствующее свойство вашей модели
+                command.Parameters.AddWithValue("@value1", selectedItem.Name); 
+                command.Parameters.AddWithValue("@value2", selectedItem.Price); 
 
                 command.ExecuteNonQuery();
             }
         }
+
         private void DataGrid0_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
+        //Загружаем БД для grid (чек)
         public void LoadDataFromDatabase2()
         {
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
@@ -120,7 +135,7 @@ namespace ZooApp
                     var fruit = new Fruit
                     {
                         Name = reader.GetString(0),
-                        Color = reader.GetString(1)
+                        Price= reader.GetString(1)
                     };
                     Items2.Add(fruit);
                 }
@@ -128,6 +143,7 @@ namespace ZooApp
 
         }
 
+        //Метод кнопки (Назад)
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainSeller mainSeller = new MainSeller();
@@ -135,6 +151,7 @@ namespace ZooApp
             this.Close();
         }
 
+        //Метод ссылки (Добавить)
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
             DataGrid0.Visibility = Visibility;
@@ -144,15 +161,17 @@ namespace ZooApp
             close_textbox.Visibility = Visibility;
         }
 
-        public void Update()
-        {
-            Items2.Clear();
+        //Метод обновления grid (Чек)
+        //public void Update()
+        //{
+        //    Items2.Clear();
 
-            LoadDataFromDatabase2();
+        //    LoadDataFromDatabase2();
 
-            DataGrid3.ItemsSource = ItemsView2;
-        }
+        //    DataGrid3.ItemsSource = ItemsView2;
+        //}
 
+        //Метод закрытия grid (Склад)
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             DataGrid0.Visibility = Visibility.Hidden;
@@ -162,8 +181,10 @@ namespace ZooApp
             close_textbox.Visibility = Visibility.Hidden;   
         }
 
+        //Метод очистки grid (чек)
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            Refresh refresh = new Refresh();
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
             conn.Open();
             string query = $"TRUNCATE TABLE fruits2;";
@@ -171,7 +192,8 @@ namespace ZooApp
             {
                 command.ExecuteNonQuery();
             }
-            Update();
+            refresh.UpdateArrangeSellForm();
+            
         }
     }
 }

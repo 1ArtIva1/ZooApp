@@ -57,8 +57,7 @@ namespace ZooApp
 
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
-            Storage storage = new Storage();
-            storage.Show();
+            Storagee storage = new Storagee();
         }
 
       

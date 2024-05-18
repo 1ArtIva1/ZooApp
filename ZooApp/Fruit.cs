@@ -10,7 +10,9 @@ namespace ZooApp
     public class Fruit
     {
         public string Name { get; set; }
-        public string Color { get; set; }
+        public string Price { get; set; }
+
+       
     }
 
    

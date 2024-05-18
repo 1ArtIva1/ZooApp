@@ -152,11 +152,9 @@
     <Compile Include="OrderForm.xaml.cs">
       <DependentUpon>OrderForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Refresh.cs" />
     <Compile Include="ReportingForm.xaml.cs">
       <DependentUpon>ReportingForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Storage.xaml.cs">
-      <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Storagee.cs" />
     <Compile Include="Time.cs" />
@@ -235,10 +233,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReportingForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Storage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

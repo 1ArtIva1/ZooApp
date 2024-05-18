@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace ZooApp
 {
@@ -30,16 +31,21 @@ namespace ZooApp
 
 
             conn.Open();
-            string query = "SELECT name, color FROM fruits";
+            string query = "SELECT name, wholesale_price FROM catalog";
             using (var command = new NpgsqlCommand(query, conn))
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
+                    double pricedouble = reader.GetDouble(1);
+                    string converterToStringForPrice = pricedouble.ToString();
+
                     var fruit = new Fruit
                     {
                         Name = reader.GetString(0),
-                        Color = reader.GetString(1)
+                        Price = converterToStringForPrice,
+                        
+
                     };
                     Items.Add(fruit);
                 }
