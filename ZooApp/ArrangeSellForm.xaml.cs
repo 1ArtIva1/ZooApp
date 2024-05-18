@@ -32,7 +32,6 @@ namespace ZooApp
         // Коллекции
         public ObservableCollection<Fruit> Items2 { get; set; }
         public ICollectionView ItemsView2 { get; set; }
-
         public ArrangeSellForm()
         {
             
@@ -62,9 +61,9 @@ namespace ZooApp
 
         //Метод для поисковой строки
         private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-
         {
             Storagee storage = new Storagee();
+
             var searchText = SearchTextBox.Text.ToLower();
             storage.ItemsView.Filter = item =>
             {
@@ -73,7 +72,7 @@ namespace ZooApp
                     return true;
                 }
                 var fruit = item as Fruit;
-                return fruit.Name.ToLower().Contains(searchText) || fruit.Price.ToLower().Contains(searchText);
+                return fruit.Name.ToLower().Contains(searchText);// || fruit.Price.ToString().ToLower().Contains(searchText);
             };
             storage.ItemsView.Refresh();
         }
