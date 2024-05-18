@@ -139,6 +139,9 @@ namespace ZooApp
         {
             DataGrid0.Visibility = Visibility;
             SearchTextBox.Visibility = Visibility;
+            Label_Choose.Visibility = Visibility;
+            Krestik.Visibility = Visibility;
+            close_textbox.Visibility = Visibility;
         }
 
         public void Update()
@@ -149,6 +152,26 @@ namespace ZooApp
 
             DataGrid3.ItemsSource = ItemsView2;
         }
-        
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            DataGrid0.Visibility = Visibility.Hidden;
+            SearchTextBox.Visibility = Visibility.Hidden;
+            Label_Choose.Visibility = Visibility.Hidden;
+            Krestik.Visibility = Visibility.Hidden;
+            close_textbox.Visibility = Visibility.Hidden;   
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+            conn.Open();
+            string query = $"TRUNCATE TABLE fruits2;";
+            using (var command = new NpgsqlCommand(query, conn))
+            {
+                command.ExecuteNonQuery();
+            }
+            Update();
+        }
     }
 }

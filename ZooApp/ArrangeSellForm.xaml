@@ -78,16 +78,24 @@
 
 
             <!-- Кнопки -->
-        
+
+
             <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 650, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>
+        <Button x:Name="accessbtn" Grid.Row="0" Margin="72,141,30,117" Content="Подтвердить" BorderThickness="30,30,30,30" Background="#FF356B3E" BorderBrush="#FF356B3E"  FontWeight="SemiBold" Width="300" Height="64" FontSize="28" Grid.Column="3"/>
+        <Button x:Name="deletebtn" Grid.Row="0" Margin="240,141,420,117" Content="Очистить" BorderThickness="30,30,30,30" Background="#FF683534" BorderBrush="#FF6B3433" Click="Delete_Click" FontWeight="SemiBold" Width="300" Height="64" FontSize="28" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Image   Source="/emblems/urna.jpeg" Margin="194,155,128,131" RenderTransformOrigin="0.433,0.813" Grid.Column="2"/>
+        <Image   Source="/emblems/galo4ka.jpeg" Margin="114,155,308,131" RenderTransformOrigin="0.433,0.813" Grid.Column="3"/>
 
 
-        <TextBox x:Name="SearchTextBox" Visibility="Hidden"  Background="White" Height="30" VerticalAlignment="Top" Margin="10,32,36,0" TextChanged="SearchTextBox_TextChanged" Grid.Row="1"/>
-
-
-        <DataGrid x:Name="DataGrid0"  Visibility="Hidden"  MouseDoubleClick="DataGrid0_MouseDoubleClick" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2" Margin="10,83,36,83" SelectionChanged="DataGrid0_SelectionChanged" Grid.Row="1" >
+        <Image Name="Krestik" Visibility="Hidden" Source="/emblems/krestik.jpeg" Height="30" Width="30" Margin="310,37,140,254" Grid.Row="1" RenderTransformOrigin="0.433,0.813"></Image>
+        <TextBlock Name="close_textbox" Visibility="Hidden" Margin="340,35,10,200" FontSize="24" Grid.Row="1" >
+            <Hyperlink Foreground="White" Hyperlink.Click="Close_Click" TextDecorations="None">Закрыть</Hyperlink>
+        </TextBlock>
+        <Label Name="Label_Choose" Visibility="Hidden" FontSize="24" Foreground="White" Margin="10,31,211,235" Grid.Row="1">Выберите товар:</Label>
+        <TextBox x:Name="SearchTextBox" Visibility="Hidden"  Background="White" Height="30" VerticalAlignment="Top" Margin="10,91,36,0" TextChanged="SearchTextBox_TextChanged" Grid.Row="1"/>
+        <DataGrid x:Name="DataGrid0"  Visibility="Hidden"  MouseDoubleClick="DataGrid0_MouseDoubleClick" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2" Margin="10,140,36,25" SelectionChanged="DataGrid0_SelectionChanged" Grid.Row="1" >
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Foreground" Value="White"/>
