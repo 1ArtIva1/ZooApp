@@ -1,4 +1,4 @@
-﻿<Window x:Class="ZooApp.GraphicsForm"
+﻿<Window x:Class="ZooApp.ReportForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -23,43 +23,23 @@
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
+        
+        <!--DataGrid-->
+        <DataGrid x:Name="DataGrid3" AutoGenerateColumns="True" FontSize="24"  Foreground="White" AlternatingRowBackground="#747474" Background="#3C3C3C"  AlternationCount="2"  Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Column="1" Grid.Row="1" Margin="30,-100,30,58" >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#3C3C3C"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="20,0,0,0"/>
+                    <Setter Property="FontSize" Value="24"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
+        <!--Линия DataGrid-->
+        <Line Grid.Column="1" X1="10" X2="1390"  Stroke="#565656" StrokeThickness="1" Margin="20,264,-10,97" Grid.ColumnSpan="3" Grid.RowSpan="4"/>
         <Grid Grid.Row="1" Grid.Column="2">
-           
-            <!--График покупательского движения-->
-            <lvc:PieChart  Visibility="Hidden" LegendLocation="Bottom" Series="{Binding SeriesCollection}" DataClick="myPieChart_DataClick" Hoverable="True" InnerRadius="40" Margin="-394,-111,-377,-407" Name="myPieChart" >
-
-                <lvc:PieChart.ChartLegend >
-                    <lvc:DefaultLegend Foreground="White" BulletSize="45" TextBlock.FontSize="30"  Width="819"/>
-                </lvc:PieChart.ChartLegend>
-
-                <lvc:PieChart.DataTooltip>
-                    <lvc:DefaultTooltip BulletSize="45"/>
-                </lvc:PieChart.DataTooltip>
-
-            </lvc:PieChart>
-            
-            <!--График Маржи-->
-            <lvc:CartesianChart x:Name="Graphic1" Visibility="Hidden" Series="{Binding SeriesCollection2}"  Foreground="White" FontSize="40" Margin="-394,-111,-377,-407" LegendLocation="Left">
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="X" Labels="{Binding BarLabels}"></lvc:Axis>
-                </lvc:CartesianChart.AxisX>
-                
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Y" LabelFormatter="{Binding Formatter}"></lvc:Axis>
-                </lvc:CartesianChart.AxisY>
-            </lvc:CartesianChart>
-
-            <!--График Продажи-->
-            <lvc:CartesianChart x:Name="Graphic2" Visibility="Hidden" Series="{Binding SeriesCollection3}" Foreground="White" FontSize="40" Margin="-394,-111,-377,-407" LegendLocation="Left">
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="X" Labels="{Binding BarLabels}"></lvc:Axis>
-                </lvc:CartesianChart.AxisX>
-
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Y" LabelFormatter="{Binding Formatter}"></lvc:Axis>
-                </lvc:CartesianChart.AxisY>
-            </lvc:CartesianChart>
 
 
 
@@ -83,26 +63,33 @@
 
 
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Графики" Foreground="White" Margin="20, 20, 0, 0" FontSize="30" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Отчеты" Foreground="White" Margin="20, 20, 0, 0" FontSize="30" FontWeight="SemiBold"/>
 
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-                         <Hyperlink Foreground="White" Hyperlink.Click="PieViz_Click" TextDecorations="None">Покупательское поведение</Hyperlink>
+                         <Hyperlink Foreground="White" Hyperlink.Click="ProductsData" TextDecorations="None">Покупательское поведение</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
 
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-                            <Hyperlink Foreground="White" Hyperlink.Click="MarginSaleGraph" TextDecorations="None">Сравнение маржи с продажей</Hyperlink>
+                            <Hyperlink Foreground="White" Hyperlink.Click="MarginData"  TextDecorations="None">Маржа</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
 
                     <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
                         <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
                         <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
-                            <Hyperlink Foreground="White" Hyperlink.Click="SaleExpensesGraph" TextDecorations="None">Сравнение продажи с расходом</Hyperlink>
+                            <Hyperlink Foreground="White" Hyperlink.Click="SalesData" TextDecorations="None">Продажи</Hyperlink>
+                        </TextBlock>
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Row="2"  Margin="50, 20, 0,0">
+                        <Image Source="/emblems/qwe.jpg" Height="40" Width="40" Margin="0,0,-52,0"></Image>
+                        <TextBlock Grid.Row="2"   Margin="50, 5, 0, 0" FontSize="24" >
+                            <Hyperlink Foreground="White" Hyperlink.Click="StorageData" TextDecorations="None">Товары</Hyperlink>
                         </TextBlock>
                     </WrapPanel>
 
@@ -114,10 +101,10 @@
 
             <!-- Кнопки -->
 
-            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 314, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
+            <Button x:Name="switchBtn" Grid.Row="0" Margin="0, 280, 0, 0" Content="Назад" Width="440" BorderThickness="30,30,30,30" Background="#FF3B3B42" BorderBrush="#FF3B3B42" Click="Back_Click" FontWeight="SemiBold" Height="64" FontSize="28"/>
 
         </StackPanel>
-        
+
         <!--Время и дата-->
         <Label Grid.Column ="1" x:Name="label1" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>
         <Label Grid.Column ="2" x:Name="label2" Foreground="White" Content=""   Margin="150,0,0,200" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"/>

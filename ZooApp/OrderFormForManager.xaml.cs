@@ -19,7 +19,7 @@ namespace ZooApp
     
     public partial class OrderFormForManager : Window
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id= " + Databases.username + "; Password=" + Databases.password + "; Database = postgres");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id= " + Databases.username + "; Password=" + Databases.password + "; Database = zoo");
 
         public OrderFormForManager()
         {

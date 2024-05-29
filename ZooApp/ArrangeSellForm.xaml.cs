@@ -48,6 +48,7 @@ namespace ZooApp
             //Создаём коллекции
             storageе.Items = new ObservableCollection<Fruit>();
             Items2 = new ObservableCollection<Fruit>();
+           
 
             storageе.ItemsView = CollectionViewSource.GetDefaultView(storageе.Items);
             ItemsView2 = CollectionViewSource.GetDefaultView(Items2);
@@ -56,13 +57,17 @@ namespace ZooApp
             storageе.LoadDataFromDatabase();
 
             DataGrid0.ItemsSource = storageе.ItemsView;
-
         }
 
+      
+
+
         //Метод для поисковой строки
+
         private void SearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             Storagee storage = new Storagee();
+            Refresh refresh = new Refresh();
 
             var searchText = SearchTextBox.Text.ToLower();
             storage.ItemsView.Filter = item =>
@@ -73,8 +78,10 @@ namespace ZooApp
                 }
                 var fruit = item as Fruit;
                 return fruit.Name.ToLower().Contains(searchText);// || fruit.Price.ToString().ToLower().Contains(searchText);
+                
             };
             storage.ItemsView.Refresh();
+
         }
 
         //Метод двойного нажатия по складу
@@ -97,7 +104,7 @@ namespace ZooApp
         //Добавляем данные в промежуточную таблицу (тест)
         private void InsertDataToDatabase(Fruit selectedItem)
         {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
 
 
             conn.Open();
@@ -121,7 +128,7 @@ namespace ZooApp
         //Загружаем БД для grid (чек)
         public void LoadDataFromDatabase2()
         {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
 
 
             conn.Open();
@@ -134,7 +141,7 @@ namespace ZooApp
                     var fruit = new Fruit
                     {
                         Name = reader.GetString(0),
-                        Price= reader.GetString(1)
+                        Price= reader.GetDouble(1)
                     };
                     Items2.Add(fruit);
                 }
@@ -184,7 +191,7 @@ namespace ZooApp
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Refresh refresh = new Refresh();
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
             conn.Open();
             string query = $"TRUNCATE TABLE fruits2;";
             using (var command = new NpgsqlCommand(query, conn))

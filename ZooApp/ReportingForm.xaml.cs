@@ -37,6 +37,13 @@ namespace ZooApp
             this.Close();
         }
 
+        private void Report_Click(object sender, RoutedEventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.Show();
+            this.Close();
+        }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainManager mainManager = new MainManager();

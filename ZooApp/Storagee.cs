@@ -27,24 +27,24 @@ namespace ZooApp
         }
         public void LoadDataFromDatabase()
         {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=postgres");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database= zoo");
 
 
             conn.Open();
-            string query = "SELECT name, wholesale_price FROM catalog";
+            string query = "SELECT * FROM get_name_products();";
             using (var command = new NpgsqlCommand(query, conn))
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    double pricedouble = reader.GetDouble(1);
-                    string converterToStringForPrice = pricedouble.ToString();
+                    //double pricedouble = reader.GetDouble(1);
+                    //string converterToStringForPrice = pricedouble.ToString();
 
                     var fruit = new Fruit
                     {
                         Name = reader.GetString(0),
-                        Price = converterToStringForPrice,
-                        
+                        Price = reader.GetDouble(1),
+                        Qty = reader.GetInt32(2)
 
                     };
                     Items.Add(fruit);

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -16,6 +19,8 @@ using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Definitions.Charts;
 using LiveCharts.Wpf;
+using Npgsql;
+
 
 namespace ZooApp
 {
@@ -24,6 +29,11 @@ namespace ZooApp
     /// </summary>
     public partial class GraphicsForm : Window
     {
+        public ObservableCollection<Fruit> Items4 { get; set; }
+        //public SeriesCollection SeriesCollection { get; set; }
+        public List<string> ProductLabels { get; set; }
+
+
         public GraphicsForm()
         {
             InitializeComponent();
@@ -32,66 +42,46 @@ namespace ZooApp
             time.Timer_Day(label1);
             time.Timer_Clock(label2);
             time.Timer_Data(label3);
-            
-            SeriesCollection = new SeriesCollection
+
+            DataContext = this;
+
+            Items4 = new ObservableCollection<Fruit>();
+            SeriesCollection = new SeriesCollection();
+
+
+            List<Fruit> dataList = new List<Fruit>();
+
+
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
+            conn.Open();
+
+            string query = "SELECT * FROM get_top_selling_products(10);";
+
+            //NpgsqlCommand command = new NpgsqlCommand(query, conn);
+
+            using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
+            using (var reader = command.ExecuteReader())
             {
-                new PieSeries
+                while (reader.Read())
                 {
-                    Title = "Purina Proplan",
-                    Values = new ChartValues<ObservableValue> {new ObservableValue(10) },
-                    DataLabels = true
-                },
-                 new PieSeries
-                {
-                    Title = "t2",
-                    Values = new ChartValues<ObservableValue> {new ObservableValue(20) },
-                    DataLabels = true
-                },
-                  new PieSeries
-                {
-                    Title = "t3",
-                    Values = new ChartValues<ObservableValue> {new ObservableValue(33) },
-                    DataLabels = true
-                },
-                   new PieSeries
-                {
-                    Title = "t4 ",
-                    Values = new ChartValues<ObservableValue> {new ObservableValue(24) },
-                    DataLabels = true
-                },
-            };
-            
-            
-            SeriesCollection2 = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "vail1",
-                    Values = new ChartValues<double> { 5, 10, 20, 30 }
-                },
-                new ColumnSeries
-                {
-                    Title = "vail2",
-                    Values = new ChartValues<double> { 10, 15, 20, 25 }
+                    var fruit = new Fruit
+                    {
+                        Name = reader.GetString(1),
+                        Qty = reader.GetInt32(2)
+                    };
+                    Items4.Add(fruit);
                 }
-            };
+            }
 
-
-            SeriesCollection3 = new SeriesCollection
+            foreach (var item in Items4) 
             {
-                new ColumnSeries
+                SeriesCollection.Add(new PieSeries
                 {
-                    Title = "vail1",
-                    Values = new ChartValues<double> { 15, 25, 20, 45 }
-                },
-                new ColumnSeries
-                {
-                    Title = "vail2",
-                    Values = new ChartValues<double> { 10, 15, 20, 25 }
-                }
-            };
-
-
+                    Title = item.Name,
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(item.Qty) },
+                    DataLabels = true
+                });
+            }
 
             DataContext = this;
 
@@ -150,6 +140,112 @@ namespace ZooApp
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void MarginSaleGraph(object sender, RoutedEventArgs e)
+        {
+            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+
+            using (NpgsqlConnection conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM calculate_price_difference_sale();";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    var priceValues = new ChartValues<double>();
+                    var marginValues = new ChartValues<double>();
+                    var labels = new List<string>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        labels.Add(row["Название"].ToString());
+                        marginValues.Add(Convert.ToDouble(row["Маржа"]));
+                        priceValues.Add(Convert.ToDouble(row["Цена"]));
+                    }
+
+                    SeriesCollection2 = new SeriesCollection
+                    {
+                        new ColumnSeries
+                        {
+                            Title = "Продажа",
+                            Values = priceValues
+                        },
+                        new ColumnSeries
+                        {
+                            Title = "Маржа",
+                            Values = marginValues
+                        }
+                    };
+
+                    ProductLabels = labels;
+
+                    Graphic1.Series = SeriesCollection2;
+                    Graphic1.AxisX[0].Labels = ProductLabels;
+                }
+
+                Graphic1.Visibility = Visibility.Visible;
+                myPieChart.Visibility = Visibility.Hidden;
+                Graphic2.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void SaleExpensesGraph(object sender, RoutedEventArgs e)
+        {
+            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+
+            using (NpgsqlConnection conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM calculate_price_difference_wholesale();";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    var wholesalePriceValues = new ChartValues<double>();
+                    var marginValues = new ChartValues<double>();
+                    var labels = new List<string>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        labels.Add(row["Название"].ToString());
+                        marginValues.Add(Convert.ToDouble(row["Маржа"]));
+                        wholesalePriceValues.Add(Convert.ToDouble(row["Опт_Цена"]));
+                    }
+
+                    SeriesCollection2 = new SeriesCollection
+                    {
+                        new ColumnSeries
+                        {
+                            Title = "Опт. Цена",
+                            Values = wholesalePriceValues
+                        },
+                        new ColumnSeries
+                        {
+                            Title = "Маржа",
+                            Values = marginValues
+                        }
+                    };
+
+                    ProductLabels = labels;
+
+                    Graphic2.Series = SeriesCollection2;
+                    Graphic2.AxisX[0].Labels = ProductLabels;
+                }
+
+                Graphic2.Visibility = Visibility.Visible;
+                myPieChart.Visibility = Visibility.Hidden;
+                Graphic1.Visibility = Visibility.Hidden;
+            }
         }
     }
     

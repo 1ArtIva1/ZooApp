@@ -153,6 +153,9 @@
       <DependentUpon>OrderForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Refresh.cs" />
+    <Compile Include="ReportForm.xaml.cs">
+      <DependentUpon>ReportForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportingForm.xaml.cs">
       <DependentUpon>ReportingForm.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OrderFormForManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
