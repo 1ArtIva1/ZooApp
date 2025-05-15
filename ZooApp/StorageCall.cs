@@ -7,9 +7,11 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ZooApp
 {
-    public class Fruit
+    public class StorageCall
     {
         public string Name { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
         public double Price { get; set; }
         public int Qty { get; set; }
 

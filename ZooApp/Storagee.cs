@@ -15,19 +15,19 @@ namespace ZooApp
     internal class Storagee
     {
 
-        public ObservableCollection<Fruit> Items { get; set; }
+        public ObservableCollection<StorageCall> Items { get; set; }
         public ICollectionView ItemsView { get; set; }
 
         public Storagee()
         {
 
-            Items = new ObservableCollection<Fruit>();
+            Items = new ObservableCollection<StorageCall>();
             ItemsView = CollectionViewSource.GetDefaultView(Items);
 
         }
         public void LoadDataFromDatabase()
         {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database= zoo");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database= zoo");
 
 
             conn.Open();
@@ -40,11 +40,13 @@ namespace ZooApp
                     //double pricedouble = reader.GetDouble(1);
                     //string converterToStringForPrice = pricedouble.ToString();
 
-                    var fruit = new Fruit
+                    var fruit = new StorageCall
                     {
                         Name = reader.GetString(0),
-                        Price = reader.GetDouble(1),
-                        Qty = reader.GetInt32(2)
+                        Category = reader.GetString(1),
+                        SubCategory = reader.GetString(2),
+                        Price = reader.GetDouble(3),
+                        Qty = reader.GetInt32(4)
 
                     };
                     Items.Add(fruit);

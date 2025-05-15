@@ -30,7 +30,7 @@ namespace ZooApp
     {
        
         // Коллекции
-        public ObservableCollection<Fruit> Items2 { get; set; }
+        public ObservableCollection<StorageCall> Items2 { get; set; }
         public ICollectionView ItemsView2 { get; set; }
         public ArrangeSellForm()
         {
@@ -46,8 +46,8 @@ namespace ZooApp
             time.Timer_Data(label3);
 
             //Создаём коллекции
-            storageе.Items = new ObservableCollection<Fruit>();
-            Items2 = new ObservableCollection<Fruit>();
+            storageе.Items = new ObservableCollection<StorageCall>();
+            Items2 = new ObservableCollection<StorageCall>();
            
 
             storageе.ItemsView = CollectionViewSource.GetDefaultView(storageе.Items);
@@ -76,7 +76,7 @@ namespace ZooApp
                 {
                     return true;
                 }
-                var fruit = item as Fruit;
+                var fruit = item as StorageCall;
                 return fruit.Name.ToLower().Contains(searchText);// || fruit.Price.ToString().ToLower().Contains(searchText);
                 
             };
@@ -90,7 +90,7 @@ namespace ZooApp
             Refresh refresh = new Refresh();
             if (DataGrid0.SelectedItem != null)
             {
-                var selectedItem = DataGrid0.SelectedItem as Fruit; 
+                var selectedItem = DataGrid0.SelectedItem as StorageCall; 
                 if (selectedItem != null)
                 {
                     InsertDataToDatabase(selectedItem);
@@ -102,9 +102,9 @@ namespace ZooApp
         }
 
         //Добавляем данные в промежуточную таблицу (тест)
-        private void InsertDataToDatabase(Fruit selectedItem)
+        private void InsertDataToDatabase(StorageCall selectedItem)
         {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo");
 
 
             conn.Open();
@@ -128,7 +128,7 @@ namespace ZooApp
         //Загружаем БД для grid (чек)
         public void LoadDataFromDatabase2()
         {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo");
 
 
             conn.Open();
@@ -138,7 +138,7 @@ namespace ZooApp
             {
                 while (reader.Read())
                 {
-                    var fruit = new Fruit
+                    var fruit = new StorageCall
                     {
                         Name = reader.GetString(0),
                         Price= reader.GetDouble(1)
@@ -191,7 +191,7 @@ namespace ZooApp
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Refresh refresh = new Refresh();
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo");
             conn.Open();
             string query = $"TRUNCATE TABLE fruits2;";
             using (var command = new NpgsqlCommand(query, conn))

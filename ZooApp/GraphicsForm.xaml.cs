@@ -29,7 +29,7 @@ namespace ZooApp
     /// </summary>
     public partial class GraphicsForm : Window
     {
-        public ObservableCollection<Fruit> Items4 { get; set; }
+        public ObservableCollection<StorageCall> Items4 { get; set; }
         //public SeriesCollection SeriesCollection { get; set; }
         public List<string> ProductLabels { get; set; }
 
@@ -45,14 +45,14 @@ namespace ZooApp
 
             DataContext = this;
 
-            Items4 = new ObservableCollection<Fruit>();
+            Items4 = new ObservableCollection<StorageCall>();
             SeriesCollection = new SeriesCollection();
 
 
-            List<Fruit> dataList = new List<Fruit>();
+            List<StorageCall> dataList = new List<StorageCall>();
 
 
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo");
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo");
             conn.Open();
 
             string query = "SELECT * FROM get_top_selling_products(10);";
@@ -64,7 +64,7 @@ namespace ZooApp
             {
                 while (reader.Read())
                 {
-                    var fruit = new Fruit
+                    var fruit = new StorageCall
                     {
                         Name = reader.GetString(1),
                         Qty = reader.GetInt32(2)
@@ -144,7 +144,7 @@ namespace ZooApp
 
         private void MarginSaleGraph(object sender, RoutedEventArgs e)
         {
-            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+            string connString = "Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo";
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
@@ -197,7 +197,7 @@ namespace ZooApp
 
         private void SaleExpensesGraph(object sender, RoutedEventArgs e)
         {
-            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+            string connString = "Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo";
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {

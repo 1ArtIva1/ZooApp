@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZooApp
 {
-    internal class Databases
+    internal class Databank
     {
         public static string username;
         public static string password;

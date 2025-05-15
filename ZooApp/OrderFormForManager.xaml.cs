@@ -19,7 +19,7 @@ namespace ZooApp
     
     public partial class OrderFormForManager : Window
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id= " + Databases.username + "; Password=" + Databases.password + "; Database = zoo");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=localhost; User Id= " + Databank.username + "; Password=" + Databank.password + "; Database = zoo");
 
         public OrderFormForManager()
         {
@@ -42,7 +42,7 @@ namespace ZooApp
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (Databases.username == "postgres")
+            if (Databank.username == "postgres")
             {
                 MainManager mainManager = new MainManager();
                 mainManager.Show();

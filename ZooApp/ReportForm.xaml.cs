@@ -38,7 +38,7 @@ namespace ZooApp
             DataGrid3.ItemsSource = null;
 
             // Подключение к базе данных PostgreSQL
-            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+            string connString = "Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo";
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
@@ -64,7 +64,7 @@ namespace ZooApp
             DataGrid3.ItemsSource = null;
 
             // Подключение к базе данных PostgreSQL
-            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+            string connString = "Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo";
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
@@ -90,7 +90,7 @@ namespace ZooApp
             DataGrid3.ItemsSource = null;
 
             // Подключение к базе данных PostgreSQL
-            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+            string connString = "Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo";
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {
@@ -116,7 +116,7 @@ namespace ZooApp
             DataGrid3.ItemsSource = null;
 
             // Подключение к базе данных PostgreSQL
-            string connString = "Server=localhost; User Id=" + Databases.username + "; Password=" + Databases.password + "; Database=zoo";
+            string connString = "Server=localhost; User Id=" + Databank.username + "; Password=" + Databank.password + "; Database=zoo";
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connString))
             {

@@ -23,7 +23,7 @@ namespace ZooApp
     /// </summary>
     public partial class OrderForm : Window
     {
-       public ObservableCollection<Fruit> fruits = new ObservableCollection<Fruit>();
+       public ObservableCollection<StorageCall> fruits = new ObservableCollection<StorageCall>();
 
 
         public OrderForm()

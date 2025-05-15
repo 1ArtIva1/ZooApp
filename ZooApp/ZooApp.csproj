@@ -135,11 +135,12 @@
     <Compile Include="ArrangeSellForm.xaml.cs">
       <DependentUpon>ArrangeSellForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Databases.cs" />
+    <Compile Include="Databank.cs" />
+    <Compile Include="DatabaseService.cs" />
     <Compile Include="FirstRegForm.xaml.cs">
       <DependentUpon>FirstRegForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fruit.cs" />
+    <Compile Include="StorageCall.cs" />
     <Compile Include="GraphicsForm.xaml.cs">
       <DependentUpon>GraphicsForm.xaml</DependentUpon>
     </Compile>
