@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ZooApp.Properties
+namespace Home.Properties
 {
 
 

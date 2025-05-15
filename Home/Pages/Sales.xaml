@@ -1,0 +1,77 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Home.Pages.Sales"
+      Background="#1A1A1A" av:DesignHeight="690" av:DesignWidth="924">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="387*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="476*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Блок с таблицей -->
+        <DataGrid Grid.Row="0" Grid.Column="0"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="Column"
+                  Background="White"
+                  Foreground="Black" Grid.ColumnSpan="3" Margin="0,0,257,143" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Number}" Width="*"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="Auto"/>
+                <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="Auto"/>
+                <DataGridTextColumn Header="Ед. Изм." Binding="{Binding Unit}" Width="Auto"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="Auto"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Sum}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- Блок с полями -->
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left" Margin="245,0,0,0" VerticalAlignment="Bottom" Grid.Column="2" Grid.RowSpan="2" Height="640" Width="223">
+            <StackPanel Margin="10" Height="20">
+                <TextBlock Text="Чек № 123456789" FontSize="18" Foreground="White" Margin="0,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel  Height="49">
+                <TextBlock Text="Cумма" HorizontalAlignment="Center"   Foreground="White"/>
+                <TextBox Width="200"/>
+            </StackPanel>
+            <StackPanel  Height="52">
+                <TextBlock Text="Получено" HorizontalAlignment="Center" Foreground="White"/>
+                <TextBox Width="200"/>
+            </StackPanel>
+            <StackPanel  Height="56">
+                <TextBlock Text="Скидка" HorizontalAlignment="Center" Foreground="White"/>
+                <TextBox Width="200"/>
+            </StackPanel>
+            <StackPanel  Height="53">
+                <TextBlock Text="Сдача" HorizontalAlignment="Center" Foreground="White"/>
+                <TextBox Width="200"/>
+            </StackPanel>
+            <StackPanel  Margin="0,300,0,0" Height="78" Orientation="Horizontal" Width="231" >
+                <Button Content="Наличные"  Width="100" Height="50" Margin="10"/>
+                <Button Content="Отмена"  Width="100" Height="50" Margin="10"/>
+            </StackPanel>
+        </StackPanel>
+        <!-- Блок "Чек" с кнопками -->
+        <TextBlock Text="Чек" Foreground="White" FontSize="20" Margin="19,136,465,92" Width="400" Grid.ColumnSpan="3" Grid.Row="1"/>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="92" Width="454">
+            <UniformGrid Columns="3" Rows="2" Height="70" Width="460">
+                <Button Content="Добавить"  Width="110" Height="25"/>
+                <Button Content="Удалить"  Width="110" Height="25"/>
+                <Button Content="Очистить"  Width="110" Height="25"/>
+                <Button Content="Печать"  Width="110" Height="25"/>
+                <Button Content="Оплатить"  Width="110" Height="25"/>
+                <Button Content="Отмена"  Width="110" Height="25"/>
+            </UniformGrid>
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>
