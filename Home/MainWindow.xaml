@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:Home.Converters"
         mc:Ignorable="d"
         Title="Program for smthng (ver. 0.1.2)"
         Height="800" Width="1200"
@@ -10,35 +11,14 @@
         WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Style x:Key="MenuButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Margin" Value="20,10,20,0"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2A2A2A"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <!-- Стиль для TabItem -->
         <Style TargetType="TabItem">
             <Setter Property="Background" Value="#2D2D30"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Margin" Value="0,0,2,0"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
@@ -70,7 +50,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#007ACC"/>
+                                <Setter TargetName="Border" Property="Background" Value="#4C4C4C"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -83,7 +63,7 @@
         </Style>
 
 
-
+        
     </Window.Resources>
 
     <Grid>
@@ -93,7 +73,7 @@
             <DockPanel Margin="10,0" LastChildFill="False">
                 <!-- Левая группа кнопок -->
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Center">
-                    <Button Content="Дом" Style="{StaticResource MenuButtonStyle}" />
+                    <Button Content="Дом" Style="{StaticResource MenuButtonStyle}" Click="HomeButton_Click"/>
                     <Button Content="Вид" Style="{StaticResource MenuButtonStyle}" />
                     <Button Content="Инструменты" Style="{StaticResource MenuButtonStyle}" />
                 </StackPanel>
@@ -120,8 +100,9 @@
                 <!-- Кнопки меню -->
                 <StackPanel Margin="0,20,0,0">
                     <Button Content="Продажи" Style="{StaticResource MenuButtonStyle}" Margin="50,30,0,0" Click="SalesButton_Click"/>
-                    <Button Content="Склад" Style="{StaticResource MenuButtonStyle}"  Margin="50,30,0,0"/>
+                    <Button Content="Склад" Style="{StaticResource MenuButtonStyle}"  Margin="50,30,0,0" Click="Storage_Click"/>
                     <Button Content="Операции" Style="{StaticResource MenuButtonStyle}"  Margin="50,30,0,0"/>
+                    <Button Content="Отчеты" Style="{StaticResource MenuButtonStyle}" Click="ReportsButton_Click" Margin="50,30,0,0"/>
                 </StackPanel>
                 <StackPanel Margin="-10,467,0,0" Orientation="Horizontal">
                     <TextBlock Text="ООО « »" FontSize="20" Foreground="White" Margin="20,30,0,0" />
@@ -133,7 +114,7 @@
             <TabControl x:Name="MainTabControl" Grid.Column="1" Background="#1A1A1A" Foreground="White" Margin="10" >
                 <!-- Можно добавить начальную вкладку сразу -->
                 <TabItem Header="Главная" >
-                    <Frame Source="Pages/Homes.xaml" NavigationUIVisibility="Hidden" />
+                    <Frame Source="Pages/Homes.xaml" NavigationUIVisibility="Hidden" Height="689.8" />
                 </TabItem>
             </TabControl>
         </Grid>

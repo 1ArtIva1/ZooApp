@@ -33,9 +33,7 @@
         </DataGrid>
         <!-- Блок с полями -->
         <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left" Margin="245,0,0,0" VerticalAlignment="Bottom" Grid.Column="2" Grid.RowSpan="2" Height="640" Width="223">
-            <StackPanel Margin="10" Height="20">
-                <TextBlock Text="Чек № 123456789" FontSize="18" Foreground="White" Margin="0,0,0,0"/>
-            </StackPanel>
+                <TextBlock Text="Чек № 123456789" FontSize="18" Foreground="White" Margin="0,0,0,0" Height="26"/>
 
             <StackPanel  Height="49">
                 <TextBlock Text="Cумма" HorizontalAlignment="Center"   Foreground="White"/>
@@ -59,7 +57,7 @@
             </StackPanel>
         </StackPanel>
         <!-- Блок "Чек" с кнопками -->
-        <TextBlock Text="Чек" Foreground="White" FontSize="20" Margin="19,136,465,92" Width="400" Grid.ColumnSpan="3" Grid.Row="1"/>
+        <TextBlock Text="Чек" Foreground="White" FontSize="20" Margin="19,136,465,79" Width="400" Grid.ColumnSpan="3" Grid.Row="1"/>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="92" Width="454">
             <UniformGrid Columns="3" Rows="2" Height="70" Width="460">
                 <Button Content="Добавить"  Width="110" Height="25"/>

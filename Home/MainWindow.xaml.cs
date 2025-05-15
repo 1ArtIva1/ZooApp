@@ -77,6 +77,74 @@ namespace Home
             MainTabControl.Items.Add(tabItem);
             tabItem.IsSelected = true;
         }
+        private void ReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TabItem tab in MainTabControl.Items)
+            {
+                if ((string)tab.Header == "Отчеты")
+                {
+                    tab.IsSelected = true;
+                    return;
+                }
+            }
+
+            var tabItem = new TabItem { Header = "Отчеты" };
+            var frame = new Frame
+            {
+                Content = new Reports(),
+                NavigationUIVisibility = NavigationUIVisibility.Hidden
+            };
+            tabItem.Content = frame;
+            MainTabControl.Items.Add(tabItem);
+            tabItem.IsSelected = true;
+        }
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Проверяем, есть ли уже вкладка "Главная"
+            foreach (TabItem tab in MainTabControl.Items)
+            {
+                if ((string)tab.Header == "Главная")
+                {
+                    tab.IsSelected = true;
+                    return;
+                }
+            }
+
+            // Если вкладки нет — создаём новую
+            var homeTab = new TabItem { Header = "Главная" };
+            var homeFrame = new Frame
+            {
+                Source = new Uri("Pages/Homes.xaml", UriKind.Relative),
+                NavigationUIVisibility = NavigationUIVisibility.Hidden
+            };
+
+            homeTab.Content = homeFrame;
+            MainTabControl.Items.Add(homeTab);
+            homeTab.IsSelected = true;
+        }
+        private void Storage_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TabItem tab in MainTabControl.Items)
+            {
+                if ((string)tab.Header == "Склад")
+                {
+                    tab.IsSelected = true;
+                    return;
+                }
+            }
+
+            var tabItem = new TabItem { Header = "Склад" };
+            var frame = new Frame
+            {
+                Source = new Uri("Pages/Storage.xaml", UriKind.Relative),
+                NavigationUIVisibility = NavigationUIVisibility.Hidden
+            };
+            tabItem.Content = frame;
+            MainTabControl.Items.Add(tabItem);
+            tabItem.IsSelected = true;
+        }
+
+
 
     }
 }
