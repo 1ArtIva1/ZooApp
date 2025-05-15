@@ -1,0 +1,120 @@
+﻿using Npgsql;
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+namespace Home.Services
+{
+    public class DatabaseService : IDisposable
+    {
+        private NpgsqlConnection _connection;
+        private string _host;
+        private string _database;
+        private int _port;
+
+        public DatabaseService(string host, int port, string database)
+        {
+            _host = host;
+            _port = port;
+            _database = database;
+        }
+
+        public void InitializeConnection(string username, string password)
+        {
+            var connectionString =
+                $"Host={_host};Port={_port};Database={_database};Username={username};Password={password}";
+
+            _connection = new NpgsqlConnection(connectionString);
+        }
+
+        public void OpenConnection()
+        {
+            if (_connection.State != ConnectionState.Open)
+            {
+                _connection.Open();
+            }
+        }
+
+        public void CloseConnection()
+        {
+            if (_connection.State != ConnectionState.Closed)
+            {
+                _connection.Close();
+            }
+        }
+
+        public NpgsqlConnection GetConnection()
+        {
+            return _connection;
+        }
+
+        public void Dispose()
+        {
+            _connection?.Dispose();
+        }
+
+        public string GetUserRole()
+        {
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT pg_get_user_roleid(rolname) FROM pg_roles WHERE pg_has_role(current_user, oid, 'member') AND rolname = 'emps'",
+                    _connection))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != null ? "emps" : "other";
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public List<string> GetUserRoles()
+        {
+            var roles = new List<string>();
+
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT rolname FROM pg_roles WHERE pg_has_role(current_user, oid, 'member')",
+                    _connection))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            roles.Add(reader.GetString(0));
+                        }
+                    }
+                }
+                return roles;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public string GetUserMainRole()
+        {
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT rolname FROM pg_roles WHERE rolname = current_user",
+                    _connection))
+                {
+                    return cmd.ExecuteScalar()?.ToString() ?? "не определена";
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+    }
+}
