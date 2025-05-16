@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!-- Блок с таблицей -->
-        <DataGrid Grid.Row="0" Grid.Column="0"
+        <DataGrid x:Name="SaleGrid" Grid.Row="0" Grid.Column="0"
                   AutoGenerateColumns="False"
                   HeadersVisibility="Column"
                   Background="White"
@@ -60,12 +60,12 @@
         <TextBlock Text="Чек" Foreground="White" FontSize="20" Margin="19,136,465,79" Width="400" Grid.ColumnSpan="3" Grid.Row="1"/>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="92" Width="454">
             <UniformGrid Columns="3" Rows="2" Height="70" Width="460">
-                <Button Content="Добавить"  Width="110" Height="25"/>
-                <Button Content="Удалить"  Width="110" Height="25"/>
                 <Button Content="Очистить"  Width="110" Height="25"/>
-                <Button Content="Печать"  Width="110" Height="25"/>
-                <Button Content="Оплатить"  Width="110" Height="25"/>
-                <Button Content="Отмена"  Width="110" Height="25"/>
+                <Button Content="Отложить"  Width="110" Height="25"/>
+                <Button Content="Аннулировать"  Width="110" Height="25"/>
+                <Button Content="Открыть"  Width="110" Height="25"/>
+                <Button Content="Акции"  Width="110" Height="25"/>
+                <Button Content="Штрих код"  Width="110" Height="25"/>
             </UniformGrid>
 
         </StackPanel>

@@ -53,10 +53,8 @@ namespace Home
 
                 if (isManager)
                 {
-                    MessageBox.Show("Окна для роли администратора находятся в разработке", 
-                                "Авторизация", 
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                    AdminWindow sform = new AdminWindow();
+                    sform.Show();
                     this.Close();
                 }
                 else if (isEmp)

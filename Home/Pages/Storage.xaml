@@ -62,7 +62,7 @@
         </StackPanel>
 
         <!-- Таблица товаров -->
-        <DataGrid Grid.Row="1"
+        <DataGrid x:Name="myDataGrid" Grid.Row="1"
                   AutoGenerateColumns="False"
                   HeadersVisibility="Column"
                   Background="White"
@@ -73,10 +73,9 @@
                   AlternatingRowBackground="#F0F0F0"
                   BorderThickness="0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
-                <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
                 <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>

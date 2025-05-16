@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Git\ZooApp\Home\obj\Debug\
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\
 Home
 none
 false
 DEBUG;TRACE
-C:\Git\ZooApp\Home\App.xaml
-4-1672357078
+C:\Users\Shurub4iK\ZooApp\Home\App.xaml
+8-1013046677
 
-112037045002
-18-1501162963
-LoginWindow.xaml;MainWindow.xaml;Pages\Homes.xaml;Pages\Sales.xaml;
+15-1088023665
+33-629882385
+AdminWindow.xaml;LoginWindow.xaml;MainWindow.xaml;Pages\AdminHome.xaml;Pages\Homes.xaml;Pages\Reports.xaml;Pages\Sales.xaml;Pages\Storage.xaml;
 
-True
+False
 

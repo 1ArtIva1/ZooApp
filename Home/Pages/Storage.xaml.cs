@@ -23,8 +23,29 @@ namespace Home.Pages
         public Storage()
         {
             InitializeComponent();
+            var products = new List<Product>
+    {
+            new Product { Name = "Игрушка для собак", Quantity = 15, Category = "Аксессуары", Price = 350 },
+            new Product { Name = "Игрушка для кошек", Quantity = 10, Category = "Аксессуары", Price = 350 },
+            new Product { Name = "Игрушка для хомячков", Quantity = 30, Category = "Аксессуары", Price = 350 },
+            new Product { Name = "Корм для собак", Quantity = 20, Category = "Аксессуары", Price = 1000 },
+            new Product { Name = "Корм для кошек", Quantity = 15, Category = "Корма", Price = 120 },
+            new Product { Name = "Наполнитель", Quantity = 8, Category = "Гигиена", Price = 800 },
+      
+        
+    };
+
+            
+            myDataGrid.ItemsSource = products;
         }
-       
+        public class Product
+        {
+            public string Name { get; set; }
+            public int Quantity { get; set; }
+            public string Category { get; set; }
+            public decimal Price { get; set; }
+        }
+
 
     }
 }

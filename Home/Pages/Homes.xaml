@@ -37,14 +37,14 @@
 
                 <!-- Статистика -->
                 <TextBlock Text="Общая выручка за смену:" FontSize="18" Foreground="White" Margin="0,0,0,10"/>
-                <TextBlock Text="Наличные" FontSize="16" Foreground="#CCCCCC"/>
-                <TextBlock Text="Безналичная оплата" FontSize="16" Foreground="#CCCCCC"/>
-                <TextBlock Text="Средний чек" FontSize="16" Foreground="#CCCCCC"/>
-                <TextBlock Text="Оформленные чеки" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Наличные: 2210 руб." FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Безналичная оплата: 0 руб." FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Средний чек: 2210" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Оформленные чеки: 1" FontSize="16" Foreground="#CCCCCC"/>
 
                 <TextBlock Text="Время работы:" FontSize="18" Foreground="White" Margin="0,20,0,10"/>
-                <TextBlock Text="Начало" FontSize="16" Foreground="#CCCCCC"/>
-                <TextBlock Text="Конец" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Начало: 12:10" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Конец: 5:17" FontSize="16" Foreground="#CCCCCC"/>
             </StackPanel>
         </Grid>
 

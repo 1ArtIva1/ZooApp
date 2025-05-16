@@ -1,0 +1,63 @@
+﻿<Page x:Class="Home.Pages.AdminHome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#1A1A1A">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Основное содержимое -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="816*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="20" Grid.ColumnSpan="4">
+                <!-- Аватар + ФИО -->
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Width="80" Height="80" Fill="White" Grid.Column="0" Margin="0,0,20,0"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="Ахмедов Давуд Вагифович" FontSize="22" Foreground="White"/>
+                        <TextBlock Text="Администратор" FontSize="16" Foreground="#CCCCCC" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Статистика -->
+                <TextBlock Text="Выручка: за неделю" FontSize="18" Foreground="White" Margin="0,0,0,10"/>
+                <TextBlock Text="Наличные" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Безналичная оплата" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="За предыдущую неделю : + 10%" FontSize="16" Foreground="#CCCCCC"/>
+
+                <TextBlock Text="Продажи" FontSize="18" Foreground="White" Margin="0,20,0,10"/>
+                <TextBlock Text="Средний чек" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Кол-во чеков" FontSize="16" Foreground="#CCCCCC"/>
+                <TextBlock Text="Популярные категории товаров" FontSize="16" Foreground="#CCCCCC"/>
+                
+
+
+            </StackPanel>
+        </Grid>
+
+        <!-- Часы -->
+        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:HH:mm}'}"
+                   xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                   FontSize="96"
+                   Foreground="White"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,20,20"/>
+    </Grid>
+</Page>

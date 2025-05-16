@@ -17,16 +17,31 @@
                 <TextBlock Text="Товарные отчеты" Foreground="White" FontSize="20" Margin="0,0,0,10"/>
                 <Button Content="i" Style="{StaticResource MenuButtonStyle}" Margin="250,0,0,10"/>
             </StackPanel>
-            <DataGrid Height="200" Margin="0,0,0,20"/>
+            <DataGrid x:Name="Product_Reports" AutoGenerateColumns="False" HeadersVisibility="Column"
+                 Background="White"
+                 Foreground="Black"
+                 HorizontalGridLinesBrush="LightGray"
+                 VerticalGridLinesBrush="LightGray"
+                 RowBackground="White"
+                 AlternatingRowBackground="#F0F0F0"
+                 BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
+                    <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="100"/>
+                    <DataGridTextColumn Header="Минимальный остаток" Binding="{Binding MIN}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Аналитические отчеты" Foreground="White" FontSize="20" Margin="0,0,0,10"/>
                 <Button Content="i" Style="{StaticResource MenuButtonStyle}" Margin="200,0,0,10"/>
             </StackPanel>
-            <DataGrid Height="200" Margin="0,0,0,20"/>
+            <DataGrid  x:Name="Analytical_reports" Height="200" Margin="0,0,0,20"/>
         </StackPanel>
 
         <!-- Правая часть: круговая диаграмма -->
+        <TextBlock Grid.Column="1" Text="Визуализация отчета: Товарные отчеты" Foreground="White" FontSize="20" Margin="0,0,0,10" HorizontalAlignment="Center"/>
         <StackPanel Grid.Column="1" Margin="0,67,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="502">
             <lvc:PieChart Series="{Binding PieSeries}" LegendLocation="None" Margin="0,50,0,0" Height="378" Width="462"/>
 
