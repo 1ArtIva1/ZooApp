@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Home.Service;
 
 namespace Home.Services
 {
@@ -115,6 +116,39 @@ namespace Home.Services
             {
                 CloseConnection();
             }
+        }
+
+        public List<StorageItem> LoadStorageItems()
+        {
+            var items = new List<StorageItem>();
+            try
+            {
+                OpenConnection();
+                string query = @"
+                    SELECT s.id, s.name, s.qty, c.name as category, s.retail_price
+                    FROM public.Storage s
+                    JOIN Category c ON s.id_category = c.id";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(new StorageItem
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            Quantity = reader.GetInt32(2),
+                            Category = reader.GetString(3),
+                            Price = reader.GetDecimal(4)
+                        });
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return items;
         }
     }
 }

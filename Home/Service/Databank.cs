@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Home.Service;
 
 namespace Home
 {
@@ -11,5 +12,7 @@ namespace Home
     {
         public static string username;
         public static string password;
+
+        public static List<StorageItem> StorageItems = new List<StorageItem>();
     }
 }
