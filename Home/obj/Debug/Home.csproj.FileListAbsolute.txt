@@ -146,7 +146,6 @@ C:\Git\ZooApp\Home\bin\Debug\System.Threading.Channels.xml
 C:\Git\ZooApp\Home\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Git\ZooApp\Home\bin\Debug\System.ValueTuple.xml
 C:\Git\ZooApp\Home\obj\Debug\Home.csproj.AssemblyReference.cache
-C:\Git\ZooApp\Home\obj\Debug\Home.exe.config
 C:\Git\ZooApp\Home\obj\Debug\Pages\AddProductWindow.baml
 C:\Git\ZooApp\Home\obj\Debug\Pages\AdminHome.baml
 C:\Git\ZooApp\Home\obj\Debug\Pages\Homes.baml
@@ -177,3 +176,6 @@ C:\Git\ZooApp\Home\obj\Debug\Home.csproj.CoreCompileInputs.cache
 C:\Git\ZooApp\Home\obj\Debug\Home.csproj.Up2Date
 C:\Git\ZooApp\Home\obj\Debug\Home.exe
 C:\Git\ZooApp\Home\obj\Debug\Home.pdb
+C:\Git\ZooApp\Home\obj\Debug\Home.exe.config
+C:\Git\ZooApp\Home\obj\Debug\Pages\Administration.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\Administration.baml
