@@ -399,3 +399,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.vs
+Home/obj/Debug
+Home/obj/Debug/Pages
+Home/obj/Debug
