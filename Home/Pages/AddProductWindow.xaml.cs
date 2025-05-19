@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Home.Service;
+using Home.Services;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -19,10 +21,17 @@ namespace Home.Pages
     /// Логика взаимодействия для AddProductWindow.xaml
     /// </summary>
     public partial class AddProductWindow : Window
+
     {
+        private List<string> _categories;
         public AddProductWindow()
         {
             InitializeComponent();
+            using (var db = new DatabaseService("localhost", 5432, "postgres"))
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                _categories = db.GetAllCategories();
+            }
         }
         private void AddItemBlock_Click(object sender, RoutedEventArgs e)
         {
@@ -34,6 +43,7 @@ namespace Home.Pages
             };
 
             var nameBox = CreateLabeledTextBox("Наименование", 120);
+            var categoryBox = CreateLabeledComboBox("Категория", _categories.ToArray(), 120);
             var unitBox = CreateLabeledComboBox("Ед. изм.", new[] { "шт.", "кг." }, 80);
             var quantityBox = CreateLabeledTextBox("Кол-во", 60);
             var purchaseBox = CreateLabeledTextBox("Цена закупки", 80);
@@ -63,6 +73,7 @@ namespace Home.Pages
 
             // Добавляем всё в wrapper
             wrapper.Children.Add(nameBox);
+            wrapper.Children.Add(categoryBox);
             wrapper.Children.Add(unitBox);
             wrapper.Children.Add(quantityBox);
             wrapper.Children.Add(purchaseBox);
@@ -149,9 +160,64 @@ namespace Home.Pages
 
         private void SaveToDatabase_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Загрузка в БД будет реализована позже", "Инфо", MessageBoxButton.OK, MessageBoxImage.Information);
+            var newItems = new List<StorageItem>();
+
+            foreach (StackPanel wrapper in ItemsPanel.Children)
+            {
+                if (wrapper is StackPanel sp && sp.Children.Count >= 6)
+                {
+
+                    string name = ((sp.Children[0] as StackPanel)?.Children[1] as TextBox)?.Text;
+                    string category = ((sp.Children[1] as StackPanel)?.Children[1] as ComboBox)?.SelectedItem?.ToString();
+                    string unit = ((sp.Children[2] as StackPanel)?.Children[1] as ComboBox)?.SelectedItem?.ToString();
+                    string quantityStr = ((sp.Children[3] as StackPanel)?.Children[1] as TextBox)?.Text;
+                    string purchaseStr = ((sp.Children[4] as StackPanel)?.Children[1] as TextBox)?.Text;
+                    string saleStr = ((sp.Children[6] as StackPanel)?.Children[1] as TextBlock)?.Text;
+
+
+                    if (string.IsNullOrWhiteSpace(name) ||
+                        string.IsNullOrWhiteSpace(category) ||
+                        string.IsNullOrWhiteSpace(unit) ||
+                        !int.TryParse(quantityStr, out int quantity) ||
+                        !decimal.TryParse(purchaseStr, out decimal purchasePrice) ||
+                        !decimal.TryParse(saleStr, out decimal salePrice))
+                    {
+                        MessageBox.Show("Проверьте введённые данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    newItems.Add(new StorageItem
+                    {
+                        Name = name,
+                        Category = category,
+                        Unit = unit,
+                        Quantity = quantity,
+                        PurchasePrice = purchasePrice,
+                        Price = salePrice,
+
+                        
+                    });
+                }
+
+            }
+
+            // Сохраняем в БД
+            using (var db = new DatabaseService("localhost", 5432, "postgres"))
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                foreach (var item in newItems)
+                {
+                    db.AddStorageItem(item); // предполагается наличие такого метода
+                }
+            }
+
+            MessageBox.Show("Товары успешно добавлены!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.DialogResult = true;
+            this.Close();
         }
     }
+        
+    
 }
 
     

@@ -22,12 +22,11 @@ namespace Home.Pages
     /// </summary>
     public partial class Storage : Page
     {
-        //private List<Product> allProducts = new List<Product>();
         public Storage()
         {
             InitializeComponent();
 
-            using (var db = new DatabaseService("localhost", 5432, "vkr"))
+            using (var db = new DatabaseService("localhost", 5432, "postgres"))
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 Databank.StorageItems = db.LoadStorageItems();
@@ -35,19 +34,21 @@ namespace Home.Pages
             myDataGrid.ItemsSource = Databank.StorageItems;
         }
 
-        //public class Product
-        //{
-        //    public string Name { get; set; }
-        //    public int Quantity { get; set; } 
-        //    public string Category { get; set; }
-        //    public decimal Price { get; set; }
-        //}
+     
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new AddProductWindow();
+            if (window.ShowDialog() == true)
+            {
+                using (var db = new DatabaseService("localhost", 5432, "postgres"))
+                {
+                    db.InitializeConnection(Databank.username, Databank.password);
+                    Databank.StorageItems = db.LoadStorageItems();
+                }
+                myDataGrid.ItemsSource = Databank.StorageItems;
+            }
             window.Owner = Application.Current.MainWindow;
-            window.ShowDialog();
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

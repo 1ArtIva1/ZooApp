@@ -151,5 +151,73 @@ namespace Home.Services
                 CloseConnection();
             }
         }
+        public void AddStorageItem(StorageItem item)
+        {
+            try
+            {
+                OpenConnection();
+
+                // Получаем id категории "Без категории" (можно заменить или убрать если не используешь категории)
+                int categoryId;
+                using (var cmd = new NpgsqlCommand("SELECT id FROM Category WHERE name = @name", _connection))
+                {
+                    cmd.Parameters.AddWithValue("name", item.Category);
+                    var result = cmd.ExecuteScalar();
+                    if (result == null)
+                    {
+                        using (var insertCmd = new NpgsqlCommand("INSERT INTO Category (name) VALUES ('Без категории') RETURNING id", _connection))
+                        {
+                            categoryId = (int)insertCmd.ExecuteScalar();
+                        }
+                    }
+                    else
+                    {
+                        categoryId = (int)result;
+                    }
+                }
+
+                // Вставка в таблицу Storage
+                string insertQuery = @"
+        INSERT INTO Storage (name, unit, qty, wholesale_price, retail_price, id_category)
+        VALUES (@name, @unit, @qty, @purchase, @retail, @cat)";
+                using (var cmd = new NpgsqlCommand(insertQuery, _connection))
+                {
+                    cmd.Parameters.AddWithValue("name", item.Name);
+                    cmd.Parameters.AddWithValue("unit", item.Unit);
+                    cmd.Parameters.AddWithValue("qty", item.Quantity);
+                    cmd.Parameters.AddWithValue("purchase", item.PurchasePrice);
+                    cmd.Parameters.AddWithValue("retail", item.Price);
+                    cmd.Parameters.AddWithValue("cat", categoryId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public List<string> GetAllCategories()
+        {
+            var categories = new List<string>();
+            try
+            {
+                OpenConnection();
+                string query = "SELECT name FROM Category";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        categories.Add(reader.GetString(0));
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return categories;
+        }
+
     }
 }
