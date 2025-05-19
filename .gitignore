@@ -365,3 +365,6 @@ FodyWeavers.xsd
 .vs
 Home/.vs
 .vs
+Home/bin/Debug
+Home/obj/Debug
+Home/obj/Debug
