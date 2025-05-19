@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Service\Databank.cs" />
     <Compile Include="Service\DatabaseService.cs" />
+    <Compile Include="Service\StorageItem.cs" />
     <Page Include="AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
