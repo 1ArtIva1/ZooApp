@@ -3,48 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Добавить товар" Height="250" Width="800" Background="#1A1A1A"
         WindowStartupLocation="CenterScreen">
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="MainPanel" Margin="10" Background="#222" Orientation="Vertical" >
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,23,0,0" Width="760">
-            <StackPanel>
-                <TextBlock Text="Наименование" Foreground="White"/>
-                <TextBox x:Name="NameTextBox" Width="120"/>
-            </StackPanel>
+            <!-- Кнопка [+] -->
+            <Button Content="+" Click="AddItemBlock_Click"
+                    Width="40" Height="30"
+                    Background="#2ecc71" Foreground="White"
+                    FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" />
 
-            <StackPanel>
-                <TextBlock Text="Ед. изм." Foreground="White"/>
-                <ComboBox x:Name="UnitComboBox" Width="80">
-                    <ComboBoxItem Content="шт."/>
-                    <ComboBoxItem Content="кг."/>
-                </ComboBox>
-            </StackPanel>
+            <!-- Контейнер для всех блоков -->
+            <StackPanel x:Name="ItemsPanel" Orientation="Vertical" />
 
-            <StackPanel>
-                <TextBlock Text="Кол-во" Foreground="White"/>
-                <TextBox x:Name="QuantityTextBox" Width="60"/>
-            </StackPanel>
-
-            <StackPanel>
-                <TextBlock Text="Цена закупки" Foreground="White"/>
-                <TextBox x:Name="PurchasePriceTextBox" Width="80" TextChanged="UpdatePrice"/>
-            </StackPanel>
-
-            <StackPanel>
-                <TextBlock Text="Наценка (%)" Foreground="White"/>
-                <TextBox x:Name="MarkupTextBox" Width="80" TextChanged="UpdatePrice"/>
-            </StackPanel>
-
-            <StackPanel>
-                <TextBlock Text="Цена продажи" Foreground="White"/>
-                <TextBlock x:Name="SellingPriceTextBlock" Width="100" Background="#333" Foreground="White" Text="0" TextAlignment="Center"/>
-            </StackPanel>
+            <!-- Кнопка "Добавить" -->
+            <Button Content="Добавить"
+                    Click="SaveToDatabase_Click"
+                    Width="150" Height="35"
+                    Background="#3498db" Foreground="White"
+                    FontSize="14" FontWeight="Bold"
+                    HorizontalAlignment="Left" Margin="0,10,0,0" />
         </StackPanel>
-
-        <Button Content="Добавить" Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0" Padding="10,5"
-                Background="Transparent" BorderBrush="LimeGreen" BorderThickness="2" Foreground="White"/>
-    </Grid>
+    </ScrollViewer>
 </Window>
