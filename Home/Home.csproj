@@ -120,11 +120,20 @@
     <Compile Include="Pages\AdminHome.xaml.cs">
       <DependentUpon>AdminHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Administration.xaml.cs">
+      <DependentUpon>Administration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Discounts.xaml.cs">
+      <DependentUpon>Discounts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users.xaml.cs">
+      <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service\Databank.cs" />
     <Compile Include="Service\DatabaseService.cs" />
@@ -160,6 +169,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Administration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Discounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Homes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +192,10 @@
     <Page Include="Pages\Storage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Users.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +231,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Top-panel\home_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

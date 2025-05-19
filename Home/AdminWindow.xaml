@@ -73,7 +73,11 @@
             <DockPanel Margin="10,0" LastChildFill="False">
                 <!-- Левая группа кнопок -->
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Center">
-                    <Button Content="Дом" Style="{StaticResource MenuButtonStyle}" Click="HomeButton_Click"/>
+                    <Button BorderThickness="0" Background="Transparent">
+                        <StackPanel>
+                            <Image Source="/Resources/Top-panel/home_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" />
+                        </StackPanel>  
+                    </Button>
                     <Button Content="Вид" Style="{StaticResource MenuButtonStyle}" />
                     <Button Content="Инструменты" Style="{StaticResource MenuButtonStyle}" />
                 </StackPanel>
@@ -99,9 +103,10 @@
             <StackPanel Grid.Column="0" Width="240" Background="#111111" HorizontalAlignment="Left">
                 <!-- Кнопки меню -->
                 <StackPanel Margin="0,20,0,0">
-                    <Button Content="Отчеты" Style="{StaticResource MenuButtonStyle}" Click="ReportsButton_Click" Margin="50,30,0,0"/>
-                    <Button Content="Финансы" Style="{StaticResource MenuButtonStyle}" Click="ReportsButton_Click" Margin="50,30,0,0"/>
-                    <Button Content="Администрирование" Style="{StaticResource MenuButtonStyle}" Click="ReportsButton_Click" Margin="20,30,0,0"/>
+                    <Button Content="Отчеты" Style="{StaticResource MenuButtonStyle}" Click="ReportsButton_Click"/>
+                    <Button Content="Финансы" Style="{StaticResource MenuButtonStyle}" Click="FinanceButton_Click"/>
+                    <Button Content="Акции" Style="{StaticResource MenuButtonStyle}" Click="DiscountsButton_Click"/>
+                    <Button Content="Пользователи" Style="{StaticResource MenuButtonStyle}" Click="UsersButton_Click"/>
                 </StackPanel>
                 <StackPanel Margin="-10,467,0,0" Orientation="Horizontal">
                     <TextBlock Text="ООО « »" FontSize="20" Foreground="White" Margin="20,30,0,0" />
@@ -112,7 +117,7 @@
             <!-- Основная область справа с вкладками -->
             <TabControl x:Name="MainTabControl" Grid.Column="1" Background="#1A1A1A" Foreground="White" Margin="10" >
                 <!-- Можно добавить начальную вкладку сразу -->
-                <TabItem Header="Главная" >
+                <TabItem Header="Главная" Margin="-2,0,-2,0" >
                     <Frame Source="Pages/AdminHome.xaml" NavigationUIVisibility="Hidden" Height="689.8" />
                 </TabItem>
             </TabControl>
