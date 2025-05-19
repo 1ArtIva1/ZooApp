@@ -45,6 +45,16 @@ namespace Home.Pages
             public string Category { get; set; }
             public decimal Price { get; set; }
         }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AddProductWindow();
+            window.Owner = Application.Current.MainWindow;
+
+            if (window.ShowDialog() == true)
+            {
+                // После закрытия можно получить введённые данные, если вы добавите публичные свойства
+            }
+        }
 
 
     }

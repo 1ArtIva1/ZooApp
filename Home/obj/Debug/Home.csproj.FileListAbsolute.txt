@@ -32,7 +32,6 @@ C:\Users\Shurub4iK\source\repos\Home\Home\obj\Debug\Pages\Storage.g.cs
 C:\Users\Shurub4iK\source\repos\Home\Home\obj\Debug\Pages\Storage.baml
 C:\Users\Shurub4iK\source\repos\Home\Home\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.csproj.AssemblyReference.cache
-C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Homes.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Sales.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\LoginWindow.g.cs
@@ -102,3 +101,5 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\AdminWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\AdminWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AdminHome.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AdminHome.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddProductWindow.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddProductWindow.baml

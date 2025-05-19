@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Shurub4iK\\ZooApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|c:\\users\\shurub4ik\\zooapp\\home\\pages\\sales.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\sales.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|c:\\users\\shurub4ik\\zooapp\\home\\pages\\addproductwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\addproductwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|c:\\users\\shurub4ik\\zooapp\\home\\pages\\sales.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\sales.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|c:\\users\\shurub4ik\\zooapp\\home\\pages\\addproductwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\addproductwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|C:\\Users\\Shurub4iK\\ZooApp\\home\\pages\\homes.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\homes.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|C:\\Users\\Shurub4iK\\ZooApp\\home\\pages\\homes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\homes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|c:\\users\\shurub4ik\\zooapp\\home\\pages\\addproductwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78B4D5E0-BE37-4C56-8E58-E28D380158F0}|Home\\Home.csproj|solutionrelative:home\\pages\\addproductwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,25 +27,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Sales.xaml",
-              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Sales.xaml",
-              "RelativeDocumentMoniker": "Home\\Pages\\Sales.xaml",
-              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Sales.xaml",
-              "RelativeToolTip": "Home\\Pages\\Sales.xaml",
+              "Title": "AddProductWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\AddProductWindow.xaml",
+              "RelativeDocumentMoniker": "Home\\Pages\\AddProductWindow.xaml",
+              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\AddProductWindow.xaml",
+              "RelativeToolTip": "Home\\Pages\\AddProductWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-16T01:58:54.45Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Homes.xaml",
-              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Homes.xaml",
-              "RelativeDocumentMoniker": "Home\\Pages\\Homes.xaml",
-              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Homes.xaml",
-              "RelativeToolTip": "Home\\Pages\\Homes.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-16T02:14:11.409Z",
+              "WhenOpened": "2025-05-19T18:27:10.084Z",
               "EditorCaption": ""
             }
           ]
@@ -61,28 +45,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Sales.xaml",
-              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Sales.xaml",
-              "RelativeDocumentMoniker": "Home\\Pages\\Sales.xaml",
-              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Sales.xaml",
-              "RelativeToolTip": "Home\\Pages\\Sales.xaml",
-              "ViewState": "AgIAABMAAAAAAAAAAAAqwDgAAAAZAAAAAAAAAA==",
+              "Title": "AddProductWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\AddProductWindow.xaml",
+              "RelativeDocumentMoniker": "Home\\Pages\\AddProductWindow.xaml",
+              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\AddProductWindow.xaml",
+              "RelativeToolTip": "Home\\Pages\\AddProductWindow.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-16T01:59:03.27Z",
-              "IsPinned": true,
+              "WhenOpened": "2025-05-19T18:28:31.093Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Homes.xaml",
-              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Homes.xaml",
-              "RelativeDocumentMoniker": "Home\\Pages\\Homes.xaml",
-              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\Homes.xaml",
-              "RelativeToolTip": "Home\\Pages\\Homes.xaml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACoAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-16T02:14:20.192Z",
+              "Title": "AddProductWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\AddProductWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Home\\Pages\\AddProductWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Shurub4iK\\ZooApp\\Home\\Pages\\AddProductWindow.xaml.cs",
+              "RelativeToolTip": "Home\\Pages\\AddProductWindow.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T18:28:37.725Z",
               "EditorCaption": ""
             }
           ]

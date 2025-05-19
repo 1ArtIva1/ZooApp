@@ -34,7 +34,7 @@
                     Foreground="White"
                     BorderThickness="2"
                     Background="Transparent"
-                    Margin="0,0,10,0"/>
+                    Margin="0,0,10,0" Click="AddButton_Click"/>
 
             <!-- Меню "Группировка" -->
             <ComboBox Width="150" Height="28" Margin="0,0,10,0">
