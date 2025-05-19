@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Home.Service;
+using Home.Services;
 
 namespace Home.Pages
 {
@@ -20,32 +22,26 @@ namespace Home.Pages
     /// </summary>
     public partial class Storage : Page
     {
-        private List<Product> allProducts = new List<Product>();
+        //private List<Product> allProducts = new List<Product>();
         public Storage()
         {
             InitializeComponent();
 
-            // Исходный список продуктов
-            allProducts = new List<Product>
+            using (var db = new DatabaseService("localhost", 5432, "vkr"))
             {
-                new Product { Name = "Игрушка для собак", Quantity = 15, Category = "Аксессуары", Price = 350 },
-                new Product { Name = "Игрушка для кошек", Quantity = 10, Category = "Аксессуары", Price = 350 },
-                new Product { Name = "Игрушка для хомячков", Quantity = 0, Category = "Аксессуары", Price = 350 },
-                new Product { Name = "Корм для собак", Quantity = 20, Category = "Корма", Price = 1000 },
-                new Product { Name = "Корм для кошек", Quantity = 0, Category = "Корма", Price = 120 },
-                new Product { Name = "Наполнитель", Quantity = 8, Category = "Гигиена", Price = 800 },
-            };
-
-            myDataGrid.ItemsSource = allProducts;
+                db.InitializeConnection(Databank.username, Databank.password);
+                Databank.StorageItems = db.LoadStorageItems();
+            }
+            myDataGrid.ItemsSource = Databank.StorageItems;
         }
 
-        public class Product
-        {
-            public string Name { get; set; }
-            public int Quantity { get; set; }
-            public string Category { get; set; }
-            public decimal Price { get; set; }
-        }
+        //public class Product
+        //{
+        //    public string Name { get; set; }
+        //    public int Quantity { get; set; }
+        //    public string Category { get; set; }
+        //    public decimal Price { get; set; }
+        //}
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,7 +67,7 @@ namespace Home.Pages
 
         private void ApplyFilters()
         {
-            IEnumerable<Product> filtered = allProducts; 
+            IEnumerable<StorageItem> filtered = Databank.StorageItems; 
 
             // Поиск
             string searchText = SearchBox.Text?.ToLower();
