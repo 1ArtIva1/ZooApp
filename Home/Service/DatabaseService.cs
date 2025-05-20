@@ -13,11 +13,11 @@ namespace Home.Services
         private string _database;
         private int _port;
 
-        public DatabaseService(string host, int port, string database)
+        public DatabaseService()
         {
-            _host = host;
-            _port = port;
-            _database = database;
+            _host = "localhost";
+            _port = 5432;
+            _database = "vkr";
         }
 
         public void InitializeConnection(string username, string password)

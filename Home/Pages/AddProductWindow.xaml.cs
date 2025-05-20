@@ -2,6 +2,7 @@
 using Home.Services;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Home.Pages
 {
     /// <summary>
@@ -27,7 +29,8 @@ namespace Home.Pages
         public AddProductWindow()
         {
             InitializeComponent();
-            using (var db = new DatabaseService("localhost", 5432, "vkr"))
+
+            using (var db = new DatabaseService())
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 _categories = db.GetAllCategories();
@@ -202,7 +205,7 @@ namespace Home.Pages
             }
 
             // Сохраняем в БД
-            using (var db = new DatabaseService("localhost", 5432, "vkr"))
+            using (var db = new DatabaseService())
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 foreach (var item in newItems)
@@ -219,6 +222,4 @@ namespace Home.Pages
         
     
 }
-
-    
 
