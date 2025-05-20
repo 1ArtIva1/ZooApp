@@ -36,6 +36,8 @@ namespace Home.Pages
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
             stackPanel.Children.Add(frame);
+            MainPanel.Children.Clear();
+            MainPanel.Children.Add(stackPanel);
         }
 
         private void UsersButton_Click(object sender, RoutedEventArgs e)

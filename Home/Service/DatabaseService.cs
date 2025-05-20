@@ -13,11 +13,11 @@ namespace Home.Services
         private string _database;
         private int _port;
 
-        public DatabaseService(string host, int port, string database)
+        public DatabaseService()
         {
-            _host = host;
-            _port = port;
-            _database = database;
+            _host = "localhost";
+            _port = 5432;
+            _database = "vkr";
         }
 
         public void InitializeConnection(string username, string password)
@@ -52,25 +52,6 @@ namespace Home.Services
         public void Dispose()
         {
             _connection?.Dispose();
-        }
-
-        public string GetUserRole()
-        {
-            try
-            {
-                OpenConnection();
-                using (var cmd = new NpgsqlCommand(
-                    "SELECT pg_get_user_roleid(rolname) FROM pg_roles WHERE pg_has_role(current_user, oid, 'member') AND rolname = 'emps'",
-                    _connection))
-                {
-                    var result = cmd.ExecuteScalar();
-                    return result != null ? "emps" : "other";
-                }
-            }
-            finally
-            {
-                CloseConnection();
-            }
         }
 
         public List<string> GetUserRoles()
@@ -153,6 +134,56 @@ namespace Home.Services
                 CloseConnection();
             }
         }
+
+        public List<Discounts> LoadDiscounts()
+        {
+            var discounts = new List<Discounts>();
+            try
+            {
+                OpenConnection();
+                string query = "SELECT id, name, value FROM discount";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        discounts.Add(new Discounts
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            DiscountValue = reader.GetInt32(2)
+                        });
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return discounts;
+        }
+
+        public void AddDiscounts(Discounts discounts)
+        {
+            try
+            {
+                OpenConnection();
+                string query = @"
+                    INSERT INTO discount (name, value)
+                    VALUES (@name, @value)";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                {
+                    cmd.Parameters.AddWithValue("name", discounts.Name);
+                    cmd.Parameters.AddWithValue("value", discounts.DiscountValue);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
         public void AddStorageItem(StorageItem item)
         {
             try

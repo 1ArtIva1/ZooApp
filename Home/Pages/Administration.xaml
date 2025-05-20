@@ -9,14 +9,25 @@
       Title="Adminstration">
 
     <Grid>
-        <StackPanel Margin="20" Grid.ColumnSpan="4">
-            <Button Style="{StaticResource MenuButtonStyle}" Click="UsersButton_Click">
-                Пользователи
-            </Button>
-            <Button Style="{StaticResource MenuButtonStyle}" Click="DiscountsButton_Click">
-                Акции
-            </Button>
-        </StackPanel>
-        
+        <VirtualizingStackPanel x:Name="MainPanel" Background="#1A1A1A" Margin="0,0,0,0">
+            
+            <VirtualizingStackPanel.Resources>
+                <Style TargetType="Button" x:Key="MenuButtonStyle">
+                    <Setter Property="Background" Value="#2D2D30"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Padding" Value="10,5"/>
+                    <Setter Property="Margin" Value="0,0,2,0"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+            </VirtualizingStackPanel.Resources>
+            <StackPanel Margin="20" Grid.ColumnSpan="4">
+                <Button Style="{StaticResource MenuButtonStyle}" Click="UsersButton_Click" Margin="0,0,2,20">
+                    Пользователи
+                </Button>
+                <Button Style="{StaticResource MenuButtonStyle}" Click="DiscountsButton_Click">
+                    Акции
+                </Button>
+            </StackPanel>
+        </VirtualizingStackPanel>
     </Grid>
 </Page>
