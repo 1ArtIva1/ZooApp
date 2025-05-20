@@ -109,7 +109,7 @@ namespace Home.Services
                 OpenConnection();
                 string query = @"
                     SELECT s.id, s.name, s.qty, c.name as category, s.retail_price
-                    FROM public.Storage s
+                    FROM storage s
                     JOIN Category c ON s.id_category = c.id";
                 using (var cmd = new NpgsqlCommand(query, _connection))
                 using (var reader = cmd.ExecuteReader())

@@ -56,7 +56,7 @@ namespace Home
 
         private void FinanceButton_Click(object sender, RoutedEventArgs e)
         {
-            // Проверяем, есть ли вкладка "Продажи"
+            // Проверяем, есть ли вкладка "Финансы"
             foreach (TabItem tab in MainTabControl.Items)
             {
                 if ((string)tab.Header == "Финансы")
@@ -99,6 +99,28 @@ namespace Home
             tabItem.IsSelected = true;
         }
 
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TabItem tab in MainTabControl.Items)
+            {
+                if ((string)tab.Header == "Администрирование")
+                    tab.IsSelected = true;
+                {
+                    return;
+                }
+            }
+
+            var tabItem = new TabItem { Header = "Администрирование" };
+            var frame = new Frame
+            {
+                Source = new Uri("Pages/Administration.xaml", UriKind.Relative),
+                NavigationUIVisibility = NavigationUIVisibility.Hidden
+            };
+            tabItem.Content = frame;
+            MainTabControl.Items.Add(tabItem);
+            tabItem.IsSelected = true;
+        }
+
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             // Проверяем, есть ли уже вкладка "Главная"
@@ -115,35 +137,13 @@ namespace Home
             var homeTab = new TabItem { Header = "Главная" };
             var homeFrame = new Frame
             {
-                Source = new Uri("Pages/Homes.xaml", UriKind.Relative),
+                Source = new Uri("Pages/AdminHome.xaml", UriKind.Relative),
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
 
             homeTab.Content = homeFrame;
             MainTabControl.Items.Add(homeTab);
             homeTab.IsSelected = true;
-        }
-
-        private void AdminButton_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (TabItem tab in MainTabControl.Items)
-            {
-                if ((string)tab.Header == "Администрирование")
-                {
-                    tab.IsSelected = true;
-                    return;
-                }
-            }
-
-            var tabItem = new TabItem { Header = "Администрирование" };
-            var frame = new Frame
-            {
-                Source = new Uri("Pages/Administration.xaml", UriKind.Relative),
-                NavigationUIVisibility = NavigationUIVisibility.Hidden
-            };
-            tabItem.Content = frame;
-            MainTabControl.Items.Add(tabItem);
-            tabItem.IsSelected = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

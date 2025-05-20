@@ -26,39 +26,16 @@ namespace Home.Pages
             InitializeComponent();
         }
 
-        private static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
-        {
-            while (current != null)
-            {
-                if (current is T)
-                {
-                    return (T)current;
-                }
-                current = VisualTreeHelper.GetParent(current);
-            }
-            return null;
-        }
-
         private void DiscountsButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (TabItem tab in MainTabControl.Items)
-            {
-                if ((string)tab.Header == "Администрирование")
-                {
-                    tab.IsSelected = true;
-                    return;
-                }
-            }
-
-            var tabItem = new TabItem { Header = "Администрирование" };
+            
+            var stackPanel = new StackPanel();
             var frame = new Frame
             {
-                Source = new Uri("Pages/Administration.xaml", UriKind.Relative),
+                Source = new Uri("Pages/Discounts.xaml", UriKind.Relative),
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
-            tabItem.Content = frame;
-            MainTabControl.Items.Add(tabItem);
-            tabItem.IsSelected = true;
+            stackPanel.Children.Add(frame);
         }
 
         private void UsersButton_Click(object sender, RoutedEventArgs e)

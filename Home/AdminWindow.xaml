@@ -105,8 +105,8 @@
                 <StackPanel Margin="0,20,0,0">
                     <Button Content="Отчеты" Style="{StaticResource MenuButtonStyle}" Click="ReportsButton_Click"/>
                     <Button Content="Финансы" Style="{StaticResource MenuButtonStyle}" Click="FinanceButton_Click"/>
-                    <Button Content="Акции" Style="{StaticResource MenuButtonStyle}" Click="DiscountsButton_Click"/>
-                    <Button Content="Пользователи" Style="{StaticResource MenuButtonStyle}" Click="UsersButton_Click"/>
+                    <Button Content="Адмни-панель" Style="{StaticResource MenuButtonStyle}" Click="AdminButton_Click"/>
+                    <!--<Button Content="Пользователи" Style="{StaticResource MenuButtonStyle}" Click="UsersButton_Click"/>-->
                 </StackPanel>
                 <StackPanel Margin="-10,467,0,0" Orientation="Horizontal">
                     <TextBlock Text="ООО « »" FontSize="20" Foreground="White" Margin="20,30,0,0" />

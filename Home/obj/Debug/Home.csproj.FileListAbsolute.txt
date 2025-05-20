@@ -156,10 +156,13 @@ C:\Git\ZooApp\Home\obj\Debug\LoginWindow.g.cs
 C:\Git\ZooApp\Home\obj\Debug\MainWindow.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Pages\AddProductWindow.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Pages\AdminHome.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\Administration.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\Discounts.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Pages\Homes.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Pages\Reports.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Pages\Sales.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Pages\Storage.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\Users.g.cs
 C:\Git\ZooApp\Home\obj\Debug\App.g.cs
 C:\Git\ZooApp\Home\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Git\ZooApp\Home\obj\Debug\Home_MarkupCompile.cache
@@ -168,7 +171,10 @@ C:\Git\ZooApp\Home\obj\Debug\App.baml
 C:\Git\ZooApp\Home\obj\Debug\AdminWindow.baml
 C:\Git\ZooApp\Home\obj\Debug\LoginWindow.baml
 C:\Git\ZooApp\Home\obj\Debug\MainWindow.baml
+C:\Git\ZooApp\Home\obj\Debug\Pages\Administration.baml
+C:\Git\ZooApp\Home\obj\Debug\Pages\Discounts.baml
 C:\Git\ZooApp\Home\obj\Debug\Pages\Storage.baml
+C:\Git\ZooApp\Home\obj\Debug\Pages\Users.baml
 C:\Git\ZooApp\Home\obj\Debug\Home.g.resources
 C:\Git\ZooApp\Home\obj\Debug\Home.Properties.Resources.resources
 C:\Git\ZooApp\Home\obj\Debug\Home.csproj.GenerateResource.cache
@@ -177,5 +183,3 @@ C:\Git\ZooApp\Home\obj\Debug\Home.csproj.Up2Date
 C:\Git\ZooApp\Home\obj\Debug\Home.exe
 C:\Git\ZooApp\Home\obj\Debug\Home.pdb
 C:\Git\ZooApp\Home\obj\Debug\Home.exe.config
-C:\Git\ZooApp\Home\obj\Debug\Pages\Administration.g.cs
-C:\Git\ZooApp\Home\obj\Debug\Pages\Administration.baml
