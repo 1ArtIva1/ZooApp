@@ -26,11 +26,7 @@ namespace Home.Pages
 
             var products = new List<Product_Sale>
             {
-            new Product_Sale { Number = 1, Name = "Игрушка для кошек", Quantity = 2, Unit= "шт.", Price = 350, Sum = 700},
-            new Product_Sale { Number = 2, Name = "Игрушка для хомячков", Quantity = 1, Unit= "шт.", Price = 350, Sum = 350},
-            new Product_Sale { Number = 3, Name = "Корм для кошек", Quantity = 3, Unit= "кг.", Price = 120, Sum = 360},
-            new Product_Sale { Number = 4, Name = "Наполнитель", Quantity = 1, Unit= "кг.", Price = 800, Sum = 800 },
-
+           
 
             };
 
@@ -43,11 +39,57 @@ namespace Home.Pages
             public string Name { get; set; }
             public string Category { get; set; }
             public int Quantity { get; set; }
-            public string Unit{ get; set; }
+            public string Unit { get; set; }
             public decimal Price { get; set; }
-            public int Sum { get; set; }
+            public decimal Sum { get; set; }
         }
 
+        private void BarcodeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selector = new ProductSelectorWindow();
+            selector.Owner = Window.GetWindow(this); // для привязки к основному окну
+
+            // Показываем окно и проверяем, выбрал ли пользователь товар
+            if (selector.ShowDialog() == true)
+            {
+                var selectedProduct = selector.SelectedProduct; 
+                if (selectedProduct != null)
+                {
+                    // Преобразуем в Product_Sale и добавим в таблицу
+                    var currentList = (List<Product_Sale>)SaleGrid.ItemsSource;
+                    int nextNumber = currentList.Count + 1;
+
+                    currentList.Add(new Product_Sale
+                    {
+                        Number = nextNumber,
+                        Name = selectedProduct.Name,
+                        Category = selectedProduct.Category,
+                        Quantity = 1,
+                        Unit = selectedProduct.Unit,
+                        Price = selectedProduct.Price,
+                        Sum = (selectedProduct.Price) // пока без умножения, если 1 шт.
+                    });
+
+                    SaleGrid.Items.Refresh(); // обновляем таблицу
+                }
+            }
+            UpdateTotalSum();
+        }
+        private void UpdateTotalSum()
+        {
+            var currentList = (List<Product_Sale>)SaleGrid.ItemsSource;
+            decimal total = currentList.Sum(p => p.Sum);
+            TotalSumTextBlock.Text = $"Сумма: {total}";
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currentList = (List<Product_Sale>)SaleGrid.ItemsSource;
+            currentList.Clear();
+            SaleGrid.Items.Refresh();
+            UpdateTotalSum();
+        }
+        
     }
 }
 

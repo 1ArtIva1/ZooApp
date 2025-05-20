@@ -26,7 +26,7 @@ namespace Home.Pages
         {
             InitializeComponent();
 
-            using (var db = new DatabaseService("localhost", 5432, "vkr"))
+            using (var db = new DatabaseService("localhost", 5432, "postgres"))
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 Databank.StorageItems = db.LoadStorageItems();
@@ -41,7 +41,7 @@ namespace Home.Pages
             var window = new AddProductWindow();
             if (window.ShowDialog() == true)
             {
-                using (var db = new DatabaseService("localhost", 5432, "vkr"))
+                using (var db = new DatabaseService("localhost", 5432, "postgres"))
                 {
                     db.InitializeConnection(Databank.username, Databank.password);
                     Databank.StorageItems = db.LoadStorageItems();
@@ -66,7 +66,7 @@ namespace Home.Pages
             ApplyFilters();
         }
 
-        private void ApplyFilters()
+        public void ApplyFilters()
         {
             IEnumerable<StorageItem> filtered = Databank.StorageItems; 
 

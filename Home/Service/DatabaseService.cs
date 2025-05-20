@@ -108,9 +108,9 @@ namespace Home.Services
             {
                 OpenConnection();
                 string query = @"
-                    SELECT s.id, s.name, s.qty, c.name as category, s.retail_price
-                    FROM storage s
-                    JOIN Category c ON s.id_category = c.id";
+            SELECT s.id, s.name, s.unit, s.qty, c.name as category, s.retail_price
+            FROM storage s
+            JOIN Category c ON s.id_category = c.id";
                 using (var cmd = new NpgsqlCommand(query, _connection))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -120,9 +120,10 @@ namespace Home.Services
                         {
                             Id = reader.GetInt32(0),
                             Name = reader.GetString(1),
-                            Quantity = reader.GetInt32(2),
-                            Category = reader.GetString(3),
-                            Price = reader.GetDecimal(4)
+                            Unit = reader.GetString(2), // добавлено!
+                            Quantity = reader.GetInt32(3),
+                            Category = reader.GetString(4),
+                            Price = reader.GetDecimal(5)
                         });
                     }
                 }
@@ -133,6 +134,7 @@ namespace Home.Services
             }
             return items;
         }
+        
 
         public string GetUserMainRole()
         {

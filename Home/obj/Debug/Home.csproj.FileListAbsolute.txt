@@ -103,7 +103,6 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AdminHome.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AdminHome.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddProductWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddProductWindow.baml
-C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config
 C:\Git\ZooApp\Home\bin\Debug\Home.exe.config
 C:\Git\ZooApp\Home\bin\Debug\Home.exe
 C:\Git\ZooApp\Home\bin\Debug\Home.pdb
@@ -183,3 +182,12 @@ C:\Git\ZooApp\Home\obj\Debug\Home.csproj.Up2Date
 C:\Git\ZooApp\Home\obj\Debug\Home.exe
 C:\Git\ZooApp\Home\obj\Debug\Home.pdb
 C:\Git\ZooApp\Home\obj\Debug\Home.exe.config
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Administration.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Discounts.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Users.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Administration.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Discounts.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Users.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ProductSelectorWindow.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ProductSelectorWindow.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config

@@ -27,7 +27,7 @@ namespace Home.Pages
         public AddProductWindow()
         {
             InitializeComponent();
-            using (var db = new DatabaseService("localhost", 5432, "vkr"))
+            using (var db = new DatabaseService("localhost", 5432, "postgres"))
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 _categories = db.GetAllCategories();
@@ -202,7 +202,7 @@ namespace Home.Pages
             }
 
             // Сохраняем в БД
-            using (var db = new DatabaseService("localhost", 5432, "vkr"))
+            using (var db = new DatabaseService("localhost", 5432, "postgres"))
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 foreach (var item in newItems)

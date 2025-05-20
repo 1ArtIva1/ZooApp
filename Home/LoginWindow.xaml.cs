@@ -27,7 +27,7 @@ namespace Home
         {
             InitializeComponent();
 
-            _dbService = new DatabaseService("localhost", 5432, "vkr");
+            _dbService = new DatabaseService("localhost", 5432, "postgres");
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)

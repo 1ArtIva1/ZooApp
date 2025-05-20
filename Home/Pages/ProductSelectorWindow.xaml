@@ -1,0 +1,44 @@
+﻿<Window x:Class="Home.Pages.ProductSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Home.Pages"
+        mc:Ignorable="d"
+        Title="ProductSelectorWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox x:Name="SearchBox"
+             Width="200"
+             Margin="0,0,0,10"
+             TextChanged="SearchBox_TextChanged"/>
+
+            <TextBlock x:Name="PlaceholderTextBlock"
+               Text="Поиск по наименованию..."
+               Foreground="Gray"
+               Margin="5,2,0,0"
+               IsHitTestVisible="False"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Visibility="Visible"/>
+
+            <ComboBox x:Name="SortComboBox" Width="200" Margin="0,0,0,10"
+              SelectionChanged="SortComboBox_SelectionChanged">
+                <ComboBoxItem Content="Без сортировки" IsSelected="True"/>
+                <ComboBoxItem Content="По алфавиту"/>
+                <ComboBoxItem Content="По категории"/>
+                <ComboBoxItem Content="По количеству"/>
+            </ComboBox>
+
+            <DataGrid x:Name="ProductDataGrid" AutoGenerateColumns="False" Height="300"  MouseDoubleClick="ProductGrid_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}"/>
+                    <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
