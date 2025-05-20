@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Git\ZooApp\Home\App.xaml
-121857521331
+131991569909
 
-21919209236
+22-680012242
 33-209457813
-AdminWindow.xaml;LoginWindow.xaml;MainWindow.xaml;Pages\AddProductWindow.xaml;Pages\AdminHome.xaml;Pages\Administration.xaml;Pages\Discounts.xaml;Pages\Homes.xaml;Pages\Reports.xaml;Pages\Sales.xaml;Pages\Storage.xaml;Pages\Users.xaml;
+AdminWindow.xaml;LoginWindow.xaml;MainWindow.xaml;Pages\AddDiscountWindow.xaml;Pages\AddProductWindow.xaml;Pages\AdminHome.xaml;Pages\Administration.xaml;Pages\Discounts.xaml;Pages\Homes.xaml;Pages\Reports.xaml;Pages\Sales.xaml;Pages\Storage.xaml;Pages\Users.xaml;
 
-False
+True
 
