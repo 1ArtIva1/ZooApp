@@ -17,7 +17,7 @@ namespace Home.Services
         {
             _host = "localhost";
             _port = 5432;
-            _database = "vkr";
+            _database = "postgres";
         }
 
         public void InitializeConnection(string username, string password)
@@ -252,5 +252,15 @@ namespace Home.Services
             return categories;
         }
 
+        public void DeleteStorageItem(int id)
+        {
+            OpenConnection();
+            using (var cmd = new NpgsqlCommand("DELETE FROM storage WHERE id = @id", _connection))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            CloseConnection();
+        }
     }
 }

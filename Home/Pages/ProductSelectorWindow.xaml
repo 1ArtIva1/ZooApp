@@ -5,38 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Home.Pages"
         mc:Ignorable="d"
-        Title="ProductSelectorWindow" Height="450" Width="800">
+        Title="Выбор товара" Height="450" Width="800"
+        Background="#1A1A1A"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F5F5F5"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#444"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#292929"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Height" Value="35"/>
+                        <Setter Property="BorderBrush" Value="#3A3A3A"/>
+                        <Setter Property="BorderThickness" Value="0,0,0.5,0"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="BorderThickness" Value="0,0,0.5,0"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="#292929"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#292929"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        
+    </Window.Resources>
     <Grid>
         <StackPanel Margin="10">
             <TextBox x:Name="SearchBox"
-             Width="200"
-             Margin="0,0,0,10"
-             TextChanged="SearchBox_TextChanged"/>
-
-            <TextBlock x:Name="PlaceholderTextBlock"
-               Text="Поиск по наименованию..."
-               Foreground="Gray"
-               Margin="5,2,0,0"
-               IsHitTestVisible="False"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Left"
-               Visibility="Visible"/>
-
-            <ComboBox x:Name="SortComboBox" Width="200" Margin="0,0,0,10"
-              SelectionChanged="SortComboBox_SelectionChanged">
+                     Width="200"
+                     TextChanged="SearchBox_TextChanged"
+                     />
+            <ComboBox x:Name="SortComboBox" Width="200"
+                      SelectionChanged="SortComboBox_SelectionChanged">
                 <ComboBoxItem Content="Без сортировки" IsSelected="True"/>
                 <ComboBoxItem Content="По алфавиту"/>
                 <ComboBoxItem Content="По категории"/>
                 <ComboBoxItem Content="По количеству"/>
             </ComboBox>
-
-            <DataGrid x:Name="ProductDataGrid" AutoGenerateColumns="False" Height="300"  MouseDoubleClick="ProductGrid_MouseDoubleClick">
+            <DataGrid x:Name="ProductDataGrid" AutoGenerateColumns="False" Height="300" MouseDoubleClick="ProductGrid_MouseDoubleClick">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}"/>
-                    <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}"/>
-                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="180"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="110"/>
+                    <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}" Width="80"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="90"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="90"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

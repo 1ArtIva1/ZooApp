@@ -79,7 +79,7 @@ namespace Home.Pages
         {
             var currentList = (List<Product_Sale>)SaleGrid.ItemsSource;
             decimal total = currentList.Sum(p => p.Sum);
-            TotalSumTextBlock.Text = $"Сумма: {total}";
+            TotalSumTextBlock.Text = $"{total}";
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -90,6 +90,22 @@ namespace Home.Pages
             UpdateTotalSum();
         }
         
+        private void DeleteRowButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var row = button?.DataContext as Product_Sale;
+            if (row == null) return;
+
+            var currentList = (List<Product_Sale>)SaleGrid.ItemsSource;
+            currentList.Remove(row);
+
+            // Перенумеровать строки
+            for (int i = 0; i < currentList.Count; i++)
+                currentList[i].Number = i + 1;
+
+            SaleGrid.Items.Refresh();
+            UpdateTotalSum();
+        }
     }
 }
 
