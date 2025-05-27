@@ -30,7 +30,7 @@ namespace Home.Pages
         }
         private void LoadProducts()
         {
-            using (var db = new DatabaseService("localhost", 5432, "postgres"))
+            using (var db = new DatabaseService())
             {
                 db.InitializeConnection(Databank.username, Databank.password);
                 allProducts = db.LoadStorageItems();

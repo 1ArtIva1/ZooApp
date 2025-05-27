@@ -119,31 +119,31 @@ namespace Home.Pages
 
 
 
-                    if (string.IsNullOrWhiteSpace(name) ||
-                        !int.TryParse(DiscountValue, out int value))
-                    {
-                        MessageBox.Show("Проверьте введённые данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
-                    newItems.Add(new Discounts
-                    {
-                        Name = name,
-                        DiscountValue = value
-                    });
+                    //if (string.IsNullOrWhiteSpace(name) ||
+                    //    !int.TryParse(DiscountValue, out int value))
+                    //{
+                    //    MessageBox.Show("Проверьте введённые данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //    return;
+                    //}
+                    //
+                    //newItems.Add(new Discounts
+                    //{
+                    //    Name = name,
+                    //    DiscountValue = value
+                    //});
                 }
 
             }
 
             // Сохраняем в БД
-            using (var db = new DatabaseService())
-            {
-                db.InitializeConnection(Databank.username, Databank.password);
-                foreach (var item in newItems)
-                {
-                    db.AddStorageItem(item);
-                }
-            }
+            //using (var db = new DatabaseService())
+            //{
+            //    db.InitializeConnection(Databank.username, Databank.password);
+            //    foreach (var item in newItems)
+            //    {
+            //        db.AddStorageItem(item);
+            //    }
+            //}
 
             MessageBox.Show("Товары успешно добавлены!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             this.DialogResult = true;
