@@ -51,6 +51,36 @@ namespace Home.Pages
             window.Owner = Application.Current.MainWindow;
         }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = myDataGrid.SelectedItem as StorageItem;
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Выберите товар для удаления.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var result = MessageBox.Show(
+                $"Вы действительно хотите удалить товар \"{selectedItem.Name}\"?",
+                "Подтверждение удаления",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                using (var db = new DatabaseService())
+                {
+                    db.InitializeConnection(Databank.username, Databank.password);
+                    // Предполагается, что у вас есть метод для удаления товара по Id
+                    db.DeleteStorageItem(selectedItem.Id);
+                }
+                // Обновляем список
+                Databank.StorageItems.Remove(selectedItem);
+                myDataGrid.ItemsSource = null;
+                myDataGrid.ItemsSource = Databank.StorageItems;
+            }
+        }
+
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ApplyFilters();

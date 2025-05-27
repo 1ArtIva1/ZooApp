@@ -20,9 +20,31 @@ namespace Home.Pages
     /// </summary>
     public partial class Homes : Page
     {
+        // Статическое поле для хранения состояния смены
+        private static bool shiftStarted = false;
+
         public Homes()
         {
             InitializeComponent();
+
+            // Если смена уже начата, скрываем кнопку и показываем контент
+            if (shiftStarted)
+            {
+                StartShiftButton.Visibility = Visibility.Collapsed;
+                MainContentPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                StartShiftButton.Visibility = Visibility.Visible;
+                MainContentPanel.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void StartShiftButton_Click(object sender, RoutedEventArgs e)
+        {
+            shiftStarted = true;
+            StartShiftButton.Visibility = Visibility.Collapsed;
+            MainContentPanel.Visibility = Visibility.Visible;
         }
     }
 }

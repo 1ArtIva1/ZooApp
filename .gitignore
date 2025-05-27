@@ -411,3 +411,4 @@ Home/obj
 Home/bin
 Home/obj/Debug
 Home/obj/Debug/Pages
+*.cache

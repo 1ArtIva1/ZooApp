@@ -143,8 +143,28 @@ namespace Home
             MainTabControl.Items.Add(tabItem);
             tabItem.IsSelected = true;
         }
+        private void OperationsButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TabItem tab in MainTabControl.Items)
+            {
+                if ((string)tab.Header == "Операции")
+                {
+                    tab.IsSelected = true;
+                    return;
+                }
+            }
+
+            var tabItem = new TabItem { Header = "Операции" };
+            var frame = new Frame
+            {
+                Source = new Uri("Pages/Operations.xaml", UriKind.Relative),
+                NavigationUIVisibility = NavigationUIVisibility.Hidden
+            };
+            tabItem.Content = frame;
+            MainTabControl.Items.Add(tabItem);
+            tabItem.IsSelected = true;
 
 
-
+        }
     }
 }

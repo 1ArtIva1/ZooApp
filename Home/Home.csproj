@@ -129,6 +129,9 @@
     <Compile Include="Pages\Discounts.xaml.cs">
       <DependentUpon>Discounts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Operations.xaml.cs">
+      <DependentUpon>Operations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductSelectorWindow.xaml.cs">
       <DependentUpon>ProductSelectorWindow.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Homes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Operations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
