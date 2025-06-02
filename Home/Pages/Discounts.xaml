@@ -106,9 +106,18 @@
                        IsHitTestVisible="False"
                        Visibility="{Binding Text, ElementName=SearchBox, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </Grid>
+
+            <!-- Кнопка "Удалить" -->
+            <Button Content="Удалить" Click="DeleteButton_Click" Width="100"
+                 Height="28"
+                 BorderBrush="Red"
+                 Foreground="White"
+                 BorderThickness="2"
+                 Background="Transparent"
+                 Margin="10,0,10,0"/>
         </StackPanel>
 
-        <!-- Таблица товаров -->
+        <!-- Таблица -->
         <DataGrid x:Name="myDataGrid" Grid.Row="1"
               AutoGenerateColumns="False"
               HeadersVisibility="Column"

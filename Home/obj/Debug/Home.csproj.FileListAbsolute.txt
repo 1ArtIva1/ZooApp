@@ -195,3 +195,9 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.baml
+C:\Git\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.baml
+C:\Git\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\Operations.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\ProductSelectorWindow.g.cs
+C:\Git\ZooApp\Home\obj\Debug\Pages\Operations.baml
+C:\Git\ZooApp\Home\obj\Debug\Pages\ProductSelectorWindow.baml

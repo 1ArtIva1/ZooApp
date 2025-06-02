@@ -71,7 +71,7 @@ namespace Home.Pages
                 using (var db = new DatabaseService())
                 {
                     db.InitializeConnection(Databank.username, Databank.password);
-                    // Предполагается, что у вас есть метод для удаления товара по Id
+                    // есть метод для удаления товара по Id
                     db.DeleteStorageItem(selectedItem.Id);
                 }
                 // Обновляем список

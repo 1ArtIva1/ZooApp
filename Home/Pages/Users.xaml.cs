@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Home.Services;
+using Home.Service;
 
 namespace Home.Pages
 {
@@ -23,6 +25,18 @@ namespace Home.Pages
         public Users()
         {
             InitializeComponent();
+
+            using (var db = new DatabaseService()) 
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                Databank.UsersList = db.LoadUsers();
+            }
+            myDataGrid.ItemsSource = Databank.UsersList;
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

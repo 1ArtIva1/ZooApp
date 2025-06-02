@@ -103,7 +103,7 @@ namespace Home.Pages
             for (int i = 0; i < currentList.Count; i++)
                 currentList[i].Number = i + 1;
 
-            SaleGrid.Items.Refresh();
+            SaleGrid.Items.Refresh(); //try catch
             UpdateTotalSum();
         }
     }
