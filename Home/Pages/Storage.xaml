@@ -126,6 +126,7 @@
 
         <!-- Таблица товаров -->
         <DataGrid x:Name="myDataGrid" Grid.Row="1"
+                  IsReadOnly="True"
                   AutoGenerateColumns="False"
                   HeadersVisibility="Column"
                   Background="White"
@@ -135,8 +136,14 @@
                   RowBackground="White"
                   AlternatingRowBackground="#F0F0F0"
                   BorderThickness="0">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать количество" Click="EditQuantityMenuItem_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}" Width="80"/>
                 <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="100"/>
                 <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="150"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="100"/>

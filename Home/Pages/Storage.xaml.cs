@@ -136,6 +136,42 @@ namespace Home.Pages
 
             myDataGrid.ItemsSource = filtered.ToList();
         }
+
+        private void myDataGrid_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var row = ItemsControl.ContainerFromElement(myDataGrid, e.OriginalSource as DependencyObject) as DataGridRow;
+            if (row != null)
+            {
+                myDataGrid.SelectedItem = row.Item;
+            }
+        }
+
+        private void EditQuantityMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            var selectedItem = myDataGrid.SelectedItem as StorageItem;
+            if (selectedItem == null) return;
+
+            var editWindow = new EditQuantityWindow(selectedItem.Name, selectedItem.Quantity)
+            {
+                Owner = Window.GetWindow(this)
+            };
+            if (editWindow.ShowDialog() == true && editWindow.NewQuantity.HasValue)
+            {
+                int newQty = editWindow.NewQuantity.Value;
+
+                // Обновляем в БД
+                using (var db = new DatabaseService())
+                {
+                    db.InitializeConnection(Databank.username, Databank.password);
+                    db.UpdateStorageItemQuantity(selectedItem.Id, newQty);
+                }
+
+                // Обновляем в UI
+                selectedItem.Quantity = newQty;
+                myDataGrid.Items.Refresh();
+            }
+        }
     }
 
 

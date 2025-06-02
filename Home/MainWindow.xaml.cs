@@ -166,5 +166,15 @@ namespace Home
 
 
         }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Открываем форму авторизации
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
+
+            // Закрываем текущее окно
+            this.Close();
+        }
     }
 }

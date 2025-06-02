@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Home.Pages
 {
@@ -22,10 +23,21 @@ namespace Home.Pages
     {
         // Статическое поле для хранения состояния смены
         private static bool shiftStarted = false;
+        private DispatcherTimer _clockTimer;
+        private static DateTime? shiftStartTime = null;
 
         public Homes()
         {
             InitializeComponent();
+
+            _clockTimer = new DispatcherTimer();
+            _clockTimer.Interval = TimeSpan.FromSeconds(1);
+            _clockTimer.Tick += ClockTimer_Tick;
+            _clockTimer.Start();
+
+            ClockTextBlock.Text = DateTime.Now.ToString("HH:mm");
+            UpdateShiftStartTimeUI();
+            UpdateWorkDurationUI();
 
             // Если смена уже начата, скрываем кнопку и показываем контент
             if (shiftStarted)
@@ -43,8 +55,36 @@ namespace Home.Pages
         private void StartShiftButton_Click(object sender, RoutedEventArgs e)
         {
             shiftStarted = true;
+            shiftStartTime = DateTime.Now;
             StartShiftButton.Visibility = Visibility.Collapsed;
             MainContentPanel.Visibility = Visibility.Visible;
+            UpdateShiftStartTimeUI();
+        }
+        private void UpdateShiftStartTimeUI()
+        {
+            if (shiftStartTime.HasValue)
+                ShiftStartTimeTextBlock.Text = shiftStartTime.Value.ToString("HH:mm");
+            else
+                ShiftStartTimeTextBlock.Text = "--:--";
+        }
+        private void UpdateWorkDurationUI()
+        {
+            if (shiftStartTime.HasValue)
+            {
+                TimeSpan duration = DateTime.Now - shiftStartTime.Value;
+                WorkDurationTextBlock.Text = duration.ToString(@"hh\:mm");
+            }
+            else
+            {
+                WorkDurationTextBlock.Text = "00:00";
+            }
+        }
+
+
+        private void ClockTimer_Tick(object sender, EventArgs e)
+        {
+            ClockTextBlock.Text = DateTime.Now.ToString("HH:mm");
+            UpdateWorkDurationUI();
         }
     }
 }

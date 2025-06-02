@@ -87,6 +87,7 @@
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
                     <Button Content="Поиск" Style="{StaticResource MenuButtonStyle}" />
                     <Button Content="Меню" Style="{StaticResource MenuButtonStyle}" />
+                    <Button Content="Выход" Style="{StaticResource MenuButtonStyle}"  Click="LogoutButton_Click" />
                 </StackPanel>
 
             </DockPanel>
@@ -101,12 +102,13 @@
             </Grid.ColumnDefinitions>
 
             <!-- Боковая панель -->
-            <StackPanel Grid.Column="0" Width="240" Background="#111111" HorizontalAlignment="Left">
+            <StackPanel x:Name="SidebarPanel"  Grid.Column="0" Width="240" Background="#111111" HorizontalAlignment="Left">
                 <!-- Кнопки меню -->
                 <StackPanel Margin="0,20,0,0">
                     <Button Content="Продажи" Style="{StaticResource MenuButtonStyle}" Margin="50,30,0,0" Click="SalesButton_Click"/>
                     <Button Content="Склад" Style="{StaticResource MenuButtonStyle}"  Margin="50,30,0,0" Click="Storage_Click"/>
                     <Button Content="Операции" Style="{StaticResource MenuButtonStyle}"  Margin="50,30,0,0" Click="OperationsButton_Click"/>
+                    
                 </StackPanel>
                 <StackPanel Margin="-10,467,0,0" Orientation="Horizontal">
                     <TextBlock Text="ООО « »" FontSize="20" Foreground="White" Margin="20,30,0,0" />

@@ -53,6 +53,7 @@
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Npgsql, Version=8.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.8.0.3\lib\netstandard2.0\Npgsql.dll</HintPath>
     </Reference>
@@ -129,6 +130,9 @@
     <Compile Include="Pages\Discounts.xaml.cs">
       <DependentUpon>Discounts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditQuantityWindow.xaml.cs">
+      <DependentUpon>EditQuantityWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Operations.xaml.cs">
       <DependentUpon>Operations.xaml</DependentUpon>
     </Compile>
@@ -187,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Discounts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditQuantityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

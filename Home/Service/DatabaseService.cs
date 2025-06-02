@@ -262,5 +262,22 @@ namespace Home.Services
             }
             CloseConnection();
         }
+        public void UpdateStorageItemQuantity(int id, int newQuantity)
+        {
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand("UPDATE storage SET qty = @qty WHERE id = @id", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@qty", newQuantity);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
     }
 }

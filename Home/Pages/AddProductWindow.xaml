@@ -8,6 +8,7 @@
 
             <!-- Кнопка [+] -->
             <Button Content="+" Click="AddItemBlock_Click"
+
                     Width="40" Height="30"
                     Background="#2ecc71" Foreground="White"
                     FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" />

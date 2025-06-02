@@ -53,6 +53,7 @@ namespace Home.Pages
             if (selector.ShowDialog() == true)
             {
                 var selectedProduct = selector.SelectedProduct; 
+                int selectedQty = selector.SelectedQuantity;
                 if (selectedProduct != null)
                 {
                     // Преобразуем в Product_Sale и добавим в таблицу
@@ -64,10 +65,10 @@ namespace Home.Pages
                         Number = nextNumber,
                         Name = selectedProduct.Name,
                         Category = selectedProduct.Category,
-                        Quantity = 1,
+                        Quantity = selectedQty,
                         Unit = selectedProduct.Unit,
                         Price = selectedProduct.Price,
-                        Sum = (selectedProduct.Price) // пока без умножения, если 1 шт.
+                        Sum = selectedProduct.Price * selectedQty
                     });
 
                     SaleGrid.Items.Refresh(); // обновляем таблицу
@@ -75,11 +76,38 @@ namespace Home.Pages
             }
             UpdateTotalSum();
         }
+
+        private void PaymentTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateChange();
+        }
+
+        private void UpdateChange()
+        {
+            decimal total = 0;
+            decimal payment = 0;
+            decimal change = 0;
+
+            // Считываем значения из полей
+            decimal.TryParse(TotalSumTextBlock.Text, out total);
+            decimal.TryParse(PaymentTextBox.Text, out payment);
+
+            if (payment >= total)
+                change = payment - total;
+            else
+                change = 0;
+
+            ChangeTextBlock.Text = change.ToString("0.00");
+        }
+
+
         private void UpdateTotalSum()
         {
             var currentList = (List<Product_Sale>)SaleGrid.ItemsSource;
             decimal total = currentList.Sum(p => p.Sum);
             TotalSumTextBlock.Text = $"{total}";
+            PaymentTextBox_TextChanged(null, null);
+            UpdateChange();// обновить сдачу при изменении суммы
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

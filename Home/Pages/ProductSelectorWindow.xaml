@@ -68,7 +68,7 @@
                 <ComboBoxItem Content="По категории"/>
                 <ComboBoxItem Content="По количеству"/>
             </ComboBox>
-            <DataGrid x:Name="ProductDataGrid" AutoGenerateColumns="False" Height="300" MouseDoubleClick="ProductGrid_MouseDoubleClick">
+            <DataGrid x:Name="ProductDataGrid" AutoGenerateColumns="False" Height="300" IsReadOnly="True" MouseDoubleClick="ProductGrid_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="180"/>
                     <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="110"/>

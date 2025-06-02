@@ -23,6 +23,7 @@ namespace Home.Pages
     {
         private List<StorageItem> allProducts;
         public StorageItem SelectedProduct { get; private set; }
+        public int SelectedQuantity { get; private set; } = 1;
         public ProductSelectorWindow()
         {
             InitializeComponent();
@@ -84,13 +85,31 @@ namespace Home.Pages
         {
             if (ProductDataGrid.SelectedItem is StorageItem selectedItem)
             {
-                SelectedProduct = selectedItem;
-                DialogResult = true; // закроет окно и вернёт true
-                Close();
+                if (selectedItem.Quantity <= 0)
+                {
+                    MessageBox.Show("Нельзя добавить товар с нулевым остатком!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Открываем окно для выбора количества
+                var editWindow = new EditQuantityWindow(selectedItem.Name, 1)
+                {
+                    Owner = this
+                };
+                if (editWindow.ShowDialog() == true && editWindow.NewQuantity.HasValue)
+                {
+                    int qty = editWindow.NewQuantity.Value;
+                    if (qty > selectedItem.Quantity)
+                    {
+                        MessageBox.Show("Недостаточно товара на складе.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    SelectedProduct = selectedItem;
+                    SelectedQuantity = qty;
+                    DialogResult = true;
+                    Close();
+                }
             }
         }
-
-       
-
     }
 }

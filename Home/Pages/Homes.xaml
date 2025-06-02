@@ -77,14 +77,22 @@
 
                     <!-- Блок с временем работы -->
                     <TextBlock Text="Время работы:" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="Начало: 12:10" FontSize="16" Foreground="#CCCCCC"/>
-                    <TextBlock Text="Конец: 5:17" FontSize="16" Foreground="#CCCCCC"/>
+                         <!--Время начала смены-->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Начало смены: " FontSize="16" Foreground="#CCCCCC"/>
+                        <TextBlock x:Name="ShiftStartTimeTextBlock" FontSize="16" Foreground="#CCCCCC"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Время работы: " FontSize="16" Foreground="#CCCCCC"/>
+                        <TextBlock x:Name="WorkDurationTextBlock" FontSize="16" Foreground="#CCCCCC"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
 
             <!-- Часы -->
             <TextBlock Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:HH:mm}'}"
                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                       x:Name="ClockTextBlock"
                        FontSize="96"
                        Foreground="White"
                        HorizontalAlignment="Right"

@@ -195,3 +195,5 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.g.cs
