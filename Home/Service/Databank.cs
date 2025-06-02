@@ -14,13 +14,7 @@ namespace Home
         public static string password;
 
         public static List<StorageItem> StorageItems = new List<StorageItem>();
-        public static List<Discounts> Discounts = new List<Discounts>();
-    }
-
-    public class Discounts
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int DiscountValue { get; set; }
+        public static List<DiscountsList> DiscountsList = new List<DiscountsList>();
+        public static List<User> UsersList = new List<User>();
     }
 }

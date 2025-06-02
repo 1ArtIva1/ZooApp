@@ -207,7 +207,7 @@ namespace Home.Pages
                 db.InitializeConnection(Databank.username, Databank.password);
                 foreach (var item in newItems)
                 {
-                    db.AddStorageItem(item); // предполагается наличие такого метода
+                    db.AddStorageItem(item); 
                 }
             }
 

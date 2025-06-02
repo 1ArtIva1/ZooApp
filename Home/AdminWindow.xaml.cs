@@ -104,8 +104,8 @@ namespace Home
             foreach (TabItem tab in MainTabControl.Items)
             {
                 if ((string)tab.Header == "Администрирование")
-                    tab.IsSelected = true;
                 {
+                    tab.IsSelected = true;
                     return;
                 }
             }

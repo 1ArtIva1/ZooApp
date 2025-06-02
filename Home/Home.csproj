@@ -150,7 +150,9 @@
     </Compile>
     <Compile Include="Service\Databank.cs" />
     <Compile Include="Service\DatabaseService.cs" />
+    <Compile Include="Service\DiscountsList.cs" />
     <Compile Include="Service\StorageItem.cs" />
+    <Compile Include="Service\User.cs" />
     <Page Include="AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

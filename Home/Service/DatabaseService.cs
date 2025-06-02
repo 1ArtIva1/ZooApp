@@ -17,7 +17,7 @@ namespace Home.Services
         {
             _host = "localhost";
             _port = 5432;
-            _database = "postgres";
+            _database = "vkr";
         }
 
         public void InitializeConnection(string username, string password)
@@ -135,23 +135,23 @@ namespace Home.Services
             }
         }
 
-        public List<Discounts> LoadDiscounts()
+        public List<DiscountsList> LoadDiscounts()
         {
-            var discounts = new List<Discounts>();
+            var discounts = new List<DiscountsList>();
             try
             {
                 OpenConnection();
-                string query = "SELECT id, name, value FROM discount";
+                string query = "SELECT id, name, value FROM discounts";
                 using (var cmd = new NpgsqlCommand(query, _connection))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        discounts.Add(new Discounts
+                        discounts.Add(new DiscountsList
                         {
                             Id = reader.GetInt32(0),
                             Name = reader.GetString(1),
-                            DiscountValue = reader.GetInt32(2)
+                            Value = reader.GetInt32(2),
                         });
                     }
                 }
@@ -163,18 +163,18 @@ namespace Home.Services
             return discounts;
         }
 
-        public void AddDiscounts(Discounts discounts)
+        public void AddDiscounts(DiscountsList discounts)
         {
             try
             {
                 OpenConnection();
                 string query = @"
-                    INSERT INTO discount (name, value)
+                    INSERT INTO discounts (name, value)
                     VALUES (@name, @value)";
                 using (var cmd = new NpgsqlCommand(query, _connection))
                 {
                     cmd.Parameters.AddWithValue("name", discounts.Name);
-                    cmd.Parameters.AddWithValue("value", discounts.DiscountValue);
+                    cmd.Parameters.AddWithValue("value", discounts.Value);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -182,6 +182,17 @@ namespace Home.Services
             {
                 CloseConnection();
             }
+        }
+
+        public void DeleteDiscount(int id)
+        {
+            OpenConnection();
+            using (var cmd = new NpgsqlCommand("DELETE FROM discounts WHERE id = @id", _connection))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            CloseConnection();
         }
 
         public void AddStorageItem(StorageItem item)
@@ -260,6 +271,41 @@ namespace Home.Services
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
             }
+            CloseConnection();
+        }
+
+        public List<User> LoadUsers() 
+        {
+            var users = new List<User>();
+
+            try
+            { 
+                OpenConnection();
+                string query = @"
+            SELECT e.id, e.login, e.name, e.surname             
+            FROM employees e";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        users.Add(new User
+                        {
+                            Id = reader.GetInt32(0),
+                            Login = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Surname = reader.GetString(3),
+                        });
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return users;
+        }
             CloseConnection();
         }
         public void UpdateStorageItemQuantity(int id, int newQuantity)

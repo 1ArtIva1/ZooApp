@@ -1,8 +1,8 @@
-﻿/*using Home.Services;
-using Home.Service;
-using System.Globalization;
+﻿using Home.Service;
+using Home.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +43,12 @@ namespace Home.Pages
 
             var nameBox = CreateLabeledTextBox("Наименование", 120);
             var valueBox = CreateLabeledTextBox("Процент", 80);
+
+            wrapper.Children.Add(nameBox);
+            wrapper.Children.Add(valueBox);
+            
+            ItemsPanel.Children.Add(wrapper);
+
         }
 
         private StackPanel CreateLabeledTextBox(string label, double width)
@@ -107,48 +113,45 @@ namespace Home.Pages
 
         private void SaveToDatabase_Click(object sender, RoutedEventArgs e)
         {
-            var newItems = new List<Discounts>();
+            var newDiscounts = new List<DiscountsList>();
 
             foreach (StackPanel wrapper in ItemsPanel.Children)
             {
-                if (wrapper is StackPanel sp && sp.Children.Count >= 6)
+                if (wrapper is StackPanel sp && sp.Children.Count >= 2)
                 {
-
                     string name = ((sp.Children[0] as StackPanel)?.Children[1] as TextBox)?.Text;
-                    string value = ((sp.Children[1] as StackPanel)?.Children[1] as TextBox)?.Text;
+                    string valueStr = ((sp.Children[1] as StackPanel)?.Children[1] as TextBox)?.Text;
 
+                    if (string.IsNullOrWhiteSpace(name) ||
+                        !int.TryParse(valueStr, out int value))
+                    {
+                        MessageBox.Show("Проверьте введённые данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
+                    newDiscounts.Add(new DiscountsList
+                    {
+                        Name = name,
+                        Value = value
+                    });
 
-                    //if (string.IsNullOrWhiteSpace(name) ||
-                    //    !int.TryParse(DiscountValue, out int value))
-                    //{
-                    //    MessageBox.Show("Проверьте введённые данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    //    return;
-                    //}
-                    //
-                    //newItems.Add(new Discounts
-                    //{
-                    //    Name = name,
-                    //    DiscountValue = value
-                    //});
                 }
-
             }
 
             // Сохраняем в БД
-            //using (var db = new DatabaseService())
-            //{
-            //    db.InitializeConnection(Databank.username, Databank.password);
-            //    foreach (var item in newItems)
-            //    {
-            //        db.AddStorageItem(item);
-            //    }
-            //}
+            using (var db = new DatabaseService())
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                foreach (var discounts in newDiscounts)
+                {
+                    db.AddDiscounts(discounts);
+                }
+            }
 
-            MessageBox.Show("Товары успешно добавлены!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Скидки успешно добавлены!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             this.DialogResult = true;
             this.Close();
         }
 
     }
-}*/
+}
