@@ -4,10 +4,61 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Home.Pages"
+      xmlns:conv="clr-namespace:Home.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Operations"
       Background="#1A1A1A">
+
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F5F5F5"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#444"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="BorderThickness" Value="0,0,0.5,0"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Cursor" Value="Arrow"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3E3E3E"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#007ACC"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#292929"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="BorderBrush" Value="#3A3A3A"/>
+            <Setter Property="BorderThickness" Value="0,0,0.5,0"/>
+        </Style>
+    </Page.Resources>
 
     <Grid Margin="0">
         <Grid.RowDefinitions>
@@ -17,21 +68,21 @@
 
         <!-- Верхняя панель -->
         <StackPanel Orientation="Horizontal" Margin="10" VerticalAlignment="Top">
-            <Button Content="Возврат чека" Margin="0,0,10,0" Padding="10,2"/>
+            <Button x:Name="ReturnReceiptButton" Content="Возврат чека" Margin="0,0,10,0" Padding="10,2" Click="ReturnReceiptButton_Click"/>
             <TextBlock Text="Группировка:" Foreground="White" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <ComboBox x:Name="GroupComboBox" Width="120" Height="28" SelectedIndex="0">
-                <ComboBoxItem Content="Продавцы"/>
-                <ComboBoxItem Content="Даты"/>
-                <ComboBoxItem Content="Тип операции"/>
+            <ComboBox x:Name="GroupComboBox" Width="120" Height="28" SelectionChanged="GroupComboBox_SelectionChanged">
+                <ComboBoxItem Content="Все"/>
+                <ComboBoxItem Content="По дням"/>
+                <ComboBoxItem Content="По продавцам"/>
             </ComboBox>
         </StackPanel>
 
-        <!-- Таблица -->
+        <!-- Таблица чеков -->
         <Border Grid.Row="1" Margin="5,0,5,5" BorderBrush="#333" BorderThickness="1" CornerRadius="3">
-            <DataGrid x:Name="OperationsDataGrid"
+            <DataGrid x:Name="ReceiptsDataGrid"
                       AutoGenerateColumns="False"
                       Background="#1A1A1A"
-                      Foreground="Black"
+                      Foreground="White"
                       GridLinesVisibility="Horizontal"
                       HeadersVisibility="Column"
                       RowBackground="#232323"
@@ -40,14 +91,18 @@
                       CanUserAddRows="False"
                       CanUserDeleteRows="False"
                       SelectionMode="Single"
-                      SelectionUnit="FullRow">
+                      SelectionUnit="FullRow"
+                      MouseRightButtonDown="ReceiptsDataGrid_MouseRightButtonDown"
+                      IsReadOnly="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Детальнее" Click="DetailsMenuItem_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
-                    <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="120"/>
-                    <DataGridTextColumn Header="Тип операции" Binding="{Binding OperationType}" Width="150"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}" Width="140"/>
                     <DataGridTextColumn Header="Продавец" Binding="{Binding Seller}" Width="150"/>
-                    <DataGridTextColumn Header="Сумма" Binding="{Binding Amount}" Width="100"/>
-                    <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}" Width="*"/>
+                    <DataGridTextColumn Header="Сумма" Binding="{Binding Total}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

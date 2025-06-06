@@ -378,5 +378,154 @@ namespace Home.Services
             }
             return newId;
         }
+
+        public List<Receipt> LoadReceipts()
+        {
+            var receipts = new List<Receipt>();
+            try
+            {
+                OpenConnection();
+                string query = @"SELECT id, employee_id, date, total FROM receipts ORDER BY date DESC";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        receipts.Add(new Receipt
+                        {
+                            Id = reader.GetInt32(0),
+                            EmployeeId = reader.GetInt32(1),
+                            Date = reader.GetDateTime(2),
+                            Total = reader.GetDecimal(3)
+                        });
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return receipts;
+        }
+
+        public List<ReceiptItemViewModel> LoadReceiptItemsByReceiptId(int receiptId)
+        {
+            var items = new List<ReceiptItemViewModel>();
+            try
+            {
+                OpenConnection();
+                string query = @"
+                    SELECT s.name, ri.quantity, ri.price
+                    FROM receiptitems ri
+                    JOIN storage s ON ri.storage_id = s.id
+                    WHERE ri.receipt_id = @receiptId";
+                using (var cmd = new NpgsqlCommand(query, _connection))
+                {
+                    cmd.Parameters.AddWithValue("@receiptId", receiptId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            items.Add(new ReceiptItemViewModel
+                            {
+                                Name = reader.GetString(0),
+                                Quantity = reader.GetInt32(1),
+                                Price = reader.GetDecimal(2)
+                            });
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return items;
+        }
+
+        public void ReturnReceipt(int receiptId)
+        {
+            try
+            {
+                OpenConnection();
+
+                // Получаем все позиции чека
+                var items = new List<(int StorageId, int Quantity)>();
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT storage_id, quantity FROM receiptitems WHERE receipt_id = @receiptId", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@receiptId", receiptId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            items.Add((reader.GetInt32(0), reader.GetInt32(1)));
+                        }
+                    }
+                }
+
+                // Возвращаем товар на склад
+                foreach (var item in items)
+                {
+                    // Получаем текущее количество
+                    int currentQty = 0;
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT qty FROM storage WHERE id = @id", _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", item.StorageId);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                            currentQty = Convert.ToInt32(result);
+                    }
+
+                    // Обновляем количество
+                    using (var cmd = new NpgsqlCommand(
+                        "UPDATE storage SET qty = @qty WHERE id = @id", _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@qty", currentQty + item.Quantity);
+                        cmd.Parameters.AddWithValue("@id", item.StorageId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void DeleteReceipt(int receiptId)
+        {
+            try
+            {
+                OpenConnection();
+                // Сначала удаляем все позиции чека
+                using (var cmd = new NpgsqlCommand("DELETE FROM receiptitems WHERE receipt_id = @id", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", receiptId);
+                    cmd.ExecuteNonQuery();
+                }
+                // Затем удаляем сам чек
+                using (var cmd = new NpgsqlCommand("DELETE FROM receipts WHERE id = @id", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", receiptId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+    }
+
+    public class ReceiptItemViewModel
+    {
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal Sum => Price * Quantity;
     }
 }

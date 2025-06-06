@@ -196,4 +196,6 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ReceiptDetailsWindow.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ReceiptDetailsWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config

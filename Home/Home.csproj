@@ -139,6 +139,9 @@
     <Compile Include="Pages\ProductSelectorWindow.xaml.cs">
       <DependentUpon>ProductSelectorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ReceiptDetailsWindow.xaml.cs">
+      <DependentUpon>ReceiptDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProductSelectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReceiptDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
