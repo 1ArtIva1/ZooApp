@@ -152,7 +152,7 @@
                     Padding="0"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
-                    Cursor="Hand"/>
+                    Cursor="Hand" Click="CashButton_Click"/>
             <Button Content="Платежная&#x0a;карта [F6]"
                     Width="120" Height="60"
                     FontSize="20"

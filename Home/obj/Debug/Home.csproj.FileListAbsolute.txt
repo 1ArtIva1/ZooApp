@@ -190,10 +190,10 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Discounts.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Users.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ProductSelectorWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ProductSelectorWindow.baml
-C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\AddDiscountWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\Operations.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.g.cs
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config

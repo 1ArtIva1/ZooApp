@@ -129,17 +129,23 @@ namespace Home
                 if ((string)tab.Header == "Склад")
                 {
                     tab.IsSelected = true;
+                    
+                    var frame = tab.Content as Frame;
+                    if (frame != null && frame.Content is Home.Pages.Storage storagePage)
+                    {
+                        storagePage.RefreshStorage();
+                    }
                     return;
                 }
             }
 
             var tabItem = new TabItem { Header = "Склад" };
-            var frame = new Frame
+            var frameNew = new Frame
             {
                 Source = new Uri("Pages/Storage.xaml", UriKind.Relative),
                 NavigationUIVisibility = NavigationUIVisibility.Hidden
             };
-            tabItem.Content = frame;
+            tabItem.Content = frameNew;
             MainTabControl.Items.Add(tabItem);
             tabItem.IsSelected = true;
         }

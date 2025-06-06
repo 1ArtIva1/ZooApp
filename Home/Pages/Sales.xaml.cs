@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Home.Service;
+using Home.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -134,6 +136,68 @@ namespace Home.Pages
             SaleGrid.Items.Refresh(); //try catch
             UpdateTotalSum();
         }
+
+        
+        private void CashButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            var products = (List<Product_Sale>)SaleGrid.ItemsSource;
+            if (products == null || products.Count == 0)
+            {
+                MessageBox.Show("Нет товаров для продажи.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            decimal total = products.Sum(p => p.Sum);
+
+            // Получаем текущего пользователя (кассира)
+            int employeeId = Databank.CurrentUserId; // предполагается, что у вас есть такой идентификатор
+
+            var receipt = new Receipt
+            {
+                EmployeeId = employeeId,
+                Date = DateTime.Now,
+                Total = total
+            };
+
+            using (var db = new DatabaseService())
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+
+                int receiptId = db.AddReceipt(receipt);
+                var storageItems = db.LoadStorageItems();
+
+                foreach (var p in products)
+                {
+                    var storageItem = storageItems.FirstOrDefault(s => s.Name == p.Name && s.Unit == p.Unit);
+                    if (storageItem == null)
+                        continue;
+
+                    var item = new ReceiptItem
+                    {
+                        ReceiptId = receiptId,
+                        StorageId = storageItem.Id,
+                        DiscountId = null,
+                        Quantity = p.Quantity,
+                        Price = p.Price
+                    };
+
+                    db.AddReceiptItem(item);
+
+                    // Уменьшаем количество на складе
+                    int newQuantity = storageItem.Quantity - p.Quantity;
+                    db.UpdateStorageItemQuantity(storageItem.Id, newQuantity);
+                }
+            }
+
+            MessageBox.Show("Чек успешно сохранён!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            // Очистить форму
+            products.Clear();
+            SaleGrid.Items.Refresh();
+            UpdateTotalSum();
+        }
     }
+    
 }
 

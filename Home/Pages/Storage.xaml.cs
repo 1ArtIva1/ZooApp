@@ -25,16 +25,29 @@ namespace Home.Pages
         public Storage()
         {
             InitializeComponent();
+            this.IsVisibleChanged += Storage_IsVisibleChanged;
+            RefreshStorage();
+        }
 
+        private void Storage_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.IsVisible)
+            {
+                RefreshStorage();
+            }
+        }
+
+        public void RefreshStorage()
+        {
             using (var db = new DatabaseService())
             {
                 db.InitializeConnection(Databank.username, Databank.password);
-                Databank.StorageItems = db.LoadStorageItems();
+                var freshItems = db.LoadStorageItems();
+                myDataGrid.ItemsSource = freshItems;
+                // Если нужен кэш — обновите его тоже:
+                Databank.StorageItems = freshItems;
             }
-            myDataGrid.ItemsSource = Databank.StorageItems;
         }
-
-     
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -173,7 +186,5 @@ namespace Home.Pages
             }
         }
     }
-
-
 }
 

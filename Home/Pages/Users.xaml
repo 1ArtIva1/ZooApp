@@ -83,7 +83,7 @@
             <!-- Меню "Группировка" -->
             <ComboBox x:Name="SortComboBox"
     Width="150" Height="28" Margin="0,0,10,0"
-    SelectionChanged="SortComboBox_SelectionChanged">
+   >
                 <ComboBoxItem Content="По размеру" />
                 <ComboBoxItem Content="По алфавиту" />
             </ComboBox>
@@ -92,7 +92,7 @@
             <Grid Width="200" Height="28" Margin="0,0,0,0">
                 <TextBox x:Name="SearchBox"
              VerticalContentAlignment="Center"
-             TextChanged="SearchBox_TextChanged"
+             
              Background="White"
              Foreground="Black"
              BorderBrush="Gray"
@@ -107,7 +107,7 @@
             </Grid>
 
             <!-- Кнопка "Удалить" -->
-            <Button Content="Удалить" Click="DeleteButton_Click" Width="100"
+            <Button Content="Удалить"  Width="100"
          Height="28"
          BorderBrush="Red"
          Foreground="White"

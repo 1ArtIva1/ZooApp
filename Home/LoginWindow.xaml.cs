@@ -47,6 +47,12 @@ namespace Home
                 bool isEmp = userRoles.Contains("emps");
                 bool isManager = userRoles.Contains("managers");
 
+                // Получаем Id пользователя из таблицы employees
+                var users = _dbService.LoadUsers();
+                var currentUser = users.FirstOrDefault(u => u.Login == Databank.username);
+                if (currentUser != null)
+                    Databank.CurrentUserId = currentUser.Id;
+
                 _dbService.CloseConnection();
 
                 // Открываем соответствующую форму

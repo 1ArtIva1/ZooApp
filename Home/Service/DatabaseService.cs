@@ -91,7 +91,7 @@ namespace Home.Services
                 string query = @"
             SELECT s.id, s.name, s.unit, s.qty, c.name as category, s.retail_price
             FROM storage s
-            JOIN Category c ON s.id_category = c.id";
+            JOIN Category c ON s.category_id = c.id";
                 using (var cmd = new NpgsqlCommand(query, _connection))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -222,7 +222,7 @@ namespace Home.Services
 
                 // Вставка в таблицу Storage
                 string insertQuery = @"
-        INSERT INTO Storage (name, unit, qty, wholesale_price, retail_price, id_category)
+        INSERT INTO Storage (name, unit, qty, wholesale_price, retail_price, category_id)
         VALUES (@name, @unit, @qty, @purchase, @retail, @cat)";
                 using (var cmd = new NpgsqlCommand(insertQuery, _connection))
                 {
@@ -306,8 +306,7 @@ namespace Home.Services
 
             return users;
         }
-            CloseConnection();
-        }
+          
         public void UpdateStorageItemQuantity(int id, int newQuantity)
         {
             try
@@ -324,6 +323,60 @@ namespace Home.Services
             {
                 CloseConnection();
             }
+        }
+
+        public int AddReceipt(Receipt receipt)
+        {
+            int newId = 0;
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand(
+                    @"INSERT INTO receipts (employee_id, date, total)
+                      VALUES (@employee_id, @date, @total)
+                      RETURNING id;", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@employee_id", receipt.EmployeeId);
+                    cmd.Parameters.AddWithValue("@date", receipt.Date);
+                    cmd.Parameters.AddWithValue("@total", receipt.Total);
+
+                    newId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return newId;
+
+
+        }
+
+        public int AddReceiptItem(ReceiptItem item)
+        {
+            int newId = 0;
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand(
+                    @"INSERT INTO receiptitems (receipt_id, storage_id, discount_id, quantity, price)
+              VALUES (@receipt_id, @storage_id, @discount_id, @quantity, @price)
+              RETURNING id;", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@receipt_id", item.ReceiptId);
+                    cmd.Parameters.AddWithValue("@storage_id", item.StorageId);
+                    cmd.Parameters.AddWithValue("@discount_id", (object)item.DiscountId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@quantity", item.Quantity);
+                    cmd.Parameters.AddWithValue("@price", item.Price);
+
+                    newId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return newId;
         }
     }
 }

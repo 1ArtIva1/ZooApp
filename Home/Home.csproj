@@ -148,9 +148,12 @@
     <Compile Include="Pages\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\DatabaseService.cs" />
     <Compile Include="Service\Databank.cs" />
     <Compile Include="Service\DatabaseService.cs" />
     <Compile Include="Service\DiscountsList.cs" />
+    <Compile Include="Service\Receipt.cs" />
+    <Compile Include="Service\ReceiptItem.cs" />
     <Compile Include="Service\StorageItem.cs" />
     <Compile Include="Service\User.cs" />
     <Page Include="AdminWindow.xaml">
