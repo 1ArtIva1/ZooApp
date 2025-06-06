@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Home.Service;
+using Home.Services;
 
 namespace Home.Pages
 {
@@ -50,6 +52,7 @@ namespace Home.Pages
                 StartShiftButton.Visibility = Visibility.Visible;
                 MainContentPanel.Visibility = Visibility.Collapsed;
             }
+            UpdateStatistics();
         }
 
         private void StartShiftButton_Click(object sender, RoutedEventArgs e)
@@ -80,11 +83,29 @@ namespace Home.Pages
             }
         }
 
-
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
             ClockTextBlock.Text = DateTime.Now.ToString("HH:mm");
             UpdateWorkDurationUI();
+        }
+
+        private void UpdateStatistics()
+        {
+            using (var db = new DatabaseService())
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                var receipts = db.LoadReceipts();
+                var today = DateTime.Today;
+                var todayReceipts = receipts.Where(r => r.Date.Date == today).ToList();
+
+                decimal totalSum = todayReceipts.Sum(r => r.Total);
+                int count = todayReceipts.Count;
+                decimal avg = count > 0 ? totalSum / count : 0;
+
+                AvgReceiptTextBlock.Text = avg.ToString("0.00");
+                TotalDayTextBlock.Text = totalSum.ToString("0.00");
+                CountDayTextBlock.Text = count.ToString();
+            }
         }
     }
 }

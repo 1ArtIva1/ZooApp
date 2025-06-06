@@ -145,6 +145,9 @@
     <Compile Include="Pages\Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SelectDeferredReceiptWindow.xaml.cs">
+      <DependentUpon>SelectDeferredReceiptWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Storage.xaml.cs">
       <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,7 @@
     <Compile Include="Services\DatabaseService.cs" />
     <Compile Include="Service\Databank.cs" />
     <Compile Include="Service\DatabaseService.cs" />
+    <Compile Include="Service\DeferredReceipt.cs" />
     <Compile Include="Service\DiscountsList.cs" />
     <Compile Include="Service\Receipt.cs" />
     <Compile Include="Service\ReceiptItem.cs" />
@@ -227,6 +231,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SelectDeferredReceiptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

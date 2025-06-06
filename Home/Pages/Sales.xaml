@@ -132,9 +132,9 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="92" Width="454">
             <UniformGrid Columns="3" Rows="2" Height="70" Width="460">
                 <Button Click="ClearButton_Click" Content="Очистить"  Width="110" Height="25"/>
-                <Button Content="Отложить"  Width="110" Height="25"/>
-                <Button Content="Аннулировать"  Width="110" Height="25"/>
-                <Button Content="Открыть"  Width="110" Height="25"/>
+                <Button Content="Отложить"  Width="110" Height="25" Click="DeferButton_Click"/>
+                <Button Content="Аннулировать"  Width="110" Height="25" Click="CancelDeferredButton_Click"/>
+                <Button Content="Открыть"  Width="110" Height="25" Click="OpenDeferredButton_Click"/>
                 <Button Content="Акции"  Width="110" Height="25"/>
                 <Button Content="Добавить"  Width="110" Height="25" Click="BarcodeButton_Click"/>
             </UniformGrid>

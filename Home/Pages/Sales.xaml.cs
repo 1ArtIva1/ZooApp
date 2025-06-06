@@ -197,7 +197,55 @@ namespace Home.Pages
             SaleGrid.Items.Refresh();
             UpdateTotalSum();
         }
+
+        private void DeferButton_Click(object sender, RoutedEventArgs e)
+        {
+            var products = (List<Product_Sale>)SaleGrid.ItemsSource;
+            var receipt = new DeferredReceipt { Products = products.ToList() };
+            using (var db = new DatabaseService())
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                db.AddDeferredReceipt(receipt, Databank.CurrentUserId);
+            }
+            products.Clear();
+            SaleGrid.Items.Refresh();
+            UpdateTotalSum();
+        }
+
+        private void OpenDeferredButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new DatabaseService())
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                var deferredList = db.LoadDeferredReceipts();
+                var window = new SelectDeferredReceiptWindow(deferredList);
+                window.Owner = Window.GetWindow(this);
+                if (window.ShowDialog() == true && window.SelectedReceipt != null)
+                {
+                    var products = (List<Product_Sale>)SaleGrid.ItemsSource;
+                    products.Clear();
+                    products.AddRange(window.SelectedReceipt.Products);
+                    SaleGrid.Items.Refresh();
+                    UpdateTotalSum();
+                }
+            }
+        }
+
+        private void CancelDeferredButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new DatabaseService())
+            {
+                db.InitializeConnection(Databank.username, Databank.password);
+                var deferredList = db.LoadDeferredReceipts();
+                var window = new SelectDeferredReceiptWindow(deferredList);
+                window.Owner = Window.GetWindow(this);
+                if (window.ShowDialog() == true && window.SelectedReceipt != null)
+                {
+                    db.DeleteDeferredReceipt(window.SelectedReceipt.Id);
+                    MessageBox.Show("Отложенный чек аннулирован.");
+                }
+            }
+        }
     }
-    
 }
 

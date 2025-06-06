@@ -199,3 +199,5 @@ C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\EditQuantityWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ReceiptDetailsWindow.g.cs
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\ReceiptDetailsWindow.baml
 C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Home.exe.config
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\SelectDeferredReceiptWindow.baml
+C:\Users\Shurub4iK\ZooApp\Home\obj\Debug\Pages\SelectDeferredReceiptWindow.g.cs

@@ -63,13 +63,20 @@
 
                     <!-- Блок с выручкой -->
                     <TextBlock Text="Общая выручка за смену:" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                    <StackPanel Margin="0,8,0,0">
-                        <TextBlock Text="Наличные" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="Наличные: 2210 руб." FontSize="16" Foreground="#CCCCCC"/>
-                        <TextBlock Text="Безналичная оплата" Foreground="White" FontSize="18"/>
-                        <TextBlock Text="Безналичная оплата: 0 руб." FontSize="16" Foreground="#CCCCCC"/>
-                        <TextBlock Text="Средний чек: 2210" FontSize="16" Foreground="#CCCCCC"/>
-                        <TextBlock Text="Оформленные чеки: 1" FontSize="16" Foreground="#CCCCCC"/>
+                    <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Средний чек: " FontSize="16" Foreground="#CCCCCC"/>
+                            <TextBlock x:Name="AvgReceiptTextBlock" FontSize="16" Foreground="#CCCCCC" Margin="5,0,20,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Сумма за день: " FontSize="16" Foreground="#CCCCCC"/>
+                            <TextBlock x:Name="TotalDayTextBlock" FontSize="16" Foreground="#CCCCCC" Margin="5,0,20,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Чеков за день: " FontSize="16" Foreground="#CCCCCC"/>
+                            <TextBlock x:Name="CountDayTextBlock" FontSize="16" Foreground="#CCCCCC"/>
+                        </StackPanel>
+                        
                     </StackPanel>
 
                     <!-- Линия-разделитель -->

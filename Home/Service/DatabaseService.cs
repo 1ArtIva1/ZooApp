@@ -519,6 +519,110 @@ namespace Home.Services
                 CloseConnection();
             }
         }
+
+        public void AddDeferredReceipt(DeferredReceipt receipt, int employeeId)
+        {
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand(
+                    "INSERT INTO deferred_receipts (id, created, employee_id) VALUES (@id, @created, @emp)", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", receipt.Id);
+                    cmd.Parameters.AddWithValue("@created", receipt.Created);
+                    cmd.Parameters.AddWithValue("@emp", employeeId);
+                    cmd.ExecuteNonQuery();
+                }
+                foreach (var p in receipt.Products)
+                {
+                    using (var cmd = new NpgsqlCommand(
+                        @"INSERT INTO deferred_receipt_items 
+                        (deferred_receipt_id, name, category, quantity, unit, price, sum)
+                        VALUES (@rid, @name, @cat, @qty, @unit, @price, @sum)", _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@rid", receipt.Id);
+                        cmd.Parameters.AddWithValue("@name", p.Name);
+                        cmd.Parameters.AddWithValue("@cat", p.Category);
+                        cmd.Parameters.AddWithValue("@qty", p.Quantity);
+                        cmd.Parameters.AddWithValue("@unit", p.Unit);
+                        cmd.Parameters.AddWithValue("@price", p.Price);
+                        cmd.Parameters.AddWithValue("@sum", p.Sum);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public List<DeferredReceipt> LoadDeferredReceipts()
+        {
+            var result = new List<DeferredReceipt>();
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand("SELECT id, created FROM deferred_receipts", _connection))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new DeferredReceipt
+                        {
+                            Id = reader.GetGuid(0),
+                            Created = reader.GetDateTime(1),
+                            Products = new List<Home.Pages.Sales.Product_Sale>()
+                        });
+                    }
+                }
+                foreach (var dr in result)
+                {
+                    using (var cmd = new NpgsqlCommand(
+                        "SELECT name, category, quantity, unit, price, sum FROM deferred_receipt_items WHERE deferred_receipt_id = @id", _connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", dr.Id);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                dr.Products.Add(new Home.Pages.Sales.Product_Sale
+                                {
+                                    Name = reader.GetString(0),
+                                    Category = reader.GetString(1),
+                                    Quantity = reader.GetInt32(2),
+                                    Unit = reader.GetString(3),
+                                    Price = reader.GetDecimal(4),
+                                    Sum = reader.GetDecimal(5)
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return result;
+        }
+
+        public void DeleteDeferredReceipt(Guid id)
+        {
+            try
+            {
+                OpenConnection();
+                using (var cmd = new NpgsqlCommand("DELETE FROM deferred_receipts WHERE id = @id", _connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
     }
 
     public class ReceiptItemViewModel
